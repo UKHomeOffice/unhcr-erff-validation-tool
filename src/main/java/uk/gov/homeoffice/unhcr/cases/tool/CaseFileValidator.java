@@ -19,11 +19,11 @@ public class CaseFileValidator extends BaseCaseFileValidator {
 
     private static Option fileOption = Option.builder("f").longOpt("file")
             .desc("case files to validate (space-separated)\n(multiple files can be validated)")
-            .required(true).hasArg(true).build();
+            .required(true).hasArg(true).numberOfArgs(Option.UNLIMITED_VALUES).build();
 
     private static Option parserOption = Option.builder("p").longOpt("parser")
             .desc(String.format("parser version(s) to use (space-separated): %s\n(also supports wild-chars, e.g. 'v4*')", BaseCaseFileValidator.getValidatorIds().stream().sorted().collect(Collectors.joining(" "))))
-            .required(false).hasArg(true).build();
+            .required(false).hasArg(true).numberOfArgs(Option.UNLIMITED_VALUES).build();
 
     private static Options options = new Options()
                 .addOption(fileOption)
@@ -63,12 +63,13 @@ public class CaseFileValidator extends BaseCaseFileValidator {
 
     private static void showHelp() {
         Package package_ = CaseFileValidator.class.getPackage();
+        String nameAndVersionString = String.format("UNHCR eRRF Validation Tool %s", package_.getImplementationVersion());
 
         HelpFormatter formatter = new HelpFormatter();
         formatter.setWidth(1024);
         formatter.printHelp(
                 "java -jar unhcr-erff-validation-tool-x.x.x.jar",
-                String.format("UNHCR eRRF Validation Tool %s", package_.getImplementationVersion()),
+                nameAndVersionString,
                 options,
                 "(When validation (of every listed file) succeeds, exit code is 0.)",
                 true);
@@ -90,8 +91,8 @@ public class CaseFileValidator extends BaseCaseFileValidator {
             // filter allowed validators
             List<BaseCaseFileValidator> validators;
             if (line.hasOption(parserOption)) {
-                String[] validatorGlobs = line.getOptionValues(parserOption);
-                List<String> validatorIds = parseValidatorIds(validatorGlobs);
+                String[] validatorGlobOptions = line.getOptionValues(parserOption);
+                List<String> validatorIds = parseValidatorIds(validatorGlobOptions);
                 validators = BaseCaseFileValidator.getValidators(validatorIds);
             } else {
                 validators = BaseCaseFileValidator.getValidators();
@@ -100,7 +101,8 @@ public class CaseFileValidator extends BaseCaseFileValidator {
             CaseFileValidator parentValidator = new CaseFileValidator();
 
             // load files
-            List<File> caseFiles   = Arrays.stream(line.getOptionValues(fileOption)).map(filePath -> new File(filePath)).collect(Collectors.toList());
+            String[] caseFileOptions = line.getOptionValues(fileOption);
+            List<File> caseFiles   = Arrays.stream(caseFileOptions).map(filePath -> new File(filePath)).collect(Collectors.toList());
             List<ValidationResult> validationResults = caseFiles.stream().map(caseFile -> {
                 ValidationResult validationResult;
                 try (FileInputStream inputStream = new FileInputStream(caseFile);) {
@@ -115,9 +117,6 @@ public class CaseFileValidator extends BaseCaseFileValidator {
                     validationResult = new ValidationResult();
                     validationResult.setFileName(caseFile.getPath());
                     validationResult.addError(exception.getMessage());
-
-                    System.err.println("Error: " + exception.getMessage());
-                    exception.printStackTrace();
                 }
                 return validationResult;
             }).collect(Collectors.toList());
