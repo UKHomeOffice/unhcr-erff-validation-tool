@@ -31,7 +31,7 @@ public class V4CaseFileValidator_1Test {
 
     @Test
     void validateApplicableTest() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST.xml", getClass().getClassLoader());
 
         BaseCaseFileValidator validator = new V4CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isFalse();

@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class MENACaseFileValidator_1Test {
+public class V3CaseFileValidator_1Test {
 
     @BeforeAll
     static void setup() {
@@ -19,9 +19,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validateSuccessTest() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -31,9 +31,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validateMinimalTest() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-Minimal.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-Minimal.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -45,15 +45,15 @@ public class MENACaseFileValidator_1Test {
     void validateApplicableTest() throws IOException {
         byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V4-TEST.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isFalse();
     }
 
     @Test
     void validateAddressType1Test() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-AddressType1.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-AddressType1.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -66,9 +66,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validateAddressType2Test() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-AddressType2.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-AddressType2.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -81,9 +81,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validateDateOfBirthTest() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-DateOfBirth.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-DateOfBirth.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -95,9 +95,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validateFamilyName1Test() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-FamilyName1.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-FamilyName1.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -109,9 +109,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validateFamilyName2Test() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-FamilyName2.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-FamilyName2.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -123,9 +123,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validateGivenName1Test() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-GivenName1.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-GivenName1.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -137,9 +137,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validateLanguageTest() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-Language.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-Language.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -151,9 +151,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validateNationalityTest() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-Nationality.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-Nationality.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -165,9 +165,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validateOccupationCodeTest() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-OccupationCode.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-OccupationCode.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -179,9 +179,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validatePhoto1Test() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-Photo1.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-Photo1.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -193,9 +193,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validatePhoto2Test() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-Photo2.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-Photo2.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -208,9 +208,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validatePhotoGifTest() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-Photo-Gif.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-Photo-Gif.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -219,9 +219,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validatePhotoJpegTest() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-Photo-Jpeg.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-Photo-Jpeg.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -230,9 +230,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validatePrimaryApplicant1Test() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-PrimaryApplicant1.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-PrimaryApplicant1.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -245,9 +245,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validatePrimaryApplicant2Test() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-PrimaryApplicant2.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-PrimaryApplicant2.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -259,9 +259,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validateRelativesFamilyNameTest() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-RelativesFamilyName.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-RelativesFamilyName.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -273,9 +273,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validateProcessingGroup1Test() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-ProcessingGroup1.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-ProcessingGroup1.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
@@ -287,9 +287,9 @@ public class MENACaseFileValidator_1Test {
 
     @Test
     void validateProcessingGroup2Test() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST-ProcessingGroup2.xml", getClass().getClassLoader());
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-ProcessingGroup2.xml", getClass().getClassLoader());
 
-        BaseCaseFileValidator validator = new MENACaseFileValidator_1();
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);

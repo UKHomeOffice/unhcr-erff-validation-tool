@@ -44,16 +44,13 @@ public abstract class BaseCaseFileValidator {
     static {
         //order of registration is important - validators will be tried in that order
 
-        //try V4 earlier
         register(new V4CaseFileValidator_1());
-
-        //try MENA last
-        register(new MENACaseFileValidator_1());
+        register(new V3CaseFileValidator_1());
     }
 
     public static class IndividualIdPair {
         public Optional<String> optionalIndividualId;
-        public Optional<String> optionalIndividualGuid; //not in MENA
+        public Optional<String> optionalIndividualGuid; //not in V3
 
         public static IndividualIdPair ofIndividualId(String individualId) {
             return new IndividualIdPair(Optional.of(individualId), Optional.empty());

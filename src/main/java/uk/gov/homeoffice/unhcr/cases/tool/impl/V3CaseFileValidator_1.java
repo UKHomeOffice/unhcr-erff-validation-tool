@@ -3,7 +3,7 @@ package uk.gov.homeoffice.unhcr.cases.tool.impl;
 import com.google.common.collect.Multimap;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
-import uk.gov.homeoffice.unhcr.cases.model.mena_1.UNHCRRRF;
+import uk.gov.homeoffice.unhcr.cases.model.v3_1.UNHCRRRF;
 import uk.gov.homeoffice.unhcr.cases.reference.ReferenceDataContainer;
 import uk.gov.homeoffice.unhcr.cases.tool.ValidationResult;
 import uk.gov.homeoffice.unhcr.exception.ParseCaseFileException;
@@ -11,11 +11,11 @@ import uk.gov.homeoffice.unhcr.exception.ParseCaseFileException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class MENACaseFileValidator_1 extends BaseCaseFileValidator {
+public class V3CaseFileValidator_1 extends BaseCaseFileValidator {
 
-    final static public String ID  = "mena";
+    final static public String ID  = "v3";
 
-    final static public String RESOURCE_PATH_XSD  = "/uk/gov/homeoffice/unhcr/xsd/mena_1/rrf-mena.xsd";
+    final static public String RESOURCE_PATH_XSD  = "/uk/gov/homeoffice/unhcr/xsd/v3_1/rrf-v3.xsd";
 
     @Override
     public String getValidatorId() {

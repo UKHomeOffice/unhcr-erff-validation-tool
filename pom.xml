@@ -169,7 +169,7 @@
 				<version>3.1.0</version>
 				<executions>
 					<execution>
-						<id>xjc-schema-mena-1</id>
+						<id>xjc-schema-v3-1</id>
 						<goals>
 							<goal>xjc</goal>
 						</goals>
@@ -178,9 +178,9 @@
 								<xjbSource>src/main/resources/uk/gov/homeoffice/unhcr/xjb/binding.xjb</xjbSource>
 							</xjbSources>
 							<sources>
-								<source>src/main/resources/uk/gov/homeoffice/unhcr/xsd/mena_1</source>
+								<source>src/main/resources/uk/gov/homeoffice/unhcr/xsd/v3_1</source>
 							</sources>
-							<packageName>uk.gov.homeoffice.unhcr.cases.model.mena_1</packageName>
+							<packageName>uk.gov.homeoffice.unhcr.cases.model.v3_1</packageName>
 							<clearOutputDir>false</clearOutputDir>
 						</configuration>
 					</execution>

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 import uk.gov.homeoffice.unhcr.cases.reference.ReferenceData;
 import uk.gov.homeoffice.unhcr.cases.tool.impl.BaseCaseFileValidator;
-import uk.gov.homeoffice.unhcr.cases.tool.impl.MENACaseFileValidator_1;
+import uk.gov.homeoffice.unhcr.cases.tool.impl.V3CaseFileValidator_1;
 import uk.gov.homeoffice.unhcr.cases.tool.impl.V4CaseFileValidator_1;
 
 import java.io.IOException;
@@ -29,18 +29,18 @@ public class CaseFileValidatorTest {
 
     @Test
     void parseValidatorIdsTest() {
-        assertThat(BaseCaseFileValidator.getValidatorIds()).containsExactlyInAnyOrder("mena","v4");
+        assertThat(BaseCaseFileValidator.getValidatorIds()).containsExactlyInAnyOrder("v3","v4");
         assertThat(
-                CaseFileValidator.parseValidatorIds(new String[] { "v4", "me*", "v4", "v4" })
-        ).containsExactly("v4","mena");
+                CaseFileValidator.parseValidatorIds(new String[] { "v4", "v3", "v4", "v4" })
+        ).containsExactly("v4","v3");
     }
 
     @Test
-    void validateMENATest() throws IOException {
-        ValidationResult validationResult = validateSuccess("uk/gov/homeoffice/unhcr/cases/test/MENA-TEST.xml");
+    void validateV3Test() throws IOException {
+        ValidationResult validationResult = validateSuccess("uk/gov/homeoffice/unhcr/cases/test/V3-TEST.xml");
 
-        assertThat(validationResult.getValidatorId()).isEqualTo("mena");
-        assertThat(validationResult.getValidatorClass()).isEqualTo(MENACaseFileValidator_1.class.getName());
+        assertThat(validationResult.getValidatorId()).isEqualTo("v3");
+        assertThat(validationResult.getValidatorClass()).isEqualTo(V3CaseFileValidator_1.class.getName());
     }
 
     @Test
