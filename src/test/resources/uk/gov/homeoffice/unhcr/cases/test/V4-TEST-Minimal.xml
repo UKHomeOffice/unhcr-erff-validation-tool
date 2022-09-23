@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UNHCR_RRF xmlns="http://tempuri.org/ElectronicRRF.xsd">
+  <RRFBATCHTYPE>
+    <GroupIndividualIndicator>Single Submission</GroupIndividualIndicator>
+  </RRFBATCHTYPE>
+  <CASE>
+    <dataIndividual>
+      <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>
+      <IndividualID>417-00001552</IndividualID>
+      <FamilyName>AAA</FamilyName>
+<!--      <SecondFamilyName>BBB</SecondFamilyName>-->
+<!--      <GivenName>XXX</GivenName>-->
+<!--      <MiddleName>DDDD</MiddleName>-->
+<!--      <MaidenName>YYYY</MaidenName>-->
+      <RegistrationDate>2020-05-01T00:00:00+02:00</RegistrationDate>
+<!--      <DateofBirth>1980-08-01T00:00:00+02:00</DateofBirth>-->
+      <DateofBirthEstimate>0</DateofBirthEstimate>
+      <BirthCountryCode>AUL</BirthCountryCode>
+<!--      <BirthCityTownVillage>Bolec</BirthCityTownVillage>-->
+      <OriginCountryCode>AUL</OriginCountryCode>
+      <AsylumCountryCode>TUR</AsylumCountryCode>
+      <ArrivalDate>2020-05-20T00:00:00+02:00</ArrivalDate>
+      <SexCode>F</SexCode>
+      <NationalityCode>AFG</NationalityCode>
+      <MarriageStatusCode>SN</MarriageStatusCode>
+      <ReligionCode>MUS</ReligionCode>
+      <EthnicityCode>114</EthnicityCode>
+      <EducationLevelCode>-</EducationLevelCode>
+<!--      <MotherName>WWW, N</MotherName>-->
+<!--      <FatherName>KKK, M</FatherName>-->
+    </dataIndividual>
+    <dataIndividualProcessGroup>
+      <IndividualProcessingGroupGUID>bca84ffa-90b4-ea11-8122-00155d78e3a3</IndividualProcessingGroupGUID>
+      <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>
+      <ProcessingGroupGUID>4e5bb2dd-6b5e-4042-9671-af2872827d38</ProcessingGroupGUID>
+      <RelationshipToPrincipalRepresentative>PA</RelationshipToPrincipalRepresentative>
+    </dataIndividualProcessGroup>
+    <dataProcessGroup>
+      <ProcessingGroupGUID>4e5bb2dd-6b5e-4042-9671-af2872827d38</ProcessingGroupGUID>
+      <ProcessingGroupNumber>V4-ACRS1-TEST</ProcessingGroupNumber>
+      <ProcessingGroupSize>1</ProcessingGroupSize>
+    </dataProcessGroup>
+	<dataAddress>
+      <AddressGUID>ebe00a4d-94b4-ea11-8122-00155d78e3a7</AddressGUID>
+      <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>
+      <AddressType>Coa</AddressType>
+      <AddressCountry>AFG</AddressCountry>
+<!--      <AddressPostal></AddressPostal>-->
+<!--      <LocationLevel1Description> 1</LocationLevel1Description>-->
+<!--	  <LocationLevel2Description> 2</LocationLevel2Description>-->
+<!--	  <LocationLevel3Description> 3</LocationLevel3Description>-->
+<!--	  <LocationLevel4Description> 4</LocationLevel4Description>-->
+<!--	  <LocationLevel5Description> 5</LocationLevel5Description>-->
+<!--	  <LocationLevel6>1234567890</LocationLevel6>-->
+    </dataAddress>
+    <dataAlias>
+      <AliasGUID>5a2c771f-90b4-ea11-8122-00155d78e3a3</AliasGUID>
+      <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>
+      <IndividualAliasLastName>SNOWY</IndividualAliasLastName>
+<!--      <IndividualAliasFirstName>Milou</IndividualAliasFirstName>-->
+    </dataAlias>
+    <dataEducation>
+      <EducationGUID>8ecfbbc7-7cb4-ea11-8122-00155d78e3a3</EducationGUID>
+      <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>
+      <EducationLevelCode>UG</EducationLevelCode>
+      <DegreeTypeCode>-</DegreeTypeCode>
+    </dataEducation>
+    <dataEmployment>
+      <EmploymentGUID>e1fdcdc3-7db4-ea11-8122-00155d78e3a0</EmploymentGUID>
+      <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>
+      <EmploymentTypeCode>S</EmploymentTypeCode>
+      <OccupationCode>1341</OccupationCode>
+      <OccupationText>Child care services managers</OccupationText>
+    </dataEmployment>
+    <dataIndividualRelatives>
+      <IndividualRelativesGUID>e25f9013-7db4-ea11-8122-00155d78e3a3</IndividualRelativesGUID>
+      <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>
+      <FamilyName>SSS</FamilyName>
+<!--      <SecondFamilyName></SecondFamilyName>-->
+<!--      <GivenName>HAMMA</GivenName>-->
+<!--      <MiddleName></MiddleName>-->
+<!--      <MaidenName></MaidenName>-->
+      <RelationshipCode>PRM</RelationshipCode>
+      <DateofBirth>1960-07-02T00:00:00+02:00</DateofBirth>
+      <DateofBirthEstimateFlag>0</DateofBirthEstimateFlag>
+      <BirthCountryCode>AUL</BirthCountryCode>
+      <BirthCityTownVillage>Melbourne</BirthCityTownVillage>
+      <ResidenceCountryCode>AUL</ResidenceCountryCode>
+      <SexCode>M</SexCode>
+      <NationalityCode>AUL</NationalityCode>
+      <Deceased>0</Deceased>
+      <MarriageStatusCode>MA</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataLanguage>
+      <LanguageGUID>76add5c2-8fb4-ea11-8122-00155d78e3a3</LanguageGUID>
+      <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>
+      <LanguageCode>AEN</LanguageCode>
+      <LanguageReadCode>E</LanguageReadCode>
+      <LanguageWriteCode>E</LanguageWriteCode>
+      <LanguageSpeakCode>E</LanguageSpeakCode>
+      <LanguageUnderstandCode>E</LanguageUnderstandCode>
+    </dataLanguage>
+    <dataPhotograph>
+      <PhotoGUID>bc2e6f62-7db4-ea11-8122-00155d78e3a3</PhotoGUID>
+      <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>
+      <PhotoTypeCode>1</PhotoTypeCode>
+      <Photo>iVBORw0KGgoAAAANSUhEUgAAAWgAAADSCAYAAABnw1pyAAACSUlEQVR42u3UMQEAAAjDMMC/52GCgyOR0KOdJAXAOyMBgEEDYNAABg2AQQMYNAAGDYBBAxg0AAYNYNAAGDQABg1g0AAYNIBBA2DQAAYNgEEDYNAABg2AQQMYNAAGDYBBAxg0AAYNYNAAGDSAQQNg0AAYNIBBA2DQAAYNgEEDYNAABg2AQQMYNAAGDWDQABg0AAYNYNAAGDSAQQNg0AAYNIBBA2DQAAYNgEEDYNAABg2AQQMYNAAGDWDQABg0AAYNYNAAGDSAQQNg0AAYNIBBA2DQAAYNgEEDGDQABg2AQQMYNAAGDWDQABg0AAYNYNAAGDSAQQNg0AAGDYBBA2DQAAYNgEEDGDQABg2AQQMYNAAGDWDQABg0AAYNYNAAGDSAQQNg0AAGDYBBA2DQAAYNgEEDGDQABg2AQQMYNAAGDWDQABg0gEEDYNAAGDSAQQNg0AAGDYBBA2DQAAYNgEEDGDQABg1g0AAYNAAGDWDQABg0gEEDYNAAGDSAQQNg0AAGDYBBA2DQAAYNgEEDGDQABg1g0AAYNAAGDWDQABg0gEEDYNAAGDSAQQNg0AAGDYBBAxg0AAYNgEEDGDQABg1g0AAYNAAGDWDQABg0gEEDYNAABg2AQQNg0AAGDYBBAxg0AAYNgEEDGDQABg1g0AAYNAAGDWDQABg0gEEDYNAABg2AQQNg0AAGDYBBAxg0AAYNgEEDGDQABg1g0AAYNIBBA2DQABg0gEEDYNAABg2AQQNg0AAGDYBBAxg0AAYNYNAAGDQABg1g0ADcW1uzBaCaT3xSAAAAAElFTkSuQmCC</Photo>
+    </dataPhotograph>
+    <dataResettlement>
+      <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>
+      <ResettlementCriteriaCode>AWR</ResettlementCriteriaCode>
+<!--	  <ResettlementCriteria2Code>SVT</ResettlementCriteria2Code>  -->
+      <ResettlementPriorityCode>NR</ResettlementPriorityCode>
+    </dataResettlement>
+    <dataVulnerability>
+      <VulnerabilityGUID>1cebd3e0-7cb4-ea11-8122-00155d78e3a3</VulnerabilityGUID>
+      <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>
+      <VulnerabilityCode>WR</VulnerabilityCode>
+    </dataVulnerability>
+  </CASE>
+</UNHCR_RRF>

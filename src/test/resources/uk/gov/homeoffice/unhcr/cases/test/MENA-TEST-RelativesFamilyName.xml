@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UNHCR_RRF>
+  <RRFBATCHTYPE>
+    <GroupIndividualIndicator>Single Submission</GroupIndividualIndicator>
+  </RRFBATCHTYPE>
+  <CASE>
+ <dataIndividual>
+      <IndividualID>199-00265997</IndividualID>
+      <ConcatenatedName>Abcd, Derty Qerty</ConcatenatedName>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Derty Qerty</GivenName>
+      <RegistrationDate>2010-01-02T00:00:00</RegistrationDate>
+      <DateofBirth>1970-01-01T00:00:00</DateofBirth>
+      <BirthCountryCode>SYR</BirthCountryCode>
+      <BirthCityTownVillage>Bolec</BirthCityTownVillage>
+      <OriginCountryCode>SYR</OriginCountryCode>
+      <AsylumCountryCode>SYR</AsylumCountryCode>
+      <ArrivalDate>2015-01-12T00:00:00</ArrivalDate>
+      <SexCode>M</SexCode>
+      <NationalityCode>TUR</NationalityCode>
+      <MarriageStatusCode>DV</MarriageStatusCode>
+      <ReligionCode>SUN</ReligionCode>
+      <EthnicityCode>083</EthnicityCode>
+      <EducationLevelCode>07</EducationLevelCode>
+      <MotherName>Abcd, Fa ABSD</MotherName>
+      <FatherName>Abcd, Abd Bilal</FatherName>
+      <RelationshipToPrincipalRepresentative>PA</RelationshipToPrincipalRepresentative>
+      <Photo>iVBORw0KGgoAAAANSUhEUgAAAWgAAADSCAYAAABnw1pyAAACSUlEQVR42u3UMQEAAAjDMMC/52GCgyOR0KOdJAXAOyMBgEEDYNAABg2AQQMYNAAGDYBBAxg0AAYNYNAAGDQABg1g0AAYNIBBA2DQAAYNgEEDYNAABg2AQQMYNAAGDYBBAxg0AAYNYNAAGDSAQQNg0AAYNIBBA2DQAAYNgEEDYNAABg2AQQMYNAAGDWDQABg0AAYNYNAAGDSAQQNg0AAYNIBBA2DQAAYNgEEDYNAABg2AQQMYNAAGDWDQABg0AAYNYNAAGDSAQQNg0AAYNIBBA2DQAAYNgEEDGDQABg2AQQMYNAAGDWDQABg0AAYNYNAAGDSAQQNg0AAGDYBBA2DQAAYNgEEDGDQABg2AQQMYNAAGDWDQABg0AAYNYNAAGDSAQQNg0AAGDYBBA2DQAAYNgEEDGDQABg2AQQMYNAAGDWDQABg0gEEDYNAAGDSAQQNg0AAGDYBBA2DQAAYNgEEDGDQABg1g0AAYNAAGDWDQABg0gEEDYNAAGDSAQQNg0AAGDYBBA2DQAAYNgEEDGDQABg1g0AAYNAAGDWDQABg0gEEDYNAAGDSAQQNg0AAGDYBBAxg0AAYNgEEDGDQABg1g0AAYNAAGDWDQABg0gEEDYNAABg2AQQNg0AAGDYBBAxg0AAYNgEEDGDQABg1g0AAYNAAGDWDQABg0gEEDYNAABg2AQQNg0AAGDYBBAxg0AAYNgEEDGDQABg1g0AAYNIBBA2DQABg0gEEDYNAABg2AQQNg0AAGDYBBAxg0AAYNYNAAGDQABg1g0ADcW1uzBaCaT3xSAAAAAElFTkSuQmCC</Photo>
+    </dataIndividual>
+    <dataIndividual>
+      <IndividualID>199-00265999</IndividualID>
+      <ConcatenatedName>Abcd, Derty Qerty</ConcatenatedName>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Smart Qerty</GivenName>
+      <RegistrationDate>2010-01-02T00:00:00</RegistrationDate>
+      <DateofBirth>1994-01-10T00:00:00</DateofBirth>
+      <BirthCountryCode>SYR</BirthCountryCode>
+      <BirthCityTownVillage>Bolec</BirthCityTownVillage>
+      <OriginCountryCode>SYR</OriginCountryCode>
+      <AsylumCountryCode>SYR</AsylumCountryCode>
+      <ArrivalDate>2015-01-12T00:00:00</ArrivalDate>
+      <SexCode>F</SexCode>
+      <NationalityCode>TUR</NationalityCode>
+      <MarriageStatusCode>DV</MarriageStatusCode>
+      <ReligionCode>SUN</ReligionCode>
+      <EthnicityCode>083</EthnicityCode>
+      <EducationLevelCode>07</EducationLevelCode>
+      <MotherName>Abcd, Fa ABSD</MotherName>
+      <FatherName>Abcd, Derty Qerty</FatherName>
+      <RelationshipToPrincipalRepresentative>DAU</RelationshipToPrincipalRepresentative>
+      <Photo>iVBORw0KGgoAAAANSUhEUgAAAWgAAADSCAYAAABnw1pyAAACSUlEQVR42u3UMQEAAAjDMMC/52GCgyOR0KOdJAXAOyMBgEEDYNAABg2AQQMYNAAGDYBBAxg0AAYNYNAAGDQABg1g0AAYNIBBA2DQAAYNgEEDYNAABg2AQQMYNAAGDYBBAxg0AAYNYNAAGDSAQQNg0AAYNIBBA2DQAAYNgEEDYNAABg2AQQMYNAAGDWDQABg0AAYNYNAAGDSAQQNg0AAYNIBBA2DQAAYNgEEDYNAABg2AQQMYNAAGDWDQABg0AAYNYNAAGDSAQQNg0AAYNIBBA2DQAAYNgEEDGDQABg2AQQMYNAAGDWDQABg0AAYNYNAAGDSAQQNg0AAGDYBBA2DQAAYNgEEDGDQABg2AQQMYNAAGDWDQABg0AAYNYNAAGDSAQQNg0AAGDYBBA2DQAAYNgEEDGDQABg2AQQMYNAAGDWDQABg0gEEDYNAAGDSAQQNg0AAGDYBBA2DQAAYNgEEDGDQABg1g0AAYNAAGDWDQABg0gEEDYNAAGDSAQQNg0AAGDYBBA2DQAAYNgEEDGDQABg1g0AAYNAAGDWDQABg0gEEDYNAAGDSAQQNg0AAGDYBBAxg0AAYNgEEDGDQABg1g0AAYNAAGDWDQABg0gEEDYNAABg2AQQNg0AAGDYBBAxg0AAYNgEEDGDQABg1g0AAYNAAGDWDQABg0gEEDYNAABg2AQQNg0AAGDYBBAxg0AAYNgEEDGDQABg1g0AAYNIBBA2DQABg0gEEDYNAABg2AQQNg0AAGDYBBAxg0AAYNYNAAGDQABg1g0ADcW1uzBaCaT3xSAAAAAElFTkSuQmCC</Photo>
+    </dataIndividual>
+    <dataProcessGroup>
+      <ProcessingGroupNumber>T101011</ProcessingGroupNumber>
+      <ProcessingGroupSize>2</ProcessingGroupSize>
+    </dataProcessGroup>
+    <dataAddress>
+      <IndividualID>199-00265997</IndividualID>
+      <AddressType>COA</AddressType>
+      <AddressCountry>JOR</AddressCountry>
+      <LocationLevel1Description>Ammasa</LocationLevel1Description>
+      <LocationLevel2Description>W Sir-AAA</LocationLevel2Description>
+      <LocationLevel3Description>W Sir-BBB</LocationLevel3Description>
+      <LocationLevel4Description>W Sir-CCC</LocationLevel4Description>
+      <LocationLevel6></LocationLevel6>
+    </dataAddress>
+    <dataEducation>
+      <IndividualID>199-00265997</IndividualID>
+      <EducationLevelCode>07</EducationLevelCode>
+    </dataEducation>
+    <dataEmployment>
+      <IndividualID>199-00265997</IndividualID>
+      <EmploymentTypeCode>-</EmploymentTypeCode>
+      <OccupationCode>9142</OccupationCode>
+      <OccupationText>Vehicle, window &amp; related cleaners</OccupationText>
+    </dataEmployment>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>SBF</RelationshipCode>
+      <ResidenceCountryCode>SYR</ResidenceCountryCode>
+      <SexCode>Female</SexCode>
+      <NationalityCode>TUR</NationalityCode>
+      <MarriageStatusCode>MA</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>SBM</RelationshipCode>
+      <ResidenceCountryCode>SYR</ResidenceCountryCode>
+      <SexCode>Male</SexCode>
+      <NationalityCode>TUR</NationalityCode>
+      <MarriageStatusCode>U</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>SBF</RelationshipCode>
+      <ResidenceCountryCode>NET</ResidenceCountryCode>
+      <SexCode>Female</SexCode>
+      <NationalityCode>TUR</NationalityCode>
+      <MarriageStatusCode>MA</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>SBF</RelationshipCode>
+      <ResidenceCountryCode>SYR</ResidenceCountryCode>
+      <SexCode>Female</SexCode>
+      <NationalityCode>TUR</NationalityCode>
+      <MarriageStatusCode>MA</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>SBM</RelationshipCode>
+      <ResidenceCountryCode>ROM</ResidenceCountryCode>
+      <SexCode>Male</SexCode>
+      <NationalityCode>TUR</NationalityCode>
+      <MarriageStatusCode>MA</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>SBF</RelationshipCode>
+      <ResidenceCountryCode>SYR</ResidenceCountryCode>
+      <SexCode>Female</SexCode>
+      <NationalityCode>TUR</NationalityCode>
+      <MarriageStatusCode>MA</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>SBF</RelationshipCode>
+      <ResidenceCountryCode>TUR</ResidenceCountryCode>
+      <SexCode>Female</SexCode>
+      <NationalityCode>TUR</NationalityCode>
+      <MarriageStatusCode>MA</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>EXF</RelationshipCode>
+      <ResidenceCountryCode>GBR</ResidenceCountryCode>
+      <SexCode>Female</SexCode>
+      <NationalityCode>TUR</NationalityCode>
+      <MarriageStatusCode>DV</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>DAU</RelationshipCode>
+      <ResidenceCountryCode>GBR</ResidenceCountryCode>
+      <SexCode>Female</SexCode>
+      <NationalityCode>TUR</NationalityCode>
+      <MarriageStatusCode>SN</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>1</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>SON</RelationshipCode>
+      <ResidenceCountryCode>GBR</ResidenceCountryCode>
+      <SexCode>Male</SexCode>
+      <NationalityCode>TUR</NationalityCode>
+      <MarriageStatusCode>SN</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataLanguage>
+      <IndividualID>199-00265997</IndividualID>
+      <LanguageCode>ABV</LanguageCode>
+      <LanguageReadCode>E</LanguageReadCode>
+      <LanguageWriteCode>E</LanguageWriteCode>
+      <LanguageSpeakCode>E</LanguageSpeakCode>
+      <LanguageUnderstandCode>E</LanguageUnderstandCode>
+    </dataLanguage>
+    <dataResettlement>
+      <IndividualID>199-00265997</IndividualID>
+      <ResettlementCriteriaCode>FAM</ResettlementCriteriaCode>
+      <ResettlementCriteriaCode2>-</ResettlementCriteriaCode2>
+      <ResettlementPriorityCode>NR</ResettlementPriorityCode>
+    </dataResettlement>
+  </CASE>
+</UNHCR_RRF>

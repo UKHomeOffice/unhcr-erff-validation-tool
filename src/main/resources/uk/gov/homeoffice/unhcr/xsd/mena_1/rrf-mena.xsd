@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="UNHCR_RRF">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="RRFBATCHTYPE">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="GroupIndividualIndicator"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="CASE">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="dataIndividual" minOccurs="1" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="IndividualID"/>
+                                        <xs:element type="xs:string" name="ConcatenatedName"/>
+                                        <xs:element type="xs:string" name="FamilyName"/>
+                                        <xs:element type="xs:string" name="GivenName"/>
+                                        <xs:element type="xs:dateTime" name="RegistrationDate" minOccurs="0" maxOccurs="1" />
+                                        <xs:element type="xs:dateTime" name="DateofBirth"/>
+                                        <xs:element type="xs:string" name="BirthCountryCode"/>
+                                        <xs:element type="xs:string" name="BirthCityTownVillage"/>
+                                        <xs:element type="xs:string" name="OriginCountryCode"/>
+                                        <xs:element type="xs:string" name="AsylumCountryCode"/>
+                                        <xs:element type="xs:dateTime" name="ArrivalDate" minOccurs="0" maxOccurs="1" />
+                                        <xs:element type="xs:string" name="SexCode"/>
+                                        <xs:element type="xs:string" name="NationalityCode"/>
+                                        <xs:element type="xs:string" name="MarriageStatusCode"/>
+                                        <xs:element type="xs:string" name="ReligionCode"/>
+                                        <xs:element type="xs:string" name="EthnicityCode"/>
+                                        <xs:element type="xs:string" name="EducationLevelCode"/>
+                                        <xs:element type="xs:string" name="MotherName"/>
+                                        <xs:element type="xs:string" name="FatherName"/>
+                                        <xs:element type="xs:string" name="RelationshipToPrincipalRepresentative"/>
+                                        <xs:element type="xs:string" name="Photo"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataProcessGroup">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="ProcessingGroupNumber"/>
+                                        <xs:element type="xs:byte" name="ProcessingGroupSize"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataProcessGroupCrossReference" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="ProcessingGroupNumberFrom"/>
+                                        <xs:element type="xs:string" name="ProcessingGroupNumberTo"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataAddress">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="IndividualID"/>
+                                        <xs:element type="xs:string" name="AddressType"/>
+                                        <xs:element type="xs:string" name="AddressCountry"/>
+                                        <xs:element type="xs:string" name="LocationLevel1Description"/>
+                                        <xs:element type="xs:string" name="LocationLevel2Description"/>
+                                        <xs:element type="xs:string" name="LocationLevel3Description"/>
+                                        <xs:element type="xs:string" name="LocationLevel4Description"/>
+                                        <xs:element type="xs:string" name="LocationLevel6"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataAlias" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="IndividualID"/>
+                                        <xs:element type="xs:string" name="IndividualAliasLastName"/>
+                                        <xs:element type="xs:string" name="IndividualAliasFirstName"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataEducation" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="IndividualID"/>
+                                        <xs:element type="xs:string" name="EducationLevelCode"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataEmployment" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="IndividualID"/>
+                                        <xs:element type="xs:string" name="EmploymentTypeCode"/>
+                                        <xs:element type="xs:string" name="OccupationCode"/>
+                                        <xs:element type="xs:string" name="OccupationText"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataIndividualRelatives" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="IndividualID"/>
+                                        <xs:element type="xs:string" name="FamilyName"/>
+                                        <xs:element type="xs:string" name="GivenName"/>
+                                        <xs:element type="xs:string" name="RelationshipCode"/>
+                                        <xs:element type="xs:string" name="ResidenceCountryCode"/>
+                                        <xs:element type="xs:string" name="SexCode"/>
+                                        <xs:element type="xs:string" name="NationalityCode"/>
+                                        <xs:element type="xs:string" name="MarriageStatusCode"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataLanguage" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="IndividualID"/>
+                                        <xs:element type="xs:string" name="LanguageCode"/>
+                                        <xs:element type="xs:string" name="LanguageReadCode"/>
+                                        <xs:element type="xs:string" name="LanguageWriteCode"/>
+                                        <xs:element type="xs:string" name="LanguageSpeakCode"/>
+                                        <xs:element type="xs:string" name="LanguageUnderstandCode"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataResettlement">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="IndividualID"/>
+                                        <xs:element type="xs:string" name="ResettlementCriteriaCode"/>
+                                        <xs:element type="xs:string" name="ResettlementCriteriaCode2"/>
+                                        <xs:element type="xs:string" name="ResettlementPriorityCode"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataDocument" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="IndividualID"/>
+                                        <xs:element type="xs:string" name="DocumentNumber"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+

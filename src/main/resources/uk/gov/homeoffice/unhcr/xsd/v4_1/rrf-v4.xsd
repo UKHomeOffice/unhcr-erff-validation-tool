@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="UNHCR_RRF">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="RRFBATCHTYPE" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="GroupIndividualIndicator">
+                <!--Submission Mode in V4-->
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:enumeration value="Single Submission"/>
+                    <xs:enumeration value="Group Submission"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="CASE" minOccurs="1" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+
+              <xs:element name="dataIndividual" maxOccurs="unbounded">
+                <!--Individuals of RST case in V4-->
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="IndividualGUID" type="xs:string"/>
+                    <xs:element name="IndividualID" type="xs:string"/>
+                    <xs:element name="FamilyName" type="xs:string"/>
+                    <xs:element name="SecondFamilyName" type="xs:string" minOccurs="0"/>
+                    <xs:element name="GivenName" type="xs:string" minOccurs="0"/>
+                    <xs:element name="MiddleName" type="xs:string" minOccurs="0"/>
+                    <xs:element name="MaidenName" type="xs:string" minOccurs="0"/>
+                    <xs:element name="RegistrationDate" type="xs:dateTime"/>
+                    <xs:element name="DateofBirth" minOccurs="0" type="xs:dateTime"/>
+                    <xs:element name="DateofBirthEstimate" type="xs:boolean"/>
+                    <xs:element name="BirthCountryCode" type="xs:string"/>
+                    <xs:element name="BirthCityTownVillage" type="xs:string" minOccurs="0"/>
+                    <xs:element name="OriginCountryCode" type="xs:string"/>
+                    <xs:element name="AsylumCountryCode" type="xs:string"/>
+                    <xs:element name="ArrivalDate" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="SexCode" type="xs:string"/>
+                    <xs:element name="NationalityCode" type="xs:string"/>
+                    <xs:element name="MarriageStatusCode" type="xs:string"/>
+                    <xs:element name="ReligionCode" type="xs:string"/>
+                    <xs:element name="EthnicityCode" type="xs:string"/>
+                    <xs:element name="EducationLevelCode" type="xs:string"/>
+                    <xs:element name="MotherName" type="xs:string" minOccurs="0"/>
+                    <xs:element name="FatherName" type="xs:string" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              
+              <xs:element name="dataIndividualProcessGroup" maxOccurs="unbounded">
+                <!--Case membership-->
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="IndividualProcessingGroupGUID" type="xs:string"/>
+                    <!--Case membership Guid in V4 -->
+                    <xs:element name="IndividualGUID" type="xs:string"/>
+                    <xs:element name="ProcessingGroupGUID" type="xs:string"/>
+                    <!--ResettlementCaseGUID in V4-->
+                    <xs:element name="RelationshipToPrincipalRepresentative" type="xs:string"/>
+                    <!--Relation to PA at the RST case membership level in V4-->                   
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <xs:element name="dataProcessGroup" minOccurs="1" maxOccurs="1">
+                <!--Resettlement case Entity in V4-->
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ProcessingGroupGUID" type="xs:string"/>
+                    <!--Resettlement case guid-->
+                    <xs:element name="ProcessingGroupNumber" type="xs:string"/>
+                    <!--Resettlement case Number-->
+                    <xs:element name="ProcessingGroupSize" type="xs:short"/>
+                    <!--Resettlement case Size-->
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <xs:element name="dataProcessGroupCrossReference" minOccurs="0" maxOccurs="unbounded">
+                <!--Connection at the RST case level-->
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ProcessingGroupCrossReferenceGUID" type="xs:string"/>
+                    <!--Connection Guid-->
+                    <xs:element name="ProcessingGroupGUIDFrom" type="xs:string"/>
+                    <xs:element name="ProcessingGroupNumberFrom" type="xs:string"/>
+                    <!--Connection From-->
+                    <xs:element name="ProcessingGroupGUIDTo" type="xs:string"/>
+                    <xs:element name="ProcessingGroupNumberTo" type="xs:string"/>
+                    <!--Connection To-->
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              
+              <xs:element name="dataAddress" minOccurs="0" maxOccurs="unbounded">
+                <!--Address at the Resettlement case level. -->
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="AddressGUID" type="xs:string"/>
+                    <xs:element name="IndividualGUID" type="xs:string"/>
+                    <xs:element name="AddressType" type="xs:string"/>
+                    <xs:element name="AddressCountry" type="xs:string"/>
+                    <xs:element name="AddressPostal" type="xs:string" minOccurs="0"/>
+                    <xs:element name="LocationLevel1Description" type="xs:string" minOccurs="0"/>
+                    <xs:element name="LocationLevel2Description" type="xs:string" minOccurs="0"/>
+                    <xs:element name="LocationLevel3Description" type="xs:string" minOccurs="0"/>
+                    <xs:element name="LocationLevel4Description" type="xs:string" minOccurs="0"/>
+                    <xs:element name="LocationLevel5Description" type="xs:string" minOccurs="0"/>
+                    <xs:element name="LocationLevel6" type="xs:string" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <xs:element name="dataAlias" minOccurs="0" maxOccurs="unbounded">
+                <!--Aliases-->
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="AliasGUID" type="xs:string"/>
+                    <xs:element name="IndividualGUID" type="xs:string"/>
+                    <xs:element name="IndividualAliasLastName" type="xs:string"/>
+                    <xs:element name="IndividualAliasFirstName" type="xs:string" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <xs:element name="dataEducation" minOccurs="0" maxOccurs="unbounded">
+                <!--Education at the RST case members level-->
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="EducationGUID" type="xs:string"/>
+                    <xs:element name="IndividualGUID" type="xs:string"/>
+                    <xs:element name="EducationLevelCode" type="xs:string"/>
+                    <xs:element name="DegreeTypeCode" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <xs:element name="dataEmployment" minOccurs="0" maxOccurs="unbounded">
+                <!--Skill  At the RST case members level -->
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="EmploymentGUID" type="xs:string"/>
+                    <xs:element name="IndividualGUID" type="xs:string"/>
+                    <xs:element name="EmploymentTypeCode" type="xs:string"/>
+                    <xs:element name="OccupationCode" type="xs:string"/>
+                    <xs:element name="OccupationText" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <xs:element name="dataIndividualRelatives" minOccurs="0" maxOccurs="unbounded">
+                <!--Relatives Related to the Resettlement case-->
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="IndividualRelativesGUID" type="xs:string"/>
+                    <xs:element name="IndividualGUID" type="xs:string"/>
+                    <xs:element name="FamilyName" type="xs:string"/>
+                    <xs:element name="SecondFamilyName" type="xs:string" minOccurs="0"/>
+                    <xs:element name="GivenName" type="xs:string" minOccurs="0"/>
+                    <xs:element name="MiddleName" type="xs:string" minOccurs="0"/>
+                    <xs:element name="MaidenName" type="xs:string" minOccurs="0"/>
+                    <xs:element name="RelationshipCode" type="xs:string"/>
+                    <xs:element name="DateofBirth" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="DateofBirthEstimateFlag" minOccurs="0" type="xs:boolean"/>
+                    <xs:element name="BirthCountryCode" type="xs:string"/>
+                    <xs:element name="BirthCityTownVillage" type="xs:string" minOccurs="0"/>
+                    <xs:element name="ResidenceCountryCode" type="xs:string"/>
+                    <xs:element name="SexCode" type="xs:string"/>
+                    <xs:element name="NationalityCode" type="xs:string"/>
+                    <xs:element name="Deceased" type="xs:boolean"/>
+                    <xs:element name="DeceasedDate" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="MarriageStatusCode" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <xs:element name="dataLanguage" minOccurs="0" maxOccurs="unbounded">
+                <!--Languages at the RST case members level-->
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="LanguageGUID" type="xs:string"/>
+                    <xs:element name="IndividualGUID" type="xs:string"/>
+                    <xs:element name="LanguageCode" type="xs:string"/>
+                    <xs:element name="LanguageReadCode" type="xs:string"/>
+                    <xs:element name="LanguageWriteCode" type="xs:string"/>
+                    <xs:element name="LanguageSpeakCode" type="xs:string"/>
+                    <xs:element name="LanguageUnderstandCode" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <xs:element name="dataPhotograph" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="PhotoGUID" type="xs:string"/>
+                    <xs:element name="IndividualGUID" type="xs:string"/>
+                    <xs:element name="PhotoTypeCode" type="xs:short"/>
+                    <xs:element name="Photo"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+			  <xs:element name="dataResettlement" minOccurs="1" maxOccurs="1">
+                <!--Resettlement case in V4-->
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="IndividualGUID" type="xs:string"/>
+                    <!--Case members Guid-->
+                    <xs:element name="ResettlementCriteriaCode" type="xs:string"/>
+                    <!--Primary Submission Category in V4 -->
+                    <xs:element name="ResettlementCriteria2Code" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!--Secondary Submission Category in V4 -->
+                    <xs:element name="ResettlementPriorityCode" type="xs:string"/>
+                    <!--Resettlement Process Priority in V4-->
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+			  
+              <xs:element name="dataVulnerability" minOccurs="0" maxOccurs="unbounded">
+                <!--Specific needs at the RST case members level-->
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="VulnerabilityGUID" type="xs:string"/>
+                    <xs:element name="IndividualGUID" type="xs:string"/>
+                    <xs:element name="VulnerabilityCode" type="xs:string"/>                    
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

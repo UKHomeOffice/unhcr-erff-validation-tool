@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UNHCR_RRF xmlns="http://tempuri.org/ElectronicRRF.xsd">
+  <RRFBATCHTYPE>
+    <GroupIndividualIndicator>Single Submission</GroupIndividualIndicator>
+  </RRFBATCHTYPE>
+  <CASE>
+    <dataIndividual>
+      <IndividualID>199-00265997</IndividualID>
+      <ConcatenatedName>Abcd, Derty Qerty</ConcatenatedName>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Detrty Qeurty</GivenName>
+      <RegistrationDate>2010-01-02T00:00:00</RegistrationDate>
+      <DateofBirth>1980-01-10T00:00:00</DateofBirth>
+      <BirthCountryCode>SYR</BirthCountryCode>
+      <BirthCityTownVillage>Somewhere</BirthCityTownVillage>
+      <OriginCountryCode>SYR</OriginCountryCode>
+      <AsylumCountryCode>SYR</AsylumCountryCode>
+      <ArrivalDate>2010-01-11T00:00:00</ArrivalDate>
+      <SexCode>M</SexCode>
+      <NationalityCode>BGD</NationalityCode>
+      <MarriageStatusCode>DV</MarriageStatusCode>
+      <ReligionCode>SUN</ReligionCode>
+      <EthnicityCode>083</EthnicityCode>
+      <EducationLevelCode>07</EducationLevelCode>
+      <MotherName>Abcd, Fa Abdlu</MotherName>
+      <FatherName>Abcd, Abd Biklal</FatherName>
+      <RelationshipToPrincipalRepresentative>PA</RelationshipToPrincipalRepresentative>
+      <Photo>/9j/4AAQSkZJRgABAQEASABIAAD/4QYaRXhpZgAASUkqAAgAAAAHABIBAwABAAAAAQAAABoBBQABAAAAYgAAABsBBQABAAAAagAAACgBAwABAAAAAgAAADEBAgANAAAAcgAAADIBAgAUAAAAgAAAAGmHBAABAAAAlAAAAKYAAABIAAAAAQAAAEgAAAABAAAAR0lNUCAyLjEwLjMwAAAyMDIyOjA5OjIxIDEwOjQ1OjIyAAEAAaADAAEAAAABAAAAAAAAAAkA/gAEAAEAAAABAAAAAAEEAAEAAAAAAQAAAQEEAAEAAACVAAAAAgEDAAMAAAAYAQAAAwEDAAEAAAAGAAAABgEDAAEAAAAGAAAAFQEDAAEAAAADAAAAAQIEAAEAAAAeAQAAAgIEAAEAAADzBAAAAAAAAAgACAAIAP/Y/+AAEEpGSUYAAQEAAAEAAQAA/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAlQEAAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9/ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//9kA/+EMeWh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8APD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNC40LjAtRXhpdjIiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczpHSU1QPSJodHRwOi8vd3d3LmdpbXAub3JnL3htcC8iIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06RG9jdW1lbnRJRD0iZ2ltcDpkb2NpZDpnaW1wOmNlMjk1ZDZlLTlhNjAtNGFiNC1hYmY0LWU5N2VkZmNmMzBiYyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4NDFkZTI1OS1iMmZlLTQ3MjktYTM3Zi0wMDJjYTYwZGIyNTciIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpiYjdjOTZiYS1hYjA4LTRjMGEtOWM1Mi1mNzFjYWRmZjhkNWMiIGRjOkZvcm1hdD0iaW1hZ2UvanBlZyIgR0lNUDpBUEk9IjIuMCIgR0lNUDpQbGF0Zm9ybT0iTWFjIE9TIiBHSU1QOlRpbWVTdGFtcD0iMTY2Mzc1MzUyNzk1OTY4MSIgR0lNUDpWZXJzaW9uPSIyLjEwLjMwIiB4bXA6Q3JlYXRvclRvb2w9IkdJTVAgMi4xMCI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDpjaGFuZ2VkPSIvIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjYwYTE1ZjJiLTBmOTctNGZhYy05OGM1LWM0Mzk5NjdkMzI4ZiIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iR2ltcCAyLjEwIChNYWMgT1MpIiBzdEV2dDp3aGVuPSIyMDIyLTA5LTIxVDEwOjQ1OjI3KzAxOjAwIi8+IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8P3hwYWNrZXQgZW5kPSJ3Ij8+/+ICsElDQ19QUk9GSUxFAAEBAAACoGxjbXMEMAAAbW50clJHQiBYWVogB+YACQAUAAwAJQAGYWNzcEFQUEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPbWAAEAAAAA0y1sY21zAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANZGVzYwAAASAAAABAY3BydAAAAWAAAAA2d3RwdAAAAZgAAAAUY2hhZAAAAawAAAAsclhZWgAAAdgAAAAUYlhZWgAAAewAAAAUZ1hZWgAAAgAAAAAUclRSQwAAAhQAAAAgZ1RSQwAAAhQAAAAgYlRSQwAAAhQAAAAgY2hybQAAAjQAAAAkZG1uZAAAAlgAAAAkZG1kZAAAAnwAAAAkbWx1YwAAAAAAAAABAAAADGVuVVMAAAAkAAAAHABHAEkATQBQACAAYgB1AGkAbAB0AC0AaQBuACAAcwBSAEcAQm1sdWMAAAAAAAAAAQAAAAxlblVTAAAAGgAAABwAUAB1AGIAbABpAGMAIABEAG8AbQBhAGkAbgAAWFlaIAAAAAAAAPbWAAEAAAAA0y1zZjMyAAAAAAABDEIAAAXe///zJQAAB5MAAP2Q///7of///aIAAAPcAADAblhZWiAAAAAAAABvoAAAOPUAAAOQWFlaIAAAAAAAACSfAAAPhAAAtsRYWVogAAAAAAAAYpcAALeHAAAY2XBhcmEAAAAAAAMAAAACZmYAAPKnAAANWQAAE9AAAApbY2hybQAAAAAAAwAAAACj1wAAVHwAAEzNAACZmgAAJmcAAA9cbWx1YwAAAAAAAAABAAAADGVuVVMAAAAIAAAAHABHAEkATQBQbWx1YwAAAAAAAAABAAAADGVuVVMAAAAIAAAAHABzAFIARwBC/9sAQwCFXGR1ZFOFdWx1lo6Fnsj/2ci3t8j////y/////////////////////////////////////////////////////9sAQwGOlpbIr8j/2dn//////////////////////////////////////////////////////////////////////////8IAEQgA0gFoAwERAAIRAQMRAf/EABUAAQEAAAAAAAAAAAAAAAAAAAAD/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAABoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf//EABQQAQAAAAAAAAAAAAAAAAAAAKD/2gAIAQEAAQUCF/8A/8QAFBEBAAAAAAAAAAAAAAAAAAAAoP/aAAgBAwEBPwEX/wD/xAAUEQEAAAAAAAAAAAAAAAAAAACg/9oACAECAQE/ARf/AP/EABQQAQAAAAAAAAAAAAAAAAAAAKD/2gAIAQEABj8CF/8A/8QAFBABAAAAAAAAAAAAAAAAAAAAoP/aAAgBAQABPyEX/wD/2gAMAwEAAgADAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//EABQRAQAAAAAAAAAAAAAAAAAAAKD/2gAIAQMBAT8QF/8A/8QAFBEBAAAAAAAAAAAAAAAAAAAAoP/aAAgBAgEBPxAX/wD/xAAUEAEAAAAAAAAAAAAAAAAAAACg/9oACAEBAAE/EBf/AP/Z</Photo>
+    </dataIndividual>
+    <dataProcessGroup>
+      <ProcessingGroupNumber>SYRIA</ProcessingGroupNumber>
+      <ProcessingGroupSize>1</ProcessingGroupSize>
+    </dataProcessGroup>
+    <dataAddress>
+      <IndividualID>199-00265997</IndividualID>
+      <AddressType>COA</AddressType>
+      <AddressCountry>JOR</AddressCountry>
+      <LocationLevel1Description>Ammasa</LocationLevel1Description>
+      <LocationLevel2Description>W Sir-AAA</LocationLevel2Description>
+      <LocationLevel3Description>W Sir-BBB</LocationLevel3Description>
+      <LocationLevel4Description>W Sir-CCC</LocationLevel4Description>
+      <LocationLevel6></LocationLevel6>
+    </dataAddress>
+    <dataEducation>
+      <IndividualID>199-00265997</IndividualID>
+      <EducationLevelCode>07</EducationLevelCode>
+    </dataEducation>
+    <dataEmployment>
+      <IndividualID>199-00265997</IndividualID>
+      <EmploymentTypeCode>-</EmploymentTypeCode>
+      <OccupationCode>9142</OccupationCode>
+      <OccupationText>Vehicle, window &amp; related cleaners</OccupationText>
+    </dataEmployment>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samwer Abduwlhamid</GivenName>
+      <RelationshipCode>SBF</RelationshipCode>
+      <ResidenceCountryCode>SYR</ResidenceCountryCode>
+      <SexCode>Female</SexCode>
+      <NationalityCode>BGD</NationalityCode>
+      <MarriageStatusCode>MA</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Sawmer Abdulwhamid</GivenName>
+      <RelationshipCode>SBM</RelationshipCode>
+      <ResidenceCountryCode>SYR</ResidenceCountryCode>
+      <SexCode>Male</SexCode>
+      <NationalityCode>BGD</NationalityCode>
+      <MarriageStatusCode>U</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>SBF</RelationshipCode>
+      <ResidenceCountryCode>NET</ResidenceCountryCode>
+      <SexCode>Female</SexCode>
+      <NationalityCode>BGD</NationalityCode>
+      <MarriageStatusCode>MA</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>SBF</RelationshipCode>
+      <ResidenceCountryCode>SYR</ResidenceCountryCode>
+      <SexCode>Female</SexCode>
+      <NationalityCode>BGD</NationalityCode>
+      <MarriageStatusCode>MA</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Swamer Abdulhamwid</GivenName>
+      <RelationshipCode>SBM</RelationshipCode>
+      <ResidenceCountryCode>ROM</ResidenceCountryCode>
+      <SexCode>Male</SexCode>
+      <NationalityCode>BGD</NationalityCode>
+      <MarriageStatusCode>MA</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>SBF</RelationshipCode>
+      <ResidenceCountryCode>SYR</ResidenceCountryCode>
+      <SexCode>Female</SexCode>
+      <NationalityCode>BGD</NationalityCode>
+      <MarriageStatusCode>MA</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>SBF</RelationshipCode>
+      <ResidenceCountryCode>TUR</ResidenceCountryCode>
+      <SexCode>Female</SexCode>
+      <NationalityCode>BGD</NationalityCode>
+      <MarriageStatusCode>MA</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>EXF</RelationshipCode>
+      <ResidenceCountryCode>GBR</ResidenceCountryCode>
+      <SexCode>Female</SexCode>
+      <NationalityCode>BGD</NationalityCode>
+      <MarriageStatusCode>DV</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>DAU</RelationshipCode>
+      <ResidenceCountryCode>GBR</ResidenceCountryCode>
+      <SexCode>Female</SexCode>
+      <NationalityCode>BGD</NationalityCode>
+      <MarriageStatusCode>SN</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataIndividualRelatives>
+      <IndividualID>199-00265997</IndividualID>
+      <FamilyName>Abcd</FamilyName>
+      <GivenName>Samanta Hulk</GivenName>
+      <RelationshipCode>SON</RelationshipCode>
+      <ResidenceCountryCode>GBR</ResidenceCountryCode>
+      <SexCode>Male</SexCode>
+      <NationalityCode>BGD</NationalityCode>
+      <MarriageStatusCode>SN</MarriageStatusCode>
+    </dataIndividualRelatives>
+    <dataLanguage>
+      <IndividualID>199-00265997</IndividualID>
+      <LanguageCode>ABV</LanguageCode>
+      <LanguageReadCode>E</LanguageReadCode>
+      <LanguageWriteCode>E</LanguageWriteCode>
+      <LanguageSpeakCode>E</LanguageSpeakCode>
+      <LanguageUnderstandCode>E</LanguageUnderstandCode>
+    </dataLanguage>
+    <dataResettlement>
+      <IndividualID>199-00265997</IndividualID>
+      <ResettlementCriteriaCode>FAM</ResettlementCriteriaCode>
+      <ResettlementCriteriaCode2>-</ResettlementCriteriaCode2>
+      <ResettlementPriorityCode>NR</ResettlementPriorityCode>
+    </dataResettlement>
+  </CASE>
+</UNHCR_RRF>

@@ -1,0 +1,848 @@
+EthnicityCode,EthnicityText
+-,-
+NON,None
+U,Unknown
+001,Afghani
+002,Armenian
+003,Bosnian
+004,Croat
+006,German
+007,Gypsy/Roma
+008,Hungarian
+009,Jew
+010,Kurd
+011,Macedonian
+012,Montenegran
+013,Other
+014,Palestinian
+015,Serb
+016,Slovene
+017,Singhalese
+018,Tamil
+019,Tutsi
+020,Ukranian
+021,Russian
+022,Iranian
+023,Albanian
+024,Somali
+025,Sudanese
+026,Romanian
+027,Darod
+029,Sinhala
+030,"Pashtun, Pushtun, Pathan, Pashto"
+031,Tajik
+032,Bakongo
+033,Kikongo
+034,Assyrian
+035,"Amharra, Amharic"
+036,Tigre
+037,Mbanza-kongo
+038,Kimbundu
+039,Pepel
+040,Balluchi
+041,Darod/dhulbahan
+042,Darod/warsengel
+043,Issak/Habar Yonis
+044,Issak/habar jei
+045,Awye
+046,Shekhal
+047,Habar-gidir
+048,Duduble
+049,Hawadle
+050,Abgal
+051,Dir
+052,Geri
+053,Rahan-weyn
+054,Gugundhabe
+055,Rer-hamar
+056,Ogaden
+057,Absame
+058,Gede-burti
+059,Majerteen
+060,Lailakase
+061,Awey/geljecez
+062,Hamitic
+064,Han
+065,Turk
+066,Hawiye
+067,Amudi
+068,Issak
+069,Oromo
+070,Nigeria
+071,Nuer
+072,Bari
+073,Uduk
+074,Dinka
+075,Kuldani
+076,Dagbare
+077,Hutu
+078,Hasraf
+079,Hazara
+080,Suisse
+081,Afar
+082,Akan
+083,Arab
+084,Bakhtiari
+085,Berber
+086,Bantu
+087,Bengali
+088,Bihari
+089,Sidama
+090,Sindhi
+091,Javanese
+092,Malay
+093,Moor
+094,Nubian
+095,Panjabi
+096,Polish
+097,Timorese
+098,"Urdu, Muhajir"
+099,Vietnamese
+1,Afghani
+10,Kurd
+100,African
+101,Ashanti
+102,Bulgarian
+103,Chaldean
+104,Czech
+105,Fars
+106,Ghasghai
+107,Gilani
+108,Hariri
+109,Kazak
+11,Macedonian
+110,Lor
+111,Malagazy
+112,Pashtou
+113,Tatar
+114,Turkman (not Iraq)
+115,Turkmen
+116,Uygur
+117,Azari
+118,Georgian
+119,Mogul
+12,Montenegran
+13,Other
+14,Palestinian
+15,Serb
+16,Slovene
+17,Singhalese
+18,Tamil
+19,Tutsi
+2,Armenian
+20,Ukranian
+200,Acholi
+201,"Anuak, Ayauk, Jambo, Yambo"
+202,"Bamileke, Bamleke"
+203,Bandi / Gbandi
+204,Banjuni
+205,"Baoule, Baule"
+206,Barawan
+207,Bassa
+208,Benadire
+209,Bete
+21,Russian
+210,"Congo, Kongo"
+211,"Dan, Gio, Yacouba"
+212,Die
+213,Dungulawi
+214,Ewe
+215,"Fulani, Fullah"
+216,"Gaali, Gali"
+217,Gola
+218,"Grebo, Krobo"
+219,Hausa
+22,Iranian
+220,"Duala, Douala"
+221,"Jalli, Jali, Jally"
+222,Jola
+223,"Kissi, Kassa, Kisii"
+224,Kono
+225,"Kpelle, Kpellah"
+226,Krahn
+227,Krio/Creole
+228,Kru
+229,Kwa
+23,Albanian
+230,Limba
+231,"Lorma, Loma"
+232,Malinke
+233,Mandingo
+234,Mende / Mande
+235,Mina
+236,Mono
+237,Ngambaye
+238,Ogoni
+239,Sara
+24,Somali
+240,"Senoufo, Senufo"
+241,"Shagya, Shaigia, Shaikia, Shayqia"
+242,Temne
+243,Vai
+244,Voltai
+245,Wolof
+246,Yoruba
+247,Adja
+248,Baguirmi
+249,Banda
+25,Sudanese
+250,Bariba
+251,Baya
+252,Beja
+253,Beki
+254,Bobo
+255,Boulala
+256,Fon
+257,Fulbe
+258,Gorane
+259,Gurunsi
+26,Romanian
+260,Gur
+261,Kanembou
+262,Kebre
+263,Kirdi
+264,Kotoko
+265,Lobi
+266,Luba
+267,"M'Baka, Tara Baaka, Baka"
+268,M'Bochi
+269,"Maba, Borgu"
+27,Darod
+270,"Mandjiya, Madjia"
+271,Mangbetu-Azende
+272,Massa
+273,Mbo
+274,Mboum
+275,Mestizo
+276,Mongo
+277,Mossi
+278,Ovimbundu
+279,Peuhl
+280,Sangha
+281,Somali Bantu
+282,Soussou
+283,Teke
+284,Twa / Pygmy
+285,Zaghawa
+286,Sherbo
+29,Sinhala
+3,Bosnian
+30,"Pashtun, Pushtun, Pathan, Pashto"
+301,Bhujel
+302,Biswa
+303,Chhetri
+304,Darji
+305,"Drukpa, Dukpa"
+306,"Ghale, Ghaley"
+307,Gurung
+308,Lepcha
+309,Limbu
+31,Tajik
+310,Magar
+311,Majhi
+312,Newar
+313,Rai
+314,Sanyasi
+315,Sarki
+316,Sherpa
+317,Saunthal
+318,Sunuwar
+319,Tamang
+32,Bakongo
+320,Thakuri
+321,Tharu
+322,"Uraown, Uraow"
+323,Brahman
+33,Kikongo
+330,Aceh
+331,Akha
+332,Algerian
+333,"Arkanese, Rahkin"
+334,Bamra
+335,Belarusian
+336,Cambodian
+337,Chin
+338,Cham
+339,"Lahu, Kui, Kwi, Mu"
+34,Assyrian
+340,"Chinese, Cathay"
+341,Cirassain
+343,Gurka
+344,"Haw, Hor, Yunnane"
+345,"Hmong, Meo, Miao"
+346,"Htin, Katin"
+347,"Igbo, Igo"
+348,Japanese
+349,Kachin
+35,"Amharra, Amharic"
+350,"Karen, Karien, Kayin"
+351,Karohn
+352,"Kayah, Karenni"
+353,Kham
+354,Khmer
+356,Khmer Krom
+357,Korean
+358,Lao
+359,"Leu, Leur, Bru, Ba"
+36,Tigre
+360,"Lisu, Lissaw"
+361,"Luwa, Lawa"
+362,Maldivian
+363,Manipur
+364,"Mien, Yao, Man"
+365,Mon
+366,"Mlabri, Yumbri"
+367,Burman Chinese
+368,"Burmese, Bamar, Burman"
+369,Naga
+37,Mbanza-kongo
+370,Ngemba
+371,Nigo
+372,Nilotic
+373,Pao
+374,Rhade
+375,Rohingya
+376,Shan/Thai Yai
+377,Sunni
+378,Tagalog
+379,Taiwanese
+38,Kimbundu
+380,Tavoy
+381,Thai tribes
+382,"Thai, Siamese"
+383,"Uzbek, Ozbek"
+384,Other asian highland
+385,Other asian lowland
+386,Other asian foothills
+387,Indian
+388,Indian-burman
+389,Sudanese (asia)
+39,Pepel
+390,Tibetan
+391,Sharchop
+4,Croat
+40,Balluchi
+401,"Avukaya, Avokaya, Abuakaie"
+402,"Boya, Buya"
+403,Baggara
+404,"Bangobango, Bangubangu"
+405,Balande Bor
+406,Beni Halba
+407,Al Bideria
+408,Bongo
+409,"Burun, Boran, Lange"
+41,Darod/dhulbahan
+410,"Dadjo, Daju, Dar Sila"
+411,"Di'dinga, Xaroxa"
+412,"Digil, Rohawin"
+413,"Dinka Western, Dinka Rek"
+414,"Dinka South Central, Dinka Agar"
+415,"Dinka Southeastern, Dinka Bor"
+416,"Dinka Northwestern, Dinka Ruweng"
+417,Dinka Twic
+418,Dinka Malual
+419,Dodos
+42,Darod/warsengel
+420,"Fertit, Kara"
+421,"Funju, Funj"
+422,"Fur, Forok"
+423,Gumuz
+424,"Karamojong, Jiye, Jie"
+425,"Jur Bel, Jurbel, Jumbel, Jur Beli"
+426,Kababish
+427,"Kakwa, Kakwa Bari"
+428,"Kaliko, Madi"
+429,"Lango, Langi, Langga, Langa"
+43,Issak/Habar Yonis
+430,"Kresh, Karpia, Woro, Orio, Aja"
+431,"Lotuka, Latuka, Oloroit, Lomya, Logotak"
+432,"Lopit, Lopid, Lafit"
+433,"Lugbara High, Aura, Terego"
+434,Lulubo
+435,"Lou, Lwo, Jur Lou, Jur, Guir"
+436,Maalia
+437,"Maban, Southern Burun"
+438,"Ma'adi, Madi"
+439,Massalit
+44,Issak/Habar Jei
+440,"Messeria Hammer, Messeria Humur"
+441,"Messeria Djabal, Jebel"
+442,"Mundo, Mondo, Mando"
+443,"Moro, Dhimorong"
+444,"Moru, Kala Moru"
+445,"Mondari, Chir"
+446,"Murle, Murele, Boma, Beir, Ajibba"
+447,"Ndogo, Gbaya-Ndogo"
+448,Olam (of Murle)
+449,Nuer (Lou)
+45,Awye
+450,Nuer (Ikany)
+451,Nuer (Gawaar)
+452,Nyamosa
+453,Nyangware (Bari)
+454,Nyanatom
+455,Pojulu (Bari)
+456,Pori
+457,Rezigat
+458,Sakuye
+459,Salamat
+46,Shekhal
+460,Shanabla
+461,"Shilluk, Dhocolo"
+462,Tarjab
+463,Taisha
+464,"Teso, Iteso"
+465,"Toposa, Taposa, Kumi, Akara"
+466,"Zande, Azande, Makaraka, Nyamnyan, Mbomu"
+467,Kuku (Bari)
+468,"Lokoro, Pari, Lafon"
+469,"Lokoya, Owoi"
+47,Habar-gidir
+470,"Dongolla, Kenuzi"
+471,"Tigrinya, Tigrayan"
+472,"Maasai, Lumbwa, Baraguya"
+473,Messeria Zurug
+474,"Ouaddai, Waddai"
+475,Erenga
+476,Tama
+477,"Bembe, Bemba, Mbembe"
+478,"Banyamulengue, Banyarwanda"
+479,Bangba
+48,Duduble
+480,"Barumba, Amiangba"
+481,"Beke, Beeke"
+482,Bira (Forest Bira)
+483,Bwile
+484,"Bafulero, Fuliiru, Fulero, Kifulero"
+485,Hamba
+486,Hema
+487,"Holoholo, Holo holo"
+488,"Havu, Haavu"
+489,"Hangana, Hanganna, Hagaan"
+49,Hawadle
+490,"Hunde, Kobi"
+491,Kaiku
+492,Kanu
+493,"Kasaians, Luba, Lulua"
+494,"Komo, Kikomo, Kumu"
+495,"Kusu, Kutsu"
+496,"Kwame, Kwami"
+497,"Leka, Lega, Rega"
+498,"Lendu, Ngeti"
+499,Lengola
+50,Abgal
+500,"Ashraaf, Ashraf"
+501,Midgan
+502,"Lese, Lesse, Lissi"
+503,Liko
+504,"Lombi, Rombi"
+505,Lomotwa
+506,Mbo
+507,Mbala
+509,"Nande, Nandi"
+51,Dir
+510,"Ndaaka, Ndaka"
+511,Ngbaka
+512,Nyanga-Li
+513,Nyindu
+514,"Pere, Peri"
+515,"Tabwa, Taabwa Shila"
+516,"Tale, Kari, Kale, Karre"
+517,"Shi, Mashi"
+518,"Songola, Songora"
+519,Zimba
+52,Geri
+520,"Zela, Yela"
+521,"Belin, Blin, Bogos"
+522,Kunama
+523,"Nara, Nialetic"
+524,"Sahow, Saho"
+525,Gurage
+526,"Atwot, Reel"
+527,Berti
+528,Gimr
+529,Hadendoa
+53,Rahan-weyn
+530,Mundande
+531,Nuba
+532,"Rufaa, Rufaiyin"
+533,"Meidob, Midob"
+534,Maghrebi
+535,Mahas
+536,"Gawaama, Jawma'a"
+537,"Gaalin, Jaaliyin"
+538,Kara
+539,Vira
+54,Gugundhabe
+540,Murega
+541,Muhavu
+542,Moubi
+543,Kadjaska
+544,Sharafa
+545,"Assangor, Sungor"
+546,Mararit
+547,"Kouka, Kuka"
+548,Bullom
+549,Loko
+55,Rer-hamar
+550,Koranko
+551,Yalunka
+552,Krim
+553,"Signar, Sinyar"
+554,Danagla
+555,Rubatab
+556,Bareya
+557,Sapo
+558,Mano
+559,"Belle, Belleh"
+56,Ogaden
+560,Tetela
+561,Ngombe
+562,Yansi
+563,Suku
+564,Ngala
+565,Ngbandi
+566,"Jula, Djoula, Dioula"
+567,Balondo
+568,"Kele, Lokele"
+569,"Dei, Dey"
+57,Absame
+570,Nyambara
+571,Akposso
+572,Bassar
+573,Konkomba
+574,Kotokoli
+575,Lamba
+576,Losso
+577,"Ouatchi, Watchi"
+578,Tamberma
+579,Tchamba
+58,Gede-burti
+580,Anoufo
+581,Pedah
+582,Moba
+583,Nago
+584,Kotafon
+585,Ana
+586,Kabiye
+587,Zombo
+588,Lali
+589,Lunda
+59,Majerteen
+590,Ngangela
+591,Songo
+592,Chokwe
+593,Kete
+594,Vili
+595,Dondo
+596,Bakota
+597,Kuyu
+598,Sundi
+599,Bayaka
+6,German
+60,Lailakase
+600,Bapounou
+601,Tsangui
+602,Mbamba
+603,Yombe
+604,Bouissi
+605,Bakamba
+606,Baloumbou
+607,Bangala
+608,Bangala
+609,Sarakole
+61,Awey/geljecez
+610,Kougni
+611,Ndzebi
+612,Moundang
+613,Bororo
+614,Laka
+615,Kaba
+616,Tiv
+617,Aku
+618,Yakoma
+619,Mambila
+62,Hamitic
+620,Jukun
+621,Mbaye
+622,Fang
+623,Sakata
+624,Banziri
+625,Yanzi
+626,Banso
+627,Kanuri
+628,Tuareg
+629,Gor
+63,Ozbek
+630,Kwanyama
+631,Kwangali
+632,Kwangari
+633,Mwila
+634,San
+635,Nyaneka
+636,Portuguese
+637,Nyemba
+638,Marehan
+639,Awylahan
+64,Han
+640,Deshishe
+641,Biyomal
+642,Jarer
+643,Alur
+644,Logo
+645,Munyoro
+646,Kalanga
+647,Mbwela
+648,Hemba
+649,Madiban
+65,Turk
+650,Bwile
+651,Bemba
+652,Songye
+653,Mbukushu
+654,Mbunda
+655,Faili Kurd
+656,Gadabursi
+657,Kanyoka
+658,Ganwa
+659,Binza
+66,Hawiye
+660,Lhotshampa
+661,Bambara
+662,Lebu
+663,Serer
+664,Tukulor
+665,Kadalu
+666,Fellata
+667,Rashaida
+668,Banadiri
+669,"Pular, Fula"
+67,Amudi
+670,Luvale
+671,"Daba, Daba Kola"
+672,"Lutos, Ruto"
+673,"Ngam, Ngama"
+674,San Diu
+675,Mnong
+676,Jarai
+677,Ede
+678,Bahnar
+679,"Lozi, Rozi, Rotse"
+68,Issak
+680,Ndebele
+681,Shona
+682,"Xe Dang, Xo Dang, Sedang"
+683,"Co-Ho, Ko Ho, Lach, Lat"
+684,Ossete
+685,Abkhaz
+686,Gagauz
+687,Issa
+688,Yibir
+689,Tumal
+69,Oromo
+690,Barawani
+691,Gadabursi
+692,Habar Jaalo
+693,Lobala
+694,Boba
+7,Gypsy/Roma
+70,Nigeria
+700,Chechen
+701,Ingush
+702,Pathan
+703,"Avar, Daghestani"
+704,"Bube, Bubi"
+705,"Kyrgyz, Kirghiz"
+706,"Guere, Géré"
+707,"Tura, Toura"
+71,Nuer
+72,Bari
+73,Uduk
+74,Dinka
+75,Kuldani
+76,Dagbare
+77,Hutu
+78,Hasraf
+79,Hazara
+8,Hungarian
+80,Suisse
+800,Quechua
+801,Mayan
+802,Karakalpak
+803,Kikuyu
+804,Luhya
+805,Bukusu
+806,Maragoli
+807,Tachoni
+808,Luhya-Saamia
+809,Luhya-Nyore
+81,Afar
+810,Idakho-Isukha-Tiriki
+811,"Suba, Luo Suba"
+812,Kalenjin
+813,Kipsigis
+814,Tugen
+815,Pokot
+816,Sabaot
+817,"Talai, Marakwet"
+818,Meru
+819,Embu
+82,Akan
+820,"Giriama, Mijikenda"
+821,Turkana
+822,Songhai
+823,Soninke
+824,Watalinga
+825,Wahumu
+826,Wanande
+827,Syriac
+828,Kamein/Kaman
+829,Aimaq
+83,Arab
+830,Qizilbash
+831,Nuristani
+832,Dom
+833,Berta
+834,Ingassana
+835,Hamaj
+836,Dowala
+837,Watawiet
+838,JumJum
+839,Kuma
+84,Bakhtiari
+840,Glavda
+841,"Cineni, Chinene"
+842,"Mafa, Matakam"
+843,"Mandara, Wandala"
+844,"Runga, Rounga"
+845,"Buduma, Boudouma, Yedina"
+846,Barundi
+847,Chewa
+848,"Ngoni, Nguni"
+849,Nyungwe
+85,Berber
+850,"Senga, Nsenga"
+851,Ajauas
+852,Makonde
+853,Nianja
+854,Macua
+855,Machuabo
+856,Chiwas
+857,Shangana
+858,Rhonga
+859,Matsua
+86,Bantu
+860,Bitonga
+861,Chopes
+87,Bengali
+88,Bihari
+89,Sidama
+9,Jew
+90,Sindhi
+900,"Adema, Atete"
+901,Azungu
+903,"Chinyanja, Nhanja"
+904,Chipeta
+905,Lolo
+906,"Lomwe, Lomué"
+907,"Mang'anja, Manganjas"
+909,Ngozo
+91,Javanese
+911,Sena
+914,"Tawala, Tawara"
+915,"Yao, Iao"
+916,Warao
+917,E'ñepa
+918,Pemon
+919,Mafwe
+92,Malay
+920,Subia
+921,Banyaruguru
+922,"Wayúu, Goajiro, Guajira, Uáira‡ira, Wahiro, Waiu"
+923,"Yukpa, Yuco-Yukpa, Carib Motilon, Coyaima"
+924,"Awá, Kwaiker"
+925,"Pumé, Llaruro, Yaruru, Yuap’n"
+926,"U'wa, Cobar’a Tunebo, Covari, Luna, Manare, Tame"
+927,Embera/Dódiba/Emperã/Atrato/Darién/Emberá
+928,Tikar
+929,Widekum
+93,Moor
+930,Moghamo
+931,Bangwa
+932,Bassossi
+933,Bakossi
+934,Bafaw
+935,Balong
+936,"Nyang, Bayangi"
+937,"Kpe, Bakweri"
+938,Bima
+939,"Kemant, Qimant, Kayla"
+94,Nubian
+940,Dogon
+941,Kariña
+942,Bozo
+943,"Pashayi, Pashai"
+944,"Sadat, Sayyid, Sayeed, Sayid"
+95,Panjabi
+96,Polish
+97,Timorese
+98,"Urdu, Muhajir"
+99,Vietnamese
+COD001,"Pende, Phende"
+COL001,Baniva
+COL002,Curipaco
+COS001,Miskito
+ETH000,Achagua
+ETH001,Achuar
+ETH002,Afro Colombian
+ETH002,Afro-Colombian
+ETH004,Andoque
+ETH005,Awa
+ETH006,Barasana
+ETH007,Bari
+ETH010,Cabiyar’
+ETH011,Carapana
+ETH017,Coconuco
+ETH024,Desano
+ETH034,Inga
+ETH036,Kams‡
+ETH037,Kankuamo
+ETH039,"Cubeo, Kobewo"
+ETH040,"Kof‡n, Cofan"
+ETH041,"Kaggaba, Kogi"
+ETH042,"Koreguaje, Coreguaje"
+ETH046,"Makuna, Macuna"
+ETH048,"Cuiba, Guahibo, Amorua, Chiricoa, Masiguaje "
+ETH051,Mira–a
+ETH052,Muinane
+ETH053,"Chibcha, Muisca"
+ETH057,Ocaina
+ETH058,Pacabuy
+ETH059,P‡ez
+ETH060,Pasto
+ETH067,S‡liba
+ETH069,Shuar
+ETH070,Siona
+ETH071,Siriano
+ETH072,"Tanimuca, Retuara, Letuara"
+ETH073,Tariano
+ETH077,"Totoro, Totoroe"
+ETH087,"Huitoto, Witoto, Murui"
+ETH088,"Malayo, Wiwa"
+ETH090,Yagua
+ETH091,Yanacona
+ETH095,"Yucuna, Yukuna, Matap’"
+ETH096,"Yuko, Yupka"
+ETH097,Yuri
+ETH100,Lenca
+ETH101,Maya Chorti
+ETH102,"Tolupan, Xicaque"
+ETH103,"Garifuna, Garingau"
+ETH104,Nahua
+ETH105,Pech
+ETH106,Tawakha
+UGA001,"Ganda, Baganda"
+UGA002,"Nkole, Banyankole, Nyankole"
+UGA003,"Gisu, Bamasaba"
+VEN001,Afro Venezuelan
+VEN002,Huottoja
