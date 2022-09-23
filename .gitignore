@@ -15,4 +15,5 @@
 .metadata
 .DS_Store
 .bsp
+/MENA-TEST.xml
 /src/test/resources/uk/gov/homeoffice/unhcr/cases/test-all/*
