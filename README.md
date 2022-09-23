@@ -2,7 +2,7 @@
 
 UNHCR eRFF validation tool is a command-line interface library developed to validate United Nations High Commissioner for Refugees's Electronic Resettlement Referral Forms. The tool supports both MENA and V4 xml formats.
 
-# UNHCR eRFF Validation Tool
+# Download
 
 All releases are available from:
 https://github.com/UKHomeOffice/unhcr-erff-validation-tool/releases/
