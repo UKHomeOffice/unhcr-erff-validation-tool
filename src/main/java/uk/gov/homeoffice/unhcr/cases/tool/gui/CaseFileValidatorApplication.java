@@ -3,8 +3,6 @@ package uk.gov.homeoffice.unhcr.cases.tool.gui;
 import com.google.common.collect.Lists;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -15,7 +13,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import uk.gov.homeoffice.unhcr.cases.tool.CaseFileValidator;
@@ -143,10 +140,10 @@ public class CaseFileValidatorApplication extends Application {
         validationResultText.setMinHeight(200);
         showValidationResult(null);
 
-        Button addFileButton = new Button();
-        addFileButton.setText("ADD FILE");
-        addFileButton.setOnAction(event -> selectAndAddFile(primaryStage));
-        addFileButton.setPrefWidth(100);
+        Button addFilesButton = new Button();
+        addFilesButton.setText("ADD FILES");
+        addFilesButton.setOnAction(event -> selectAndAddCaseFiles(primaryStage));
+        addFilesButton.setPrefWidth(100);
 
         Button clearButton = new Button();
         clearButton.setText("CLEAR");
@@ -168,7 +165,7 @@ public class CaseFileValidatorApplication extends Application {
         exitButton.setOnAction(event -> Platform.exit());
         exitButton.setPrefWidth(100);
 
-        FlowPane buttonsPane = new FlowPane(10, 10, addFileButton, clearButton, clearAllButton, revalidateButton, exitButton);
+        FlowPane buttonsPane = new FlowPane(10, 10, addFilesButton, clearButton, clearAllButton, revalidateButton, exitButton);
         buttonsPane.setPadding(new Insets(20,20,20,20));
 
         Label infoLabel = new Label("(drag & drop files into Case Files list; start application with -h to show all command line options)");
@@ -179,8 +176,8 @@ public class CaseFileValidatorApplication extends Application {
         root.add(dragTargetCaseFilesList, 0, 0 );
         root.add(dragAndDropLabel, 0, 0 );
         root.add(validationResultText, 1, 0 );
-        root.add(buttonsPane, 0, 1, 2, 1 );
-        root.add(infoLabel, 0, 2, 2, 1 );
+        root.add(buttonsPane, 0, 2, 2, 1 );
+        root.add(infoLabel, 0, 3, 2, 1 );
 
         RowConstraints growingRow = new RowConstraints();
         growingRow.setVgrow(Priority.ALWAYS);
@@ -200,7 +197,7 @@ public class CaseFileValidatorApplication extends Application {
         primaryStage.show();
     }
 
-    private void selectAndAddFile(Stage stage) {
+    private void selectAndAddCaseFiles(Stage stage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Add Case File");
 
@@ -208,11 +205,10 @@ public class CaseFileValidatorApplication extends Application {
                 new FileChooser.ExtensionFilter("Xml Files", "*.xml"),
                 new FileChooser.ExtensionFilter("All Files", "*.*")
         );
-        File selectedFile = fileChooser.showOpenDialog(stage);
-        if (selectedFile != null) {
-            addAndValidateFiles(Arrays.asList(selectedFile));
+        List<File> selectedFiles = fileChooser.showOpenMultipleDialog(stage);
+        if (selectedFiles != null) {
+            addAndValidateFiles(selectedFiles);
         }
-
     }
 
     private void clearSelectedCaseFiles() {
