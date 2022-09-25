@@ -25,19 +25,23 @@ Java version 11 (or higher) is required
 
 -h,--help: show help
 
--p,--parser: parser version(s) to use (space-separated): v3 v4
-(also supports wild-chars, e.g. 'v4*')
+-p,--parser: parser version(s) to use (space-separated): v3 v4 (also supports wild-chars, e.g. 'v4*')
 
 When validation (of every listed file) succeeds, exit code is 0.
 
 # Usage from GUI
-To start GUI mode, either add -g argument.
+To start GUI mode, start a command line application without any arguments (if Java is configured on a machine, then double-clicking on a jar application will start GUI).
+
 Note: Java version 11 (or higher) is required.
 
 ![Usage GUI 1](readme-usage-gui-1.jpg?raw=true "Usage GUI 1")
 
+GUI application supports drag-and-drop of case files (or folders) and re-validations. Case files are validated as soon as they are added.
+
+
 # Usage from Java projects
-To validate a case file, create CaseFileValidator and execute validate(InputStream) function. The return object ValidationResult contains the list of raised validation errors.
+
+To validate a case file, create a CaseFileValidator and execute validate(InputStream) function. The return object ValidationResult contains the list of raised validation errors.
 ```
 InputStream caseFileInputStream = ...
 ValdiationResult validationResult = new CaseFileValidator().validate(caseFileInputStream);
