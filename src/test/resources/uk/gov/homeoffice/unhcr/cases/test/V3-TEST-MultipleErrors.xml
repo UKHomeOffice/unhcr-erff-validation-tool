@@ -8,19 +8,19 @@
       <IndividualID>199-00265997</IndividualID>
       <ConcatenatedName>Abcd, Derty Qerty</ConcatenatedName>
       <FamilyName>Abcd</FamilyName>
-      <GivenName>Detrty Qeurty</GivenName>
-      <RegistrationDate>2010-01-02T00:00:00</RegistrationDate>
+      <GivenName>Leszek123</GivenName>
+      <RegistrationDate></RegistrationDate>
       <DateofBirth>1980-01-10T00:00:00</DateofBirth>
       <BirthCountryCode>SYR</BirthCountryCode>
       <BirthCityTownVillage>Somewhere</BirthCityTownVillage>
-      <OriginCountryCode>SYR</OriginCountryCode>
+      <OriginCountryCode>SYRIA</OriginCountryCode>
       <AsylumCountryCode>SYR</AsylumCountryCode>
       <ArrivalDate>2010-01-11T00:00:00</ArrivalDate>
       <SexCode>M</SexCode>
-      <NationalityCode>BGD</NationalityCode>
+      <NationalityCode>BGD1</NationalityCode>
       <MarriageStatusCode>DV</MarriageStatusCode>
-      <ReligionCode>SUN</ReligionCode>
-      <EthnicityCode>083</EthnicityCode>
+      <ReligionCode>SA</ReligionCode>
+      <EthnicityCode>08312</EthnicityCode>
       <EducationLevelCode>07</EducationLevelCode>
       <MotherName>Abcd, Fa Abdlu</MotherName>
       <FatherName>Abcd, Abd Biklal</FatherName>
@@ -48,7 +48,7 @@
     <dataEmployment>
       <IndividualID>199-00265997</IndividualID>
       <EmploymentTypeCode>-</EmploymentTypeCode>
-      <OccupationCode>0000001</OccupationCode>
+      <OccupationCode>999999</OccupationCode>
       <OccupationText></OccupationText>
     </dataEmployment>
     <dataEmployment>

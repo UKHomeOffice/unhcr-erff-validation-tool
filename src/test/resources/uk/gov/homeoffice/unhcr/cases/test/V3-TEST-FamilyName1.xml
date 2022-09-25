@@ -80,7 +80,7 @@
       <GivenName>Samanta Hulk</GivenName>
       <RelationshipCode>SBF</RelationshipCode>
       <ResidenceCountryCode>SYR</ResidenceCountryCode>
-      <SexCode>Female</SexCode>
+      <SexCode>F</SexCode>
       <NationalityCode>TUR</NationalityCode>
       <MarriageStatusCode>MA</MarriageStatusCode>
     </dataIndividualRelatives>
@@ -90,7 +90,7 @@
       <GivenName>Samanta Hulk</GivenName>
       <RelationshipCode>SBM</RelationshipCode>
       <ResidenceCountryCode>SYR</ResidenceCountryCode>
-      <SexCode>Male</SexCode>
+      <SexCode>M</SexCode>
       <NationalityCode>TUR</NationalityCode>
       <MarriageStatusCode>U</MarriageStatusCode>
     </dataIndividualRelatives>
@@ -100,7 +100,7 @@
       <GivenName>Samanta Hulk</GivenName>
       <RelationshipCode>SBF</RelationshipCode>
       <ResidenceCountryCode>NET</ResidenceCountryCode>
-      <SexCode>Female</SexCode>
+      <SexCode>F</SexCode>
       <NationalityCode>TUR</NationalityCode>
       <MarriageStatusCode>MA</MarriageStatusCode>
     </dataIndividualRelatives>
@@ -110,7 +110,7 @@
       <GivenName>Samanta Hulk</GivenName>
       <RelationshipCode>SBF</RelationshipCode>
       <ResidenceCountryCode>SYR</ResidenceCountryCode>
-      <SexCode>Female</SexCode>
+      <SexCode>F</SexCode>
       <NationalityCode>TUR</NationalityCode>
       <MarriageStatusCode>MA</MarriageStatusCode>
     </dataIndividualRelatives>
@@ -120,7 +120,7 @@
       <GivenName>Samanta Hulk</GivenName>
       <RelationshipCode>SBM</RelationshipCode>
       <ResidenceCountryCode>ROM</ResidenceCountryCode>
-      <SexCode>Male</SexCode>
+      <SexCode>M</SexCode>
       <NationalityCode>TUR</NationalityCode>
       <MarriageStatusCode>MA</MarriageStatusCode>
     </dataIndividualRelatives>
@@ -130,7 +130,7 @@
       <GivenName>Samanta Hulk</GivenName>
       <RelationshipCode>SBF</RelationshipCode>
       <ResidenceCountryCode>SYR</ResidenceCountryCode>
-      <SexCode>Female</SexCode>
+      <SexCode>F</SexCode>
       <NationalityCode>TUR</NationalityCode>
       <MarriageStatusCode>MA</MarriageStatusCode>
     </dataIndividualRelatives>
@@ -140,7 +140,7 @@
       <GivenName>Samanta Hulk</GivenName>
       <RelationshipCode>SBF</RelationshipCode>
       <ResidenceCountryCode>TUR</ResidenceCountryCode>
-      <SexCode>Female</SexCode>
+      <SexCode>F</SexCode>
       <NationalityCode>TUR</NationalityCode>
       <MarriageStatusCode>MA</MarriageStatusCode>
     </dataIndividualRelatives>
@@ -150,7 +150,7 @@
       <GivenName>Samanta Hulk</GivenName>
       <RelationshipCode>EXF</RelationshipCode>
       <ResidenceCountryCode>GBR</ResidenceCountryCode>
-      <SexCode>Female</SexCode>
+      <SexCode>F</SexCode>
       <NationalityCode>TUR</NationalityCode>
       <MarriageStatusCode>DV</MarriageStatusCode>
     </dataIndividualRelatives>
@@ -160,7 +160,7 @@
       <GivenName>Samanta Hulk</GivenName>
       <RelationshipCode>DAU</RelationshipCode>
       <ResidenceCountryCode>GBR</ResidenceCountryCode>
-      <SexCode>Female</SexCode>
+      <SexCode>F</SexCode>
       <NationalityCode>TUR</NationalityCode>
       <MarriageStatusCode>SN</MarriageStatusCode>
     </dataIndividualRelatives>
@@ -170,7 +170,7 @@
       <GivenName>Samanta Hulk</GivenName>
       <RelationshipCode>SON</RelationshipCode>
       <ResidenceCountryCode>GBR</ResidenceCountryCode>
-      <SexCode>Male</SexCode>
+      <SexCode>M</SexCode>
       <NationalityCode>TUR</NationalityCode>
       <MarriageStatusCode>SN</MarriageStatusCode>
     </dataIndividualRelatives>
