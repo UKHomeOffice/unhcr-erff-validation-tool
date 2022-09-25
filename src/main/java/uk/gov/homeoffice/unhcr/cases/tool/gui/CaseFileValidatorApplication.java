@@ -109,9 +109,7 @@ public class CaseFileValidatorApplication extends Application {
         caseFilesListView.setMinHeight(100);
         caseFilesListView.getItems().addListener((ListChangeListener<CaseFileItem>) change -> dragAndDropLabel.setVisible(caseFilesListView.getItems().isEmpty()));
         caseFilesListView.setCellFactory(list -> new CaseFileItemDecorator());
-        caseFilesListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            showValidationResult(newValue);
-        });
+        caseFilesListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showValidationResult(newValue));
 
         VBox dragTargetCaseFilesList = new VBox();
         dragTargetCaseFilesList.getChildren().addAll(caseFilesListView);
@@ -156,7 +154,7 @@ public class CaseFileValidatorApplication extends Application {
         clearAllButton.setPrefWidth(100);
 
         Button revalidateButton = new Button();
-        revalidateButton.setText("RE-VALDIATE");
+        revalidateButton.setText("RE-VALIDATE");
         revalidateButton.setOnAction(event -> revalidateAllCaseFiles());
         revalidateButton.setPrefWidth(100);
 
@@ -256,6 +254,7 @@ public class CaseFileValidatorApplication extends Application {
                 .filter(caseFile -> caseFile.isDirectory())
                 .map(directory -> FileUtils.listFiles(directory, null, true))
                 .flatMap(list -> list.stream())
+                .distinct()
                 .collect(Collectors.toList());
 
         List<File> allCaseFiles = Lists.newLinkedList(caseFiles);
@@ -287,8 +286,7 @@ public class CaseFileValidatorApplication extends Application {
             }
         }
 
-        //update list
+        //refresh list
         caseFilesListView.refresh();
-
     }
 }
