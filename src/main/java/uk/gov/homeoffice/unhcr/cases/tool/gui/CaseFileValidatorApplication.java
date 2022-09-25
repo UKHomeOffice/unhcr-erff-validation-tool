@@ -1,6 +1,10 @@
 package uk.gov.homeoffice.unhcr.cases.tool.gui;
 
+import com.google.common.collect.Lists;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -9,8 +13,10 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import uk.gov.homeoffice.unhcr.cases.tool.CaseFileValidator;
 import uk.gov.homeoffice.unhcr.cases.tool.ValidationResult;
@@ -19,6 +25,7 @@ import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,6 +37,8 @@ public class CaseFileValidatorApplication extends Application {
     private Label dragAndDropLabel = new Label("  DRAG & DROP\n  CASE FILES HERE");
 
     private ListView<CaseFileItem> caseFilesListView = new ListView<CaseFileItem>();
+
+    private TextArea validationResultText = new TextArea();
 
     public static class CaseFileItem {
 
@@ -102,13 +111,10 @@ public class CaseFileValidatorApplication extends Application {
 
         caseFilesListView.setMinHeight(100);
         caseFilesListView.getItems().addListener((ListChangeListener<CaseFileItem>) change -> dragAndDropLabel.setVisible(caseFilesListView.getItems().isEmpty()));
-        caseFilesListView.setCellFactory(new Callback<ListView<CaseFileItem>, ListCell<CaseFileItem>>() {
-            @Override
-            public ListCell<CaseFileItem> call(ListView<CaseFileItem> list) {
-                return new CaseFileItemDecorator();
-            }
+        caseFilesListView.setCellFactory(list -> new CaseFileItemDecorator());
+        caseFilesListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            showValidationResult(newValue);
         });
-
 
         VBox dragTargetCaseFilesList = new VBox();
         dragTargetCaseFilesList.getChildren().addAll(caseFilesListView);
@@ -134,35 +140,32 @@ public class CaseFileValidatorApplication extends Application {
                 event.consume();
         });
 
-
-
-        TextArea validationResultText = new TextArea();
-        validationResultText.setText("(validation results will appear here)");
         validationResultText.setMinHeight(200);
+        showValidationResult(null);
 
         Button addFileButton = new Button();
         addFileButton.setText("ADD FILE");
-        addFileButton.setOnAction(event -> System.out.println("Hello World!"));
+        addFileButton.setOnAction(event -> selectAndAddFile(primaryStage));
         addFileButton.setPrefWidth(100);
 
         Button clearButton = new Button();
         clearButton.setText("CLEAR");
-        clearButton.setOnAction(event -> System.out.println("Hello World!"));
+        clearButton.setOnAction(event -> clearSelectedCaseFiles());
         clearButton.setPrefWidth(100);
 
         Button clearAllButton = new Button();
         clearAllButton.setText("CLEAR ALL");
-        clearAllButton.setOnAction(event -> System.out.println("Hello World!"));
+        clearAllButton.setOnAction(event -> clearAllCaseFiles());
         clearAllButton.setPrefWidth(100);
 
         Button revalidateButton = new Button();
         revalidateButton.setText("RE-VALDIATE");
-        revalidateButton.setOnAction(event -> System.out.println("Hello World!"));
+        revalidateButton.setOnAction(event -> revalidateAllCaseFiles());
         revalidateButton.setPrefWidth(100);
 
         Button exitButton = new Button();
         exitButton.setText("EXIT");
-        exitButton.setOnAction(event -> System.out.println("Hello World!"));
+        exitButton.setOnAction(event -> Platform.exit());
         exitButton.setPrefWidth(100);
 
         FlowPane buttonsPane = new FlowPane(10, 10, addFileButton, clearButton, clearAllButton, revalidateButton, exitButton);
@@ -191,12 +194,39 @@ public class CaseFileValidatorApplication extends Application {
         root.getRowConstraints().addAll(growingRow);
         root.getColumnConstraints().addAll(fixedColumn,growingColumn);
 
-
-
         primaryStage.setScene(new Scene(root, 640, 480));
         primaryStage.setMinHeight(480);
         primaryStage.setMinWidth(640);
         primaryStage.show();
+    }
+
+    private void selectAndAddFile(Stage stage) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Add Case File");
+
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Xml Files", "*.xml"),
+                new FileChooser.ExtensionFilter("All Files", "*.*")
+        );
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        if (selectedFile != null) {
+            addAndValidateFiles(Arrays.asList(selectedFile));
+        }
+
+    }
+
+    private void clearSelectedCaseFiles() {
+        List<CaseFileItem> selectedCaseFileItems = caseFilesListView.getSelectionModel().getSelectedItems();
+        caseFilesListView.getItems().removeAll(selectedCaseFileItems);
+    }
+
+    private void showValidationResult(CaseFileItem item) {
+        String text = Optional.ofNullable(item)
+                .map(itemTmp -> itemTmp.validationResult)
+                .map(validationResult -> validationResult.toString())
+                .orElse("(validation results will appear here)");
+
+        validationResultText.setText(text);
     }
 
     private List<CaseFileItem> findCaseFileItems(File caseFile) {
@@ -211,12 +241,31 @@ public class CaseFileValidatorApplication extends Application {
                 .collect(Collectors.toList());
     }
 
+    private void clearAllCaseFiles() {
+        caseFilesListView.getItems().clear();
+    }
+
+    private void revalidateAllCaseFiles() {
+        List<File> caseFiles = caseFilesListView.getItems().stream().map(item -> item.caseFile).collect(Collectors.toList());
+        addAndValidateFiles(caseFiles);
+    }
+
     private void addAndValidateFiles(List<File> caseFiles) {
         System.out.println(String.format("Adding/validating files: %s", caseFiles.stream().map(file -> Objects.toString(file)).collect(Collectors.joining("."))));
 
-       CaseFileValidator caseFileValidator = new CaseFileValidator();
+        CaseFileValidator caseFileValidator = new CaseFileValidator();
 
-        for (File caseFile : caseFiles) {
+        // get all files in directories
+        List<File> extraCaseFiles = caseFiles.stream()
+                .filter(caseFile -> caseFile.isDirectory())
+                .map(directory -> FileUtils.listFiles(directory, null, true))
+                .flatMap(list -> list.stream())
+                .collect(Collectors.toList());
+
+        List<File> allCaseFiles = Lists.newLinkedList(caseFiles);
+        allCaseFiles.addAll(extraCaseFiles);
+
+        for (File caseFile : allCaseFiles) {
             if (!caseFile.isFile()) continue;
 
             ValidationResult validationResult;
@@ -230,8 +279,10 @@ public class CaseFileValidatorApplication extends Application {
 
             List<CaseFileItem> caseFileItems = findCaseFileItems(caseFile);
             if (caseFileItems.isEmpty()) {
+                CaseFileItem caseFileItem = CaseFileItem.ofFile(caseFile);
                 //add new
-                caseFileItems.add(CaseFileItem.ofFile(caseFile));
+                caseFileItems.add(caseFileItem);
+                caseFilesListView.getItems().add(caseFileItem);
             }
 
             //update validation results
