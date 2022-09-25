@@ -5,6 +5,7 @@ import org.apache.commons.cli.*;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.StringUtils;
+import uk.gov.homeoffice.unhcr.cases.tool.gui.CaseFileValidatorApplication;
 import uk.gov.homeoffice.unhcr.cases.tool.impl.BaseCaseFileValidator;
 
 import java.io.*;
@@ -13,13 +14,19 @@ import java.util.stream.Collectors;
 
 public class CaseFileValidator extends BaseCaseFileValidator {
 
+    static public String NAME_AND_VERSION = String.format("UNHCR eRRF Validation Tool %s", CaseFileValidator.class.getPackage().getImplementationVersion());
+
     private static Option helpOption = Option.builder("h").longOpt("help")
             .desc("show help")
             .required(false).hasArg(false).build();
 
+    private static Option startGuiOption = Option.builder("g").longOpt("gui")
+            .desc("start GUI\n(Java version 11 (or higher) is required)")
+            .required(false).hasArg(false).build();
+
     private static Option fileOption = Option.builder("f").longOpt("file")
             .desc("case files to validate (space-separated)\n(multiple files can be validated)")
-            .required(true).hasArg(true).numberOfArgs(Option.UNLIMITED_VALUES).build();
+            .required(false).hasArg(true).numberOfArgs(Option.UNLIMITED_VALUES).build();
 
     private static Option parserOption = Option.builder("p").longOpt("parser")
             .desc(String.format("parser version(s) to use (space-separated): %s\n(also supports wild-chars, e.g. 'v4*')", BaseCaseFileValidator.getValidatorIds().stream().sorted().collect(Collectors.joining(" "))))
@@ -28,6 +35,7 @@ public class CaseFileValidator extends BaseCaseFileValidator {
     private static Options options = new Options()
                 .addOption(fileOption)
                 .addOption(parserOption)
+                .addOption(startGuiOption)
                 .addOption(helpOption);
 
     static List<String> parseValidatorIds(String[] validatorGlobs) {
@@ -62,17 +70,18 @@ public class CaseFileValidator extends BaseCaseFileValidator {
     }
 
     private static void showHelp() {
-        Package package_ = CaseFileValidator.class.getPackage();
-        String nameAndVersionString = String.format("UNHCR eRRF Validation Tool %s", package_.getImplementationVersion());
-
         HelpFormatter formatter = new HelpFormatter();
         formatter.setWidth(1024);
         formatter.printHelp(
                 "java -jar unhcr-erff-validation-tool-x.x.x.jar",
-                nameAndVersionString,
+                NAME_AND_VERSION,
                 options,
                 "(When validation (of every listed file) succeeds, exit code is 0.)",
                 true);
+    }
+
+    private static void startGui(String[] args) {
+        CaseFileValidatorApplication.main(args);
     }
 
     public static void main(String[] args) {
@@ -83,6 +92,7 @@ public class CaseFileValidator extends BaseCaseFileValidator {
             CommandLine line = parser.parse(options, args);
 
             // show help
+            // ignore all other options
             if (line.hasOption(helpOption)) {
                 showHelp();
                 System.exit(0);
@@ -100,47 +110,59 @@ public class CaseFileValidator extends BaseCaseFileValidator {
 
             CaseFileValidator parentValidator = new CaseFileValidator();
 
+            boolean startGuiFlag = (line.hasOption(startGuiOption));
+
             // load files
-            String[] caseFileOptions = line.getOptionValues(fileOption);
-            List<File> caseFiles   = Arrays.stream(caseFileOptions).map(filePath -> new File(filePath)).collect(Collectors.toList());
-            List<ValidationResult> validationResults = caseFiles.stream().map(caseFile -> {
-                ValidationResult validationResult;
-                try (FileInputStream inputStream = new FileInputStream(caseFile);) {
-                    // read whole file
-                    byte[] bytes = IOUtils.toByteArray(inputStream);
+            if (
+                    (!startGuiFlag)&&
+                    (line.hasOption(fileOption))
+            ) {
 
-                    // validate with allowed validators
-                    validationResult = parentValidator.validate(bytes, validators);
-                    validationResult.setFileName(caseFile.getPath());
-                } catch (Exception exception) {
-                    // create error object, e.g. file not found, cannot read, etc.
-                    validationResult = new ValidationResult();
-                    validationResult.setFileName(caseFile.getPath());
-                    validationResult.addError(exception.getMessage());
+                String[] caseFileOptions = line.getOptionValues(fileOption);
+                List<File> caseFiles = Arrays.stream(caseFileOptions).map(filePath -> new File(filePath)).collect(Collectors.toList());
+                List<ValidationResult> validationResults = caseFiles.stream().map(caseFile -> {
+                    ValidationResult validationResult;
+                    try (FileInputStream inputStream = new FileInputStream(caseFile);) {
+                        // read whole file
+                        byte[] bytes = IOUtils.toByteArray(inputStream);
+
+                        // validate with allowed validators
+                        validationResult = parentValidator.validate(bytes, validators);
+                        validationResult.setFileName(caseFile.getPath());
+                    } catch (Exception exception) {
+                        // create error object, e.g. file not found, cannot read, etc.
+                        validationResult = new ValidationResult();
+                        validationResult.setFileName(caseFile.getPath());
+                        validationResult.addError(exception.getMessage());
+                    }
+                    return validationResult;
+                }).collect(Collectors.toList());
+
+                validationResults.forEach(validationResult -> {
+                    System.out.println(validationResult);
+                });
+
+                if (validationResults.stream().anyMatch(validationResult -> validationResult.isFailure())) {
+                    System.out.println("There are validation failures!");
+                    System.exit(1);
+                } else {
+                    System.exit(0);
                 }
-                return validationResult;
-            }).collect(Collectors.toList());
 
-            validationResults.forEach(validationResult -> {
-                System.out.println(validationResult);
-            });
-
-            if (validationResults.stream().anyMatch(validationResult -> validationResult.isFailure())) {
-                System.out.println("There are validation failures!");
-                System.exit(1);
             } else {
-                System.exit(0);
+                // no file option, start gui
+                startGuiFlag = true;
             }
 
-        } catch (MissingOptionException moe) {
-            //TODO start GUI form
 
-            showHelp();
-            System.exit(0);
+            if (startGuiFlag) {
+                startGui(args);
+            } else {
+                showHelp();
+            }
         } catch (ParseException exception) {
             showHelp();
             System.out.println("Error: " + exception.getMessage());
-            exception.printStackTrace();
             System.exit(1);
         }
     }

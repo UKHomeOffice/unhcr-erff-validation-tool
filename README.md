@@ -17,15 +17,23 @@ java -jar unhcr-erff-validation-tool-x.x.x-full.jar -f case-file.xml
 
 Arguments:
 
--f,--file <arg>     case files to validate (space-separated)
+-f,--file: case files to validate (space-separated)
 (multiple files can be validated)
 
--h,--help           show help
+-g,--gui: start GUI
+Java version 11 (or higher) is required
 
--p,--parser <arg>   parser version(s) to use (space-separated): v3 v4
+-h,--help: show help
+
+-p,--parser: parser version(s) to use (space-separated): v3 v4
 (also supports wild-chars, e.g. 'v4*')
 
 When validation (of every listed file) succeeds, exit code is 0.
+
+# Usage from GUI
+To start GUI mode, either add -g argument.
+Note: Java version 11 (or higher) is required.
+
 
 # Usage from Java projects
 To validate a case file, create CaseFileValidator and execute validate(InputStream) function. The return object ValidationResult contains the list of raised validation errors.
