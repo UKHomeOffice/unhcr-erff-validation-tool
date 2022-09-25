@@ -128,13 +128,12 @@ public class CaseFileValidator extends BaseCaseFileValidator {
 
                         // validate with allowed validators
                         validationResult = parentValidator.validate(bytes, validators);
-                        validationResult.setFileName(caseFile.getPath());
                     } catch (Exception exception) {
                         // create error object, e.g. file not found, cannot read, etc.
                         validationResult = new ValidationResult();
-                        validationResult.setFileName(caseFile.getPath());
                         validationResult.addError(exception.getMessage());
                     }
+                    validationResult.setFileName(caseFile.getPath());
                     return validationResult;
                 }).collect(Collectors.toList());
 
