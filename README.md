@@ -1,9 +1,8 @@
 # UNHCR eRFF Validation Tool
-
 UNHCR eRFF Validation Tool is a command-line interface library developed to validate United Nations High Commissioner for Refugees's (UNHCR) electronic Resettlement Referral Forms (eRRF). The tool supports both v3 and v4 xml formats.
 
-# Download
 
+# Download
 All releases are available from:
 https://github.com/UKHomeOffice/unhcr-erff-validation-tool/releases/
 
@@ -28,6 +27,7 @@ Java version 11 (or higher) is required
 -p,--parser: parser version(s) to use (space-separated): v3 v4 (also supports wild-chars, e.g. 'v4*')
 
 When validation (of every listed file) succeeds, exit code is 0.
+
 
 # Usage from GUI
 To start GUI mode, start a command line application without any arguments (if Java is configured on a machine, then double-clicking on a jar application will start GUI).
