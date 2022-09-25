@@ -38,8 +38,6 @@ Note: Java version 11 (or higher) is required.
 
 ![Usage GUI 1](readme-usage-gui-1.jpg?raw=true "Usage GUI 1")
 
-![Usage GUI 2](readme-usage-gui-2.jpg?raw=true "Usage GUI 2")
-
 
 # Usage from Java projects
 
