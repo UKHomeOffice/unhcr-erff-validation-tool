@@ -34,6 +34,7 @@ When validation (of every listed file) succeeds, exit code is 0.
 To start GUI mode, either add -g argument.
 Note: Java version 11 (or higher) is required.
 
+![Usage GUI 1](readme-usage-gui-1.jpg?raw=true "Usage GUI 1")
 
 # Usage from Java projects
 To validate a case file, create CaseFileValidator and execute validate(InputStream) function. The return object ValidationResult contains the list of raised validation errors.

@@ -5,6 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -82,6 +83,7 @@ public class ReferenceData {
     private static int SAMPLE_VALUES_SIZE = 8;
     public String toSampleValuesString() {
         String sampleValues = dictionary.entrySet().stream()
+                .sorted(Comparator.comparing(Map.Entry::getKey))
                 .limit(SAMPLE_VALUES_SIZE)
                 .filter(entry -> StringUtils.isNotBlank(entry.getKey()))
                 //.map(entry -> String.format("%s (%s)", entry.getKey(), StringUtils.abbreviate(entry.getValue(), 10)))

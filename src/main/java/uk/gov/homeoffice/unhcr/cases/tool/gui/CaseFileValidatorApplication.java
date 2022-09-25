@@ -168,7 +168,7 @@ public class CaseFileValidatorApplication extends Application {
         FlowPane buttonsPane = new FlowPane(10, 10, addFilesButton, clearButton, clearAllButton, revalidateButton, exitButton);
         buttonsPane.setPadding(new Insets(20,20,20,20));
 
-        Label infoLabel = new Label("(drag & drop files into Case Files list; start application with -h to show all command line options)");
+        Label infoLabel = new Label("  (drag & drop files into Case Files list; start application with -h to show all command line options)  ");
         infoLabel.setContentDisplay(ContentDisplay.CENTER);
         infoLabel.setStyle("-fx-border-color: lightgray;");
 
