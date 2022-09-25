@@ -28,9 +28,7 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -148,6 +146,12 @@ public abstract class BaseCaseFileValidator {
     public ValidationResult validate(InputStream inputStream) throws IOException {
         byte[] bytes = IOUtils.toByteArray(inputStream);
         return validate(bytes);
+    }
+
+    public ValidationResult validate(File file) throws IOException {
+        try (FileInputStream fileInputStream = new FileInputStream(file)) {
+            return validate(fileInputStream);
+        }
     }
 
 
