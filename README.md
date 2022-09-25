@@ -32,11 +32,13 @@ When validation (of every listed file) succeeds, exit code is 0.
 # Usage from GUI
 To start GUI mode, start a command line application without any arguments (if Java is configured on a machine, then double-clicking on a jar application will start GUI).
 
+GUI application supports drag-and-drop of case files (or folders) and re-validations. Case files are validated as soon as they are added.
+
 Note: Java version 11 (or higher) is required.
 
 ![Usage GUI 1](readme-usage-gui-1.jpg?raw=true "Usage GUI 1")
 
-GUI application supports drag-and-drop of case files (or folders) and re-validations. Case files are validated as soon as they are added.
+![Usage GUI 2](readme-usage-gui-2.jpg?raw=true "Usage GUI 2")
 
 
 # Usage from Java projects
