@@ -41,7 +41,6 @@ public class CaseFileValidatorApplication extends Application {
 
         public File caseFile;
         public String label;
-
         public ValidationResult validationResult;
 
         private CaseFileItem() {}

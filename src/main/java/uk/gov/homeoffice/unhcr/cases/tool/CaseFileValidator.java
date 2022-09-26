@@ -119,11 +119,15 @@ public class CaseFileValidator extends BaseCaseFileValidator {
             ) {
 
                 String[] caseFileOptions = line.getOptionValues(fileOption);
+
+                //TODO check if filename is glob (i.e. has wild-chars) and search for all matching files via regex
                 List<File> caseFiles = Arrays.stream(caseFileOptions).map(filePath -> new File(filePath)).collect(Collectors.toList());
+
                 List<ValidationResult> validationResults = caseFiles.stream().map(caseFile -> {
                     ValidationResult validationResult;
-                    try (FileInputStream inputStream = new FileInputStream(caseFile);) {
+                    try (FileInputStream inputStream = new FileInputStream(caseFile)) {
                         // read whole file
+                        //TODO load first 10MB for isApplicable (in case if we have 5GB video file...)
                         byte[] bytes = IOUtils.toByteArray(inputStream);
 
                         // validate with allowed validators

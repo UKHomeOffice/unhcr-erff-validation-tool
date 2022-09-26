@@ -50,4 +50,4 @@ if (!validationResult.isSuccess()) validationResult.getErrors()
 ```
 
 # Contact
-Email: leszek.sliwko@digital.homeoffice.gov.uk
+Email: leszek.sliwko@digital.homeoffice.gov.uk or lsliwko@gmail.com

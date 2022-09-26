@@ -40,6 +40,8 @@ public abstract class BaseCaseFileValidator {
     private static Multimap<String, BaseCaseFileValidator> caseFileValidatorsMap  = ArrayListMultimap.create();
 
     static {
+
+        //TODO use ClassGraph to dynamically load validators from class path
         //order of registration is important - validators will be tried in that order
 
         register(new V4CaseFileValidator_1());
