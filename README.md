@@ -8,7 +8,7 @@ https://github.com/UKHomeOffice/unhcr-erff-validation-tool/releases/
 
 * unhcr-erff-validation-tool-x.x.x.jar is a Java library which can be included in any Java project. Any additional dependencies are read from the pom.xml file.
 
-* unhcr-erff-validation-tool-x.x.x-full.jar contains all dependent libraries and can be run from command line.
+* unhcr-erff-validation-tool-x.x.x-full.jar contains all dependent libraries and can be run from command line (a double click will launch GUI-mode if Java is installed).
 
 
 # Usage from command line
