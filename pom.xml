@@ -145,7 +145,12 @@
 						</manifest>
 						<manifestEntries>
 							<url>${project.url}</url>
-							<Implementation-Version>${project.version}</Implementation-Version>
+							<Specification-Title>${project.name}</Specification-Title>
+							<Specification-Version>${project.version}</Specification-Version>
+							<Specification-Vendor>Home Office UK</Specification-Vendor>
+							<Implementation-Title>uk.gov.homeoffice.unhcr.cases.tool</Implementation-Title>
+							<Implementation-Version>${project.version}-${maven.build.timestamp}</Implementation-Version>
+							<Specification-Vendor>Home Office UK</Specification-Vendor>
 						</manifestEntries>
 					</archive>
 					<finalName>${project.build.finalName}-full</finalName>
