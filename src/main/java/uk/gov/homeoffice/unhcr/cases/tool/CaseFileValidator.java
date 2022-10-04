@@ -131,6 +131,8 @@ public class CaseFileValidator extends BaseCaseFileValidator {
                         byte[] bytes = IOUtils.toByteArray(inputStream);
 
                         // validate with allowed validators
+
+                        //TODO use input stream, not bytes
                         validationResult = parentValidator.validate(bytes, validators);
                     } catch (Exception exception) {
                         // create error object, e.g. file not found, cannot read, etc.
@@ -237,6 +239,8 @@ public class CaseFileValidator extends BaseCaseFileValidator {
         } catch (Exception exception) {
             validationResult  = new ValidationResult();
             validationResult.addError(exception.getMessage());
+
+            //TODO save exception to file and ask to email it back (via GUI message in GUI mode)
 
             exception.printStackTrace();
             System.err.println("Error: " + exception.getMessage());
