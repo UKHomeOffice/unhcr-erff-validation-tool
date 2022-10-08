@@ -121,6 +121,7 @@ public class CaseFileValidator extends BaseCaseFileValidator {
                 String[] caseFileOptions = line.getOptionValues(fileOption);
 
                 //TODO check if filename is glob (i.e. has wild-chars) and search for all matching files via regex
+                //TODO check if file is directory and collapse all files within
                 List<File> caseFiles = Arrays.stream(caseFileOptions).map(filePath -> new File(filePath)).collect(Collectors.toList());
 
                 List<ValidationResult> validationResults = caseFiles.stream().map(caseFile -> {

@@ -12,6 +12,8 @@ public class ValidationResult {
 
     private List<String> errors = new ArrayList<>();
 
+    private List<String> warnings = new ArrayList<>();
+
     private String fileName;
 
     private String validatorId;
@@ -34,6 +36,10 @@ public class ValidationResult {
         errors.add(error);
     }
 
+    public void addWarning(String warning) {
+        warnings.add(warning);
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -49,6 +55,11 @@ public class ValidationResult {
                 result.append("VALIDATOR: " + validatorId + "\n");
             result.append("ERRORS:\n");
             result.append(errors.stream().collect(Collectors.joining("\n")));
+        }
+
+        if (!warnings.isEmpty()) {
+            result.append("WARNINGS:\n");
+            result.append(warnings.stream().collect(Collectors.joining("\n")));
         }
 
         return result.toString();
@@ -69,5 +80,9 @@ public class ValidationResult {
 
     public List<String> getErrors() {
         return Collections.unmodifiableList(errors);
+    }
+
+    public List<String> getWarnings() {
+        return Collections.unmodifiableList(warnings);
     }
 }
