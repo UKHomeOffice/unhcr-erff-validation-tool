@@ -69,8 +69,8 @@
       <EmploymentGUID>e1fdcdc3-7db4-ea11-8122-00155d78e3a0</EmploymentGUID>
       <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>
       <EmploymentTypeCode>S</EmploymentTypeCode>
-      <OccupationCode>1341</OccupationCode>
-      <OccupationText>Child care services managers</OccupationText>
+      <OccupationCode>221</OccupationCode>
+      <OccupationText></OccupationText>
     </dataEmployment>
     <dataIndividualRelatives>
       <IndividualRelativesGUID>e25f9013-7db4-ea11-8122-00155d78e3a3</IndividualRelativesGUID>
