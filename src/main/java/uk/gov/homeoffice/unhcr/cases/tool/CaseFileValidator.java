@@ -7,6 +7,7 @@ import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.StringUtils;
 import uk.gov.homeoffice.unhcr.cases.tool.gui.CaseFileValidatorApplication;
 import uk.gov.homeoffice.unhcr.cases.tool.impl.BaseCaseFileValidator;
+import uk.gov.homeoffice.unhcr.version.GitHubVersionChecker;
 
 import java.io.*;
 import java.util.*;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 
 public class CaseFileValidator extends BaseCaseFileValidator {
 
-    static public String NAME_AND_VERSION = String.format("UNHCR eRRF Validation Tool %s", CaseFileValidator.class.getPackage().getImplementationVersion());
+    static public String NAME_AND_VERSION = String.format("UNHCR eRRF Validation Tool %s", GitHubVersionChecker.getCurrentVersion());
 
     private static Option helpOption = Option.builder("h").longOpt("help")
             .desc("show help")
@@ -22,6 +23,10 @@ public class CaseFileValidator extends BaseCaseFileValidator {
 
     private static Option startGuiOption = Option.builder("g").longOpt("gui")
             .desc("start GUI\n(Java version 11 (or higher) is required)")
+            .required(false).hasArg(false).build();
+
+    private static Option checkVersionOption = Option.builder("v").longOpt("version")
+            .desc("display version (current and latest)")
             .required(false).hasArg(false).build();
 
     private static Option fileOption = Option.builder("f").longOpt("file")
@@ -35,6 +40,7 @@ public class CaseFileValidator extends BaseCaseFileValidator {
     private static Options options = new Options()
                 .addOption(fileOption)
                 .addOption(parserOption)
+                .addOption(checkVersionOption)
                 .addOption(startGuiOption)
                 .addOption(helpOption);
 
@@ -80,6 +86,27 @@ public class CaseFileValidator extends BaseCaseFileValidator {
                 true);
     }
 
+    private static void showVersion() {
+        String comment = "";
+
+        String latestVersionTag;
+        try {
+            latestVersionTag = GitHubVersionChecker.getLatestReleaseVersion().toString();
+
+            if (GitHubVersionChecker.checkReleaseVersionNewer())
+                comment = String.format("Please download newer version from %s", GitHubVersionChecker.GET_LATEST_VERSION_URL);
+
+        } catch (Exception e) {
+            latestVersionTag = String.format("Cannot be retrieved: %s", e.getMessage());
+        }
+
+        System.out.println(String.format(
+                "Current version: %s\nLatest version (GitHub) %s\n%s",
+                GitHubVersionChecker.getCurrentVersion(),
+                latestVersionTag,
+                comment));
+    }
+
     private static void startGui(String[] args) {
         CaseFileValidatorApplication.main(args);
     }
@@ -95,6 +122,13 @@ public class CaseFileValidator extends BaseCaseFileValidator {
             // ignore all other options
             if (line.hasOption(helpOption)) {
                 showHelp();
+                System.exit(0);
+            }
+
+            // show version
+            // ignore all other options
+            if (line.hasOption(checkVersionOption)) {
+                showVersion();
                 System.exit(0);
             }
 
