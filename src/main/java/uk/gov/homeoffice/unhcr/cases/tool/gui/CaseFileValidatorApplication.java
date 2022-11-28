@@ -266,7 +266,7 @@ public class CaseFileValidatorApplication extends Application {
             try {
                 final boolean newerVersionFlag = GitHubVersionChecker.checkReleaseVersionNewer();
                 final String newerVersion = Objects.toString(GitHubVersionChecker.getLatestReleaseVersionCached(), "N/A");
-                if (!newerVersionFlag) {
+                if (newerVersionFlag) {
                     System.out.println(String.format("Newer version found: %s", newerVersion));
                     Alert alert = new Alert(
                             Alert.AlertType.CONFIRMATION,
