@@ -27,7 +27,6 @@ import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Objects;
@@ -295,7 +294,7 @@ public class CaseFileValidatorApplication extends Application {
         if (ConfigProperties.isMacOSX()) {
             //workaround for Mac OS
             //java.lang.ClassNotFoundException: com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory
-            
+
             @SuppressWarnings("rawtypes") Class clazz = Class.forName("com.apple.eio.FileManager");
             @SuppressWarnings("rawtypes") Method openURL = clazz.getDeclaredMethod("openURL", new Class[] {String.class});
             openURL.invoke(null, new Object[] {url});

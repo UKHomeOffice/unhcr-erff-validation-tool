@@ -16,6 +16,8 @@ java -jar unhcr-erff-validation-tool-x.x.x-full.jar -f case-file.xml
 
 Arguments:
 
+--delete-config: delete local config file
+
 -f,--file: case files to validate (space-separated)
 (multiple files can be validated)
 
