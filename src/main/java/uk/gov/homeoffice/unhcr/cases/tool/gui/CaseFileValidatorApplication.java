@@ -27,6 +27,7 @@ import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -265,7 +266,7 @@ public class CaseFileValidatorApplication extends Application {
             try {
                 final boolean newerVersionFlag = GitHubVersionChecker.checkReleaseVersionNewer();
                 final String newerVersion = Objects.toString(GitHubVersionChecker.getLatestReleaseVersionCached(), "N/A");
-                if (newerVersionFlag) {
+                if (!newerVersionFlag) {
                     System.out.println(String.format("Newer version found: %s", newerVersion));
                     Alert alert = new Alert(
                             Alert.AlertType.CONFIRMATION,
@@ -273,10 +274,18 @@ public class CaseFileValidatorApplication extends Application {
                             ButtonType.NO, ButtonType.YES);
                     alert.initModality(Modality.APPLICATION_MODAL);
                     if (alert.showAndWait().orElse(ButtonType.NO) == ButtonType.YES) {
-                        getHostServices().showDocument(GitHubVersionChecker.GET_LATEST_VERSION_URL);
+                        //workaround for Mac OS
+                        //java.lang.ClassNotFoundException: com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory
+                        if (ConfigProperties.isMacOSX()) {
+                            Class fileMgr = Class.forName("com.apple.eio.FileManager");
+                            Method openURL = fileMgr.getDeclaredMethod("openURL", new Class[] {String.class});
+                            openURL.invoke(null, new Object[] { GitHubVersionChecker.GET_LATEST_VERSION_URL });
+                        } else {
+                            getHostServices().showDocument(GitHubVersionChecker.GET_LATEST_VERSION_URL);
+                        }
                     }
                 }
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 Alert alert = new Alert(
                         Alert.AlertType.ERROR,
