@@ -225,7 +225,7 @@ public class CaseFileValidatorApplication extends Application {
                 };
             }
         };
-        autoCheckNewerVersionService.setDelay(Duration.seconds(1));
+        autoCheckNewerVersionService.setDelay(Duration.seconds(5));
         autoCheckNewerVersionService.setPeriod(Duration.hours(24)); //repeat check every 24 hours
         autoCheckNewerVersionService.start();
     }
