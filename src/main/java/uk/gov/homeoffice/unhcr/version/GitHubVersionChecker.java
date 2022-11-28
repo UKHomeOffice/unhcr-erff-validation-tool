@@ -33,8 +33,6 @@ public class GitHubVersionChecker {
                 }
             });
 
-    //TODO make it switchable from GUI (java properties?)
-
     static public ComparableVersion getLatestReleaseVersionCached() throws IOException {
         try {
             return latestVersionCache.get(GET_LATEST_VERSION_API_URL);

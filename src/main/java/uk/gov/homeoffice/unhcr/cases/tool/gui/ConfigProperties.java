@@ -104,7 +104,6 @@ public class ConfigProperties {
             try {
 
                 @SuppressWarnings("rawtypes") final Class clazz = Class.forName("android.os.Environment");
-
                 @SuppressWarnings("unchecked") final Method method = clazz.getMethod("getExternalStorageDirectory", new Class[]{});
                 final File file = (File) method.invoke(null);
 

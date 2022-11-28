@@ -27,6 +27,7 @@ import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Objects;
@@ -274,15 +275,7 @@ public class CaseFileValidatorApplication extends Application {
                             ButtonType.NO, ButtonType.YES);
                     alert.initModality(Modality.APPLICATION_MODAL);
                     if (alert.showAndWait().orElse(ButtonType.NO) == ButtonType.YES) {
-                        //workaround for Mac OS
-                        //java.lang.ClassNotFoundException: com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory
-                        if (ConfigProperties.isMacOSX()) {
-                            Class fileMgr = Class.forName("com.apple.eio.FileManager");
-                            Method openURL = fileMgr.getDeclaredMethod("openURL", new Class[] {String.class});
-                            openURL.invoke(null, new Object[] { GitHubVersionChecker.GET_LATEST_VERSION_URL });
-                        } else {
-                            getHostServices().showDocument(GitHubVersionChecker.GET_LATEST_VERSION_URL);
-                        }
+                        openUrl(GitHubVersionChecker.GET_LATEST_VERSION_URL);
                     }
                 }
             } catch (Exception e) {
@@ -296,6 +289,19 @@ public class CaseFileValidatorApplication extends Application {
                 newVersionAlertShown.set(false);
             }
         });
+    }
+
+    private void openUrl(String url) throws Exception {
+        if (ConfigProperties.isMacOSX()) {
+            //workaround for Mac OS
+            //java.lang.ClassNotFoundException: com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory
+            
+            @SuppressWarnings("rawtypes") Class clazz = Class.forName("com.apple.eio.FileManager");
+            @SuppressWarnings("rawtypes") Method openURL = clazz.getDeclaredMethod("openURL", new Class[] {String.class});
+            openURL.invoke(null, new Object[] {url});
+        } else {
+            getHostServices().showDocument(url);
+        }
     }
 
     private void selectAndAddCaseFiles(Stage stage) {
