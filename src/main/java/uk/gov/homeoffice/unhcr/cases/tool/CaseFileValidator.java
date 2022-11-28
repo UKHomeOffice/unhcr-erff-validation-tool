@@ -6,6 +6,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.StringUtils;
 import uk.gov.homeoffice.unhcr.cases.tool.gui.CaseFileValidatorApplication;
+import uk.gov.homeoffice.unhcr.cases.tool.gui.ConfigProperties;
 import uk.gov.homeoffice.unhcr.cases.tool.impl.BaseCaseFileValidator;
 import uk.gov.homeoffice.unhcr.version.GitHubVersionChecker;
 
@@ -29,6 +30,10 @@ public class CaseFileValidator extends BaseCaseFileValidator {
             .desc("display version (current and latest)")
             .required(false).hasArg(false).build();
 
+    private static Option deleteConfigFileOption = Option.builder().longOpt("delete-config")
+            .desc("delete local config file")
+            .required(false).hasArg(false).build();
+
     private static Option fileOption = Option.builder("f").longOpt("file")
             .desc("case files to validate (space-separated)\n(multiple files can be validated)")
             .required(false).hasArg(true).numberOfArgs(Option.UNLIMITED_VALUES).build();
@@ -41,6 +46,7 @@ public class CaseFileValidator extends BaseCaseFileValidator {
                 .addOption(fileOption)
                 .addOption(parserOption)
                 .addOption(checkVersionOption)
+                .addOption(deleteConfigFileOption)
                 .addOption(startGuiOption)
                 .addOption(helpOption);
 
@@ -86,6 +92,11 @@ public class CaseFileValidator extends BaseCaseFileValidator {
                 true);
     }
 
+    private static void deleteConfigFile() {
+        ConfigProperties.deleteConfigFile();
+        System.out.println("Config file has been deleted.");
+    }
+
     private static void showVersion() {
         String comment = "";
 
@@ -123,6 +134,10 @@ public class CaseFileValidator extends BaseCaseFileValidator {
             if (line.hasOption(helpOption)) {
                 showHelp();
                 System.exit(0);
+            }
+
+            if (line.hasOption(deleteConfigFileOption)) {
+                deleteConfigFile();
             }
 
             // show version

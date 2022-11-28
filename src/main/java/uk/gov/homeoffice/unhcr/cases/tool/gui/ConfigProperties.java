@@ -20,7 +20,7 @@ public class ConfigProperties {
 
     final static private String CONFIG_FILE = "UnhcrValidationTool" + File.separator + "config.properties";
 
-    final static private Properties configProperties;
+    static private Properties configProperties;
 
     final static private int systemId;
     static {
@@ -123,25 +123,16 @@ public class ConfigProperties {
         }
     }
 
-    static {
-        final File configPropertiesFile = getConfigPropertiesFile();
-        try {
-            configProperties    = loadConfigPropertiesFile(configPropertiesFile);
-        } catch (IOException e) {
-            throw new RuntimeException(String.format("Config file %s cannot be loaded", configPropertiesFile.getAbsolutePath()), e);
-        }
-    }
-
     final static private File getConfigPropertiesFile() {
         return new File(getConfigFilePath());
     }
 
     final static public boolean getConfigPropertyAsBoolean(String propertyName) {
-        return Boolean.parseBoolean(configProperties.getProperty(propertyName));
+        return Boolean.parseBoolean(loadConfigPropertiesFileIfNeeded().getProperty(propertyName));
     }
 
     final static public void setConfigProperty(String propertyName, boolean propertyValue) throws IOException {
-        configProperties.setProperty(propertyName, Boolean.toString(propertyValue));
+        loadConfigPropertiesFileIfNeeded().setProperty(propertyName, Boolean.toString(propertyValue));
         saveConfigPropertiesFile(getConfigPropertiesFile());
     }
 
@@ -150,6 +141,8 @@ public class ConfigProperties {
     }
 
     final static private void saveConfigPropertiesFile(File configPropertiesFile) throws IOException {
+        if (configProperties==null) return;
+
         //create parent folders (if they don't exist)
         FileUtils.createParentDirectories(configPropertiesFile);
         try (OutputStream output = new FileOutputStream(configPropertiesFile)) {
@@ -157,6 +150,18 @@ public class ConfigProperties {
         }
     }
 
+    final static private Properties loadConfigPropertiesFileIfNeeded() {
+        if (configProperties == null) {
+            final File configPropertiesFile = getConfigPropertiesFile();
+            try {
+                configProperties    = loadConfigPropertiesFile(configPropertiesFile);
+            } catch (IOException e) {
+                throw new RuntimeException(String.format("Config file %s cannot be loaded", configPropertiesFile.getAbsolutePath()), e);
+            }
+        }
+
+        return configProperties;
+    }
     final static private Properties loadConfigPropertiesFile(File configPropertiesFile) throws IOException {
         if (configPropertiesFile.exists()) {
             try (InputStream input = new FileInputStream(configPropertiesFile)) {

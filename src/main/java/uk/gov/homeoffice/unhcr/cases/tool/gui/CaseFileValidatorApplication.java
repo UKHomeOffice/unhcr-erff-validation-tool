@@ -14,6 +14,7 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.apache.commons.io.FileUtils;
@@ -111,6 +112,24 @@ public class CaseFileValidatorApplication extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle(CaseFileValidator.NAME_AND_VERSION);
 
+        //load config, show error if any config value has errors
+        boolean autoCheckNewerVersionFlag = false;
+        try {
+            autoCheckNewerVersionFlag = ConfigProperties.getConfigPropertyAsBoolean(ConfigProperties.AUTOCHECK_NEWER_VERSION);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Platform.runLater(() -> {
+                Alert alert = new Alert(
+                        Alert.AlertType.ERROR,
+                        String.format("Error loading config file:\n%s\n\nDo you want to continue with default settings?", e.getMessage()),
+                        ButtonType.NO, ButtonType.YES);
+                alert.initModality(Modality.APPLICATION_MODAL);
+                if (alert.showAndWait().orElse(ButtonType.NO) == ButtonType.NO) {
+                    Platform.exit();
+                }
+            });
+        }
+
         caseFilesListView.setMinHeight(100);
         caseFilesListView.getItems().addListener((ListChangeListener<CaseFileItem>) change -> dragAndDropLabel.setVisible(caseFilesListView.getItems().isEmpty()));
         caseFilesListView.setCellFactory(list -> new CaseFileItemDecorator());
@@ -170,7 +189,7 @@ public class CaseFileValidatorApplication extends Application {
 
         CheckBox notifyNewVersionCheckBox = new CheckBox();
         notifyNewVersionCheckBox.setText("Auto-check newer\nversion (every 24 hrs)");
-        notifyNewVersionCheckBox.setSelected(ConfigProperties.getConfigPropertyAsBoolean(ConfigProperties.AUTOCHECK_NEWER_VERSION));
+        notifyNewVersionCheckBox.setSelected(autoCheckNewerVersionFlag);
         notifyNewVersionCheckBox.setOnAction(event -> {
             try {
                 final boolean notifyNewVersionFlag = notifyNewVersionCheckBox.isSelected();
@@ -178,7 +197,12 @@ public class CaseFileValidatorApplication extends Application {
                 if (notifyNewVersionFlag) checkNewerVersion();  //run immediately
             } catch (IOException e) {
                 e.printStackTrace();
-                new Alert(Alert.AlertType.ERROR, String.format("Error saving config file:\n%s", e.getMessage()), ButtonType.CLOSE).showAndWait();
+                Alert alert = new Alert(
+                        Alert.AlertType.ERROR,
+                        String.format("Error saving config file:\n%s", e.getMessage()),
+                        ButtonType.CLOSE);
+                alert.initModality(Modality.APPLICATION_MODAL);
+                alert.showAndWait();
             }
         });
         notifyNewVersionCheckBox.setPrefWidth(150);
@@ -215,6 +239,7 @@ public class CaseFileValidatorApplication extends Application {
         primaryStage.show();
 
 
+        //auto-check version scheduler
         ScheduledService<Void> autoCheckNewerVersionService = new ScheduledService<Void>() {
             protected Task<Void> createTask() {
                 return new Task<Void>() {
@@ -242,17 +267,22 @@ public class CaseFileValidatorApplication extends Application {
                 final String newerVersion = Objects.toString(GitHubVersionChecker.getLatestReleaseVersionCached(), "N/A");
                 if (newerVersionFlag) {
                     System.out.println(String.format("Newer version found: %s", newerVersion));
-                    final Optional<ButtonType> selectedOption = new Alert(
+                    Alert alert = new Alert(
                             Alert.AlertType.CONFIRMATION,
                             String.format("Newer version (%s) found at:\n%s\n\nDo you want to open page?", newerVersion, GitHubVersionChecker.GET_LATEST_VERSION_URL),
-                            ButtonType.NO, ButtonType.YES).showAndWait();
-                    if (selectedOption.orElse(ButtonType.NO) == ButtonType.YES) {
+                            ButtonType.NO, ButtonType.YES);
+                    alert.initModality(Modality.APPLICATION_MODAL);
+                    if (alert.showAndWait().orElse(ButtonType.NO) == ButtonType.YES) {
                         getHostServices().showDocument(GitHubVersionChecker.GET_LATEST_VERSION_URL);
                     }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-                new Alert(Alert.AlertType.ERROR, String.format("Error checking for newer version:\n%s", e.getMessage()), ButtonType.CLOSE).showAndWait();
+                Alert alert = new Alert(
+                        Alert.AlertType.ERROR,
+                        String.format("Error checking for newer version:\n%s", e.getMessage()), ButtonType.CLOSE);
+                alert.initModality(Modality.APPLICATION_MODAL);
+                alert.showAndWait();
             } finally {
                 newVersionAlertShown.set(false);
             }
