@@ -82,7 +82,7 @@ public class CaseFileValidator extends BaseCaseFileValidator {
                 "java -jar unhcr-erff-validation-tool-x.x.x.jar",
                 NAME_AND_VERSION,
                 options,
-                "(When validation (of every listed file) succeeds, exit code is 0.)",
+                "(When validation of every case file succeeds, exit code is 0.)",
                 true);
     }
 
@@ -91,7 +91,7 @@ public class CaseFileValidator extends BaseCaseFileValidator {
 
         String latestVersionTag;
         try {
-            latestVersionTag = GitHubVersionChecker.getLatestReleaseVersion().toString();
+            latestVersionTag = GitHubVersionChecker.getLatestReleaseVersionCached().toString();
 
             if (GitHubVersionChecker.checkReleaseVersionNewer())
                 comment = String.format("Please download newer version from %s", GitHubVersionChecker.GET_LATEST_VERSION_URL);

@@ -12,7 +12,7 @@ public class GitHubVersionCheckerTest {
 
     @Test
     void latestReleaseVersionTest() throws IOException {
-        ComparableVersion latestVersion = GitHubVersionChecker.getLatestReleaseVersion();
+        ComparableVersion latestVersion = GitHubVersionChecker.getLatestReleaseVersionCached();
 
         //that will fail if last version release tag was wrong
         assertThat(latestVersion.toString()).containsPattern(GitHubVersionChecker.VERSION_REGEX);

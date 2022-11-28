@@ -4,6 +4,8 @@ import com.google.common.collect.Lists;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
+import javafx.concurrent.ScheduledService;
+import javafx.concurrent.Task;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -13,19 +15,21 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import uk.gov.homeoffice.unhcr.cases.tool.CaseFileValidator;
 import uk.gov.homeoffice.unhcr.cases.tool.ValidationResult;
+import uk.gov.homeoffice.unhcr.version.GitHubVersionChecker;
 
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 public class CaseFileValidatorApplication extends Application {
@@ -36,6 +40,8 @@ public class CaseFileValidatorApplication extends Application {
     private ListView<CaseFileItem> caseFilesListView = new ListView<CaseFileItem>();
 
     private TextArea validationResultText = new TextArea();
+
+    private AtomicBoolean newVersionAlertShown = new AtomicBoolean();
 
     public static class CaseFileItem {
 
@@ -162,7 +168,22 @@ public class CaseFileValidatorApplication extends Application {
         exitButton.setOnAction(event -> Platform.exit());
         exitButton.setPrefWidth(100);
 
-        FlowPane buttonsPane = new FlowPane(10, 10, addFilesButton, clearButton, clearAllButton, revalidateButton, exitButton);
+        CheckBox notifyNewVersionCheckBox = new CheckBox();
+        notifyNewVersionCheckBox.setText("Auto-check newer\nversion (every 24 hrs)");
+        notifyNewVersionCheckBox.setSelected(ConfigProperties.getConfigPropertyAsBoolean(ConfigProperties.AUTOCHECK_NEWER_VERSION));
+        notifyNewVersionCheckBox.setOnAction(event -> {
+            try {
+                final boolean notifyNewVersionFlag = notifyNewVersionCheckBox.isSelected();
+                ConfigProperties.setConfigProperty(ConfigProperties.AUTOCHECK_NEWER_VERSION, notifyNewVersionFlag);
+                if (notifyNewVersionFlag) checkNewerVersion();  //run immediately
+            } catch (IOException e) {
+                e.printStackTrace();
+                new Alert(Alert.AlertType.ERROR, String.format("Error saving config file:\n%s", e.getMessage()), ButtonType.CLOSE).showAndWait();
+            }
+        });
+        notifyNewVersionCheckBox.setPrefWidth(150);
+
+        FlowPane buttonsPane = new FlowPane(10, 10, addFilesButton, clearButton, clearAllButton, revalidateButton, exitButton, notifyNewVersionCheckBox);
         buttonsPane.setPadding(new Insets(20,20,20,20));
 
         Label infoLabel = new Label("  (drag & drop files into Case Files list; start application with -h to show all command line options)  ");
@@ -192,6 +213,50 @@ public class CaseFileValidatorApplication extends Application {
         primaryStage.setMinHeight(480);
         primaryStage.setMinWidth(640);
         primaryStage.show();
+
+
+        ScheduledService<Void> autoCheckNewerVersionService = new ScheduledService<Void>() {
+            protected Task<Void> createTask() {
+                return new Task<Void>() {
+                    protected Void call() {
+                        checkNewerVersion();
+                        return null;
+                    }
+                };
+            }
+        };
+        autoCheckNewerVersionService.setDelay(Duration.seconds(1));
+        autoCheckNewerVersionService.setPeriod(Duration.hours(24)); //repeat check every 24 hours
+        autoCheckNewerVersionService.start();
+    }
+
+    private void checkNewerVersion() {
+        final boolean autoCheckNewerVersionFlag = ConfigProperties.getConfigPropertyAsBoolean(ConfigProperties.AUTOCHECK_NEWER_VERSION);
+        if (!autoCheckNewerVersionFlag) return;
+
+        //only one version alert is visible
+        if (newVersionAlertShown.getAndSet(true)) return;
+        Platform.runLater(() -> {
+            try {
+                final boolean newerVersionFlag = GitHubVersionChecker.checkReleaseVersionNewer();
+                final String newerVersion = Objects.toString(GitHubVersionChecker.getLatestReleaseVersionCached(), "N/A");
+                if (newerVersionFlag) {
+                    System.out.println(String.format("Newer version found: %s", newerVersion));
+                    final Optional<ButtonType> selectedOption = new Alert(
+                            Alert.AlertType.CONFIRMATION,
+                            String.format("Newer version (%s) found at:\n%s\n\nDo you want to open page?", newerVersion, GitHubVersionChecker.GET_LATEST_VERSION_URL),
+                            ButtonType.NO, ButtonType.YES).showAndWait();
+                    if (selectedOption.orElse(ButtonType.NO) == ButtonType.YES) {
+                        getHostServices().showDocument(GitHubVersionChecker.GET_LATEST_VERSION_URL);
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                new Alert(Alert.AlertType.ERROR, String.format("Error checking for newer version:\n%s", e.getMessage()), ButtonType.CLOSE).showAndWait();
+            } finally {
+                newVersionAlertShown.set(false);
+            }
+        });
     }
 
     private void selectAndAddCaseFiles(Stage stage) {

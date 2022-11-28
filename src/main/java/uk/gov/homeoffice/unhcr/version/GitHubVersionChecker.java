@@ -3,7 +3,6 @@ package uk.gov.homeoffice.unhcr.version;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Charsets;
-import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
@@ -36,7 +35,7 @@ public class GitHubVersionChecker {
 
     //TODO make it switchable from GUI (java properties?)
 
-    static public ComparableVersion getLatestReleaseVersion() throws IOException {
+    static public ComparableVersion getLatestReleaseVersionCached() throws IOException {
         try {
             return latestVersionCache.get(GET_LATEST_VERSION_API_URL);
         } catch (ExecutionException exception) {
@@ -48,7 +47,7 @@ public class GitHubVersionChecker {
         }
     }
 
-    static public ComparableVersion getLatestReleaseVersion(String url) throws IOException {
+    static private ComparableVersion getLatestReleaseVersion(String url) throws IOException {
         String response = Resources.toString(new URL(url), Charsets.UTF_8);
 
         JsonNode responseJsonNode  = new ObjectMapper().readTree(response);
@@ -64,7 +63,7 @@ public class GitHubVersionChecker {
     }
 
     static public boolean checkReleaseVersionNewer() throws IOException {
-        return getLatestReleaseVersion().compareTo(getCurrentVersion())>0;
+        return getLatestReleaseVersionCached().compareTo(getCurrentVersion())>0;
     }
 
     public static ComparableVersion getCurrentVersion() {
