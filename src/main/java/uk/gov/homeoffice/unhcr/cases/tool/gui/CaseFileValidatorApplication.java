@@ -41,6 +41,8 @@ public class CaseFileValidatorApplication extends Application {
 
     private ListView<CaseFileItem> caseFilesListView = new ListView<CaseFileItem>();
 
+    private CheckBox autoCheckNewerVersionCheckBox = new CheckBox();
+
     private TextArea validationResultText = new TextArea();
 
     private AtomicBoolean newVersionAlertShown = new AtomicBoolean();
@@ -188,27 +190,12 @@ public class CaseFileValidatorApplication extends Application {
         exitButton.setOnAction(event -> Platform.exit());
         exitButton.setPrefWidth(100);
 
-        CheckBox notifyNewVersionCheckBox = new CheckBox();
-        notifyNewVersionCheckBox.setText("Auto-check newer\nversion (every 24 hrs)");
-        notifyNewVersionCheckBox.setSelected(autoCheckNewerVersionFlag);
-        notifyNewVersionCheckBox.setOnAction(event -> {
-            try {
-                final boolean notifyNewVersionFlag = notifyNewVersionCheckBox.isSelected();
-                ConfigProperties.setConfigProperty(ConfigProperties.AUTOCHECK_NEWER_VERSION, notifyNewVersionFlag);
-                if (notifyNewVersionFlag) checkNewerVersion();  //run immediately
-            } catch (IOException e) {
-                e.printStackTrace();
-                Alert alert = new Alert(
-                        Alert.AlertType.ERROR,
-                        String.format("Error saving config file:\n%s", e.getMessage()),
-                        ButtonType.CLOSE);
-                alert.initModality(Modality.APPLICATION_MODAL);
-                alert.showAndWait();
-            }
-        });
-        notifyNewVersionCheckBox.setPrefWidth(150);
+        autoCheckNewerVersionCheckBox.setText("Auto-check newer\nversion (every 24 hrs)");
+        autoCheckNewerVersionCheckBox.setSelected(autoCheckNewerVersionFlag);
+        autoCheckNewerVersionCheckBox.setOnAction(event -> setAutoCheckNewerVersion(autoCheckNewerVersionCheckBox.isSelected()));
+        autoCheckNewerVersionCheckBox.setPrefWidth(150);
 
-        FlowPane buttonsPane = new FlowPane(10, 10, addFilesButton, clearButton, clearAllButton, revalidateButton, exitButton, notifyNewVersionCheckBox);
+        FlowPane buttonsPane = new FlowPane(10, 10, addFilesButton, clearButton, clearAllButton, revalidateButton, exitButton, autoCheckNewerVersionCheckBox);
         buttonsPane.setPadding(new Insets(20,20,20,20));
 
         Label infoLabel = new Label("  (drag & drop files into Case Files list; start application with -h to show all command line options)  ");
@@ -281,13 +268,33 @@ public class CaseFileValidatorApplication extends Application {
                 e.printStackTrace();
                 Alert alert = new Alert(
                         Alert.AlertType.ERROR,
-                        String.format("Error checking for newer version:\n%s", e.getMessage()), ButtonType.CLOSE);
+                        String.format("Error checking for newer version:\n%s\n\nDo you want to disable auto-check?", e.getMessage()), ButtonType.NO, ButtonType.YES);
                 alert.initModality(Modality.APPLICATION_MODAL);
-                alert.showAndWait();
+                if (alert.showAndWait().orElse(ButtonType.NO) == ButtonType.YES) {
+                    autoCheckNewerVersionCheckBox.setSelected(false);
+                    setAutoCheckNewerVersion(false);
+                }
             } finally {
                 newVersionAlertShown.set(false);
             }
         });
+    }
+
+    private void setAutoCheckNewerVersion(boolean autoCheckNewerVersionFlag) {
+        try {
+            ConfigProperties.setConfigProperty(ConfigProperties.AUTOCHECK_NEWER_VERSION, autoCheckNewerVersionFlag);
+            if (autoCheckNewerVersionFlag) {
+                checkNewerVersion();  //run immediately
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(
+                    Alert.AlertType.ERROR,
+                    String.format("Error saving config file:\n%s", e.getMessage()),
+                    ButtonType.CLOSE);
+            alert.initModality(Modality.APPLICATION_MODAL);
+            alert.showAndWait();
+        }
     }
 
     private void openUrl(String url) throws Exception {
