@@ -126,8 +126,9 @@ public class ConfigProperties {
         return new File(getConfigFilePath());
     }
 
-    final static public boolean getConfigPropertyAsBoolean(String propertyName) {
-        return Boolean.parseBoolean(loadConfigPropertiesFileIfNeeded().getProperty(propertyName));
+    final static public boolean getConfigPropertyAsBoolean(String propertyName, boolean defaultValue) {
+        String value = loadConfigPropertiesFileIfNeeded().getProperty(propertyName, Boolean.toString(defaultValue));
+        return Boolean.parseBoolean(value);
     }
 
     final static public void setConfigProperty(String propertyName, boolean propertyValue) throws IOException {

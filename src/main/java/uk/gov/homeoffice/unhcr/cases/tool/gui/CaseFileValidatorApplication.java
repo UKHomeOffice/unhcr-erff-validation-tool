@@ -118,13 +118,13 @@ public class CaseFileValidatorApplication extends Application {
         //load config, show error if any config value has errors
         boolean autoCheckNewerVersionFlag = false;
         try {
-            autoCheckNewerVersionFlag = ConfigProperties.getConfigPropertyAsBoolean(ConfigProperties.AUTOCHECK_NEWER_VERSION);
+            autoCheckNewerVersionFlag = ConfigProperties.getConfigPropertyAsBoolean(ConfigProperties.AUTOCHECK_NEWER_VERSION, true);
         } catch (Exception e) {
             e.printStackTrace();
             Platform.runLater(() -> {
                 Alert alert = new Alert(
                         Alert.AlertType.ERROR,
-                        String.format("Error loading config file:\n%s\n\nDo you want to continue with default settings?", e.getMessage()),
+                        String.format("Error loading config file:\n%s: %s\n\nDo you want to continue with default settings?", e.getClass().getSimpleName(), e.getMessage()),
                         ButtonType.NO, ButtonType.YES);
                 alert.initModality(Modality.APPLICATION_MODAL);
                 if (alert.showAndWait().orElse(ButtonType.NO) == ButtonType.NO) {
@@ -244,7 +244,7 @@ public class CaseFileValidatorApplication extends Application {
     }
 
     private void checkNewerVersion() {
-        final boolean autoCheckNewerVersionFlag = ConfigProperties.getConfigPropertyAsBoolean(ConfigProperties.AUTOCHECK_NEWER_VERSION);
+        final boolean autoCheckNewerVersionFlag = ConfigProperties.getConfigPropertyAsBoolean(ConfigProperties.AUTOCHECK_NEWER_VERSION, true);
         if (!autoCheckNewerVersionFlag) return;
 
         //only one version alert is visible
@@ -268,7 +268,7 @@ public class CaseFileValidatorApplication extends Application {
                 e.printStackTrace();
                 Alert alert = new Alert(
                         Alert.AlertType.ERROR,
-                        String.format("Error checking for newer version:\n%s\n\nDo you want to disable auto-check?", e.getMessage()), ButtonType.NO, ButtonType.YES);
+                        String.format("Error checking for newer version:\n%s: %s\n\nDo you want to disable auto-check?", e.getClass().getSimpleName(), e.getMessage()), ButtonType.NO, ButtonType.YES);
                 alert.initModality(Modality.APPLICATION_MODAL);
                 if (alert.showAndWait().orElse(ButtonType.NO) == ButtonType.YES) {
                     autoCheckNewerVersionCheckBox.setSelected(false);
@@ -290,7 +290,7 @@ public class CaseFileValidatorApplication extends Application {
             e.printStackTrace();
             Alert alert = new Alert(
                     Alert.AlertType.ERROR,
-                    String.format("Error saving config file:\n%s", e.getMessage()),
+                    String.format("Error saving config file:\n%s: %s", e.getClass().getSimpleName(), e.getMessage()),
                     ButtonType.CLOSE);
             alert.initModality(Modality.APPLICATION_MODAL);
             alert.showAndWait();
