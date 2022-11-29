@@ -6,7 +6,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.StringUtils;
 import uk.gov.homeoffice.unhcr.cases.tool.gui.CaseFileValidatorApplication;
-import uk.gov.homeoffice.unhcr.cases.tool.gui.ConfigProperties;
+import uk.gov.homeoffice.unhcr.config.ConfigProperties;
 import uk.gov.homeoffice.unhcr.cases.tool.impl.BaseCaseFileValidator;
 import uk.gov.homeoffice.unhcr.version.GitHubVersionChecker;
 

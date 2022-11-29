@@ -1,6 +1,7 @@
-package uk.gov.homeoffice.unhcr.cases.tool.gui;
+package uk.gov.homeoffice.unhcr.config;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import uk.gov.homeoffice.unhcr.cases.tool.CaseFileValidator;
 
 import java.io.*;
@@ -69,25 +70,18 @@ public class ConfigProperties {
 
             // try to get from %appdata% at first
             String userAppDataFolder = System.getenv("appdata");
-            if (userAppDataFolder == null) {
+            if (StringUtils.isBlank(userAppDataFolder)) {
                 // try user.home
-                userAppDataFolder = System.getProperty("user.home");
+                userAppDataFolder = StringUtils.defaultString(System.getProperty("user.home"), "");
             }
-
-            // if no user home, then try current directory
-            if (userAppDataFolder == null) {
-                userAppDataFolder = "";
-            }
-
             if (!userAppDataFolder.endsWith(File.separator)) {
                 userAppDataFolder = userAppDataFolder + File.separator;
             }
-
             return userAppDataFolder + CONFIG_FILE;
         } else if (isLinux()) {
 
             // linux uses user.home and creates folder inside
-            String userHomeFolder = System.getProperty("user.home");
+            String userHomeFolder = StringUtils.defaultString(System.getProperty("user.home"), "");
             if (!userHomeFolder.endsWith(File.separator)) {
                 userHomeFolder = userHomeFolder + File.separator;
             }
@@ -95,7 +89,7 @@ public class ConfigProperties {
         } else if (isMacOSX()) {
             // Mac OS X uses user.home/Library/Application Support/
             // /Users/<User-Name>/Library/Application Support/
-            String userHomeFolder = System.getProperty("user.home");
+            String userHomeFolder = StringUtils.defaultString(System.getProperty("user.home"), "");
             if (!userHomeFolder.endsWith(File.separator)) {
                 userHomeFolder = userHomeFolder + File.separator;
             }
@@ -127,12 +121,12 @@ public class ConfigProperties {
     }
 
     final static public boolean getConfigPropertyAsBoolean(String propertyName, boolean defaultValue) {
-        String value = loadConfigPropertiesFileIfNeeded().getProperty(propertyName, Boolean.toString(defaultValue));
+        String value = loadConfigPropertiesFileCached().getProperty(propertyName, Boolean.toString(defaultValue));
         return Boolean.parseBoolean(value);
     }
 
     final static public void setConfigProperty(String propertyName, boolean propertyValue) throws IOException {
-        loadConfigPropertiesFileIfNeeded().setProperty(propertyName, Boolean.toString(propertyValue));
+        loadConfigPropertiesFileCached().setProperty(propertyName, Boolean.toString(propertyValue));
         saveConfigPropertiesFile(getConfigPropertiesFile());
     }
 
@@ -150,7 +144,7 @@ public class ConfigProperties {
         }
     }
 
-    final static private Properties loadConfigPropertiesFileIfNeeded() {
+    final static private Properties loadConfigPropertiesFileCached() {
         if (configProperties == null) {
             final File configPropertiesFile = getConfigPropertiesFile();
             try {

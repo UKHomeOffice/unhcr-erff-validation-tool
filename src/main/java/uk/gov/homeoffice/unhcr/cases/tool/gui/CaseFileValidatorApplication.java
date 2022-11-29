@@ -21,6 +21,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import uk.gov.homeoffice.unhcr.cases.tool.CaseFileValidator;
 import uk.gov.homeoffice.unhcr.cases.tool.ValidationResult;
+import uk.gov.homeoffice.unhcr.config.ConfigProperties;
 import uk.gov.homeoffice.unhcr.version.GitHubVersionChecker;
 
 import javax.swing.*;
@@ -252,9 +253,10 @@ public class CaseFileValidatorApplication extends Application {
         Platform.runLater(() -> {
             try {
                 final boolean newerVersionFlag = GitHubVersionChecker.checkReleaseVersionNewer();
+                final String currentVersion = Objects.toString(GitHubVersionChecker.getCurrentVersion(), "N/A");
                 final String newerVersion = Objects.toString(GitHubVersionChecker.getLatestReleaseVersionCached(), "N/A");
                 if (newerVersionFlag) {
-                    System.out.println(String.format("Newer version found: %s", newerVersion));
+                    System.out.println(String.format("Newer remote version found: %s (local version %s)", newerVersion, currentVersion));
                     Alert alert = new Alert(
                             Alert.AlertType.CONFIRMATION,
                             String.format("Newer version (%s) found at:\n%s\n\nDo you want to open page?", newerVersion, GitHubVersionChecker.GET_LATEST_VERSION_URL),
@@ -263,6 +265,8 @@ public class CaseFileValidatorApplication extends Application {
                     if (alert.showAndWait().orElse(ButtonType.NO) == ButtonType.YES) {
                         openUrl(GitHubVersionChecker.GET_LATEST_VERSION_URL);
                     }
+                } else {
+                    System.out.println(String.format("Remote version found: %s (local version %s)", newerVersion, currentVersion));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -299,7 +303,7 @@ public class CaseFileValidatorApplication extends Application {
 
     private void openUrl(String url) throws Exception {
         if (ConfigProperties.isMacOSX()) {
-            //workaround for Mac OS
+            //workaround for Mac OS X
             //java.lang.ClassNotFoundException: com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory
 
             @SuppressWarnings("rawtypes") Class clazz = Class.forName("com.apple.eio.FileManager");
