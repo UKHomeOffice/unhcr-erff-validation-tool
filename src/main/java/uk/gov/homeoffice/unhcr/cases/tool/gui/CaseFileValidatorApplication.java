@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.StringUtils;
 import uk.gov.homeoffice.unhcr.cases.tool.CaseFileValidator;
 import uk.gov.homeoffice.unhcr.cases.tool.ValidationResult;
 import uk.gov.homeoffice.unhcr.config.ConfigProperties;
@@ -93,21 +94,28 @@ public class CaseFileValidatorApplication extends Application {
 
     public static void main(String[] args) {
 
-        String jvmVersion = ManagementFactory.getRuntimeMXBean().getVmVersion();
+        String jvmVersion = StringUtils.defaultString(System.getProperty("java.version"), "N/A");
         if (
                 (jvmVersion.startsWith("1."))||
                 (jvmVersion.startsWith("10"))
         ) {
+            String errorMessage =
+                "To start GUI dialog, Java version 11 (or higher) is required.\n" +
+                "Newer Java can be downloaded from https://www.java.com/";
+
+            System.out.println(errorMessage);
+
             // use Swing message to present error
             JOptionPane.showMessageDialog(
                     null,
-                    "To start GUI dialog, Java version 11 (or higher) is required.",
+                    errorMessage,
                     "ERROR",
                     JOptionPane.ERROR_MESSAGE
             );
             System.exit(1);
         }
 
+        System.out.println(String.format("GUI started with Java %s", jvmVersion));
         launch(args);
     }
 
