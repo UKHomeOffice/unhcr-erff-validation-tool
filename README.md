@@ -50,5 +50,10 @@ if (!validationResult.isSuccess()) validationResult.getErrors()
 ...
 ```
 
+Note: when building from repository for the first time, generate jaxb bindings for xml schema definitions by running the below maven command:
+```
+mvn clean compile
+```
+
 # Contact
 Email: leszek.sliwko@digital.homeoffice.gov.uk or lsliwko@gmail.com
