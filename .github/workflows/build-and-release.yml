@@ -19,15 +19,15 @@ jobs:
       - name: Set version variable
         run: |
           echo "VERSION_NAME=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
-
-      - name: Version found [${{env.VERSION_NAME}}]
-        run: |
           echo Version found ${{env.VERSION_NAME}}
-
+          
+      - name: Building package with Maven [${{env.VERSION_NAME}}]
+        run: |
+          mvn -B clean package --file pom.xml
+          
       - name: Create release (only non-snapshot versions)
         if: ${{ !endsWith(env.VERSION_NAME, '-SNAPSHOT') }}
         run: |
-          mvn -B clean package --file pom.xml
           gh release create v${{env.VERSION_NAME}} -t v${{env.VERSION_NAME}} target/unhcr-erff-validation-tool-${{env.VERSION_NAME}}.jar target/unhcr-erff-validation-tool-${{env.VERSION_NAME}}-full.jar --generate-notes
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
