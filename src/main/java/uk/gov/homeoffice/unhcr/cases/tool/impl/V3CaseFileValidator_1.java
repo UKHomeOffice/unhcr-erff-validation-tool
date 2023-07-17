@@ -398,6 +398,13 @@ public class V3CaseFileValidator_1 extends BaseCaseFileValidator {
                         validationResult
                 );
             }
+
+            //validate uniqueness of pairs (xxx -> yyy)
+            validateNoDuplicates(
+                    "DataProcessGroupCrossReference",
+                    unhcrCase.getDataProcessGroupCrossReference().stream().map(dataProcessGroupCrossReference -> StringUtils.trim(dataProcessGroupCrossReference.getProcessingGroupNumberFrom()) + " to " + StringUtils.trim(dataProcessGroupCrossReference.getProcessingGroupNumberTo())).collect(Collectors.toList()),
+                    validationResult
+            );
         }
 
         return validationResult;

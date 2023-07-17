@@ -49,5 +49,19 @@ public class V4CaseFileValidator_1Test {
         assertThat(validationResult.isSuccess()).isTrue();
     }
 
+    @Test
+    void validateDataProcessGroupCrossReferenceTest() throws IOException {
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V4-TEST-CrossReference.xml", getClass().getClassLoader());
+
+        BaseCaseFileValidator validator = new V4CaseFileValidator_1();
+        assertThat(validator.isApplicable(bytes)).isTrue();
+
+        ValidationResult validationResult = validator.validate(bytes);
+        assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
+                "Duplicated 'DataProcessGroupCrossReference'(s): 100-16C00000-RST-01 to 100-16C00002-RST-01"
+        );
+        assertThat(validationResult.isSuccess()).isFalse();
+    }
+
 
 }

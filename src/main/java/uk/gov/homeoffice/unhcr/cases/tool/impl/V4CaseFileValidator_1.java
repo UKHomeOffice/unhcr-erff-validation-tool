@@ -1,6 +1,7 @@
 package uk.gov.homeoffice.unhcr.cases.tool.impl;
 
 import com.google.common.collect.Multimap;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import uk.gov.homeoffice.unhcr.cases.model.v4_1.UNHCRRRF;
 import uk.gov.homeoffice.unhcr.cases.reference.ReferenceDataContainer;
@@ -530,6 +531,13 @@ public class V4CaseFileValidator_1 extends BaseCaseFileValidator {
                         validationResult
                 );
             }
+
+            //validate uniqueness of pairs (xxx -> yyy)
+            validateNoDuplicates(
+                    "DataProcessGroupCrossReference",
+                    unhcrCase.getDataProcessGroupCrossReference().stream().map(dataProcessGroupCrossReference -> StringUtils.trim(dataProcessGroupCrossReference.getProcessingGroupNumberFrom()) + " to " + StringUtils.trim(dataProcessGroupCrossReference.getProcessingGroupNumberTo())).collect(Collectors.toList()),
+                    validationResult
+            );
         }
 
         return validationResult;
