@@ -163,7 +163,7 @@
 							<Specification-Vendor>Home Office UK</Specification-Vendor>
 							<Implementation-Title>uk.gov.homeoffice.unhcr.cases.tool</Implementation-Title>
 							<Implementation-Version>${project.version}</Implementation-Version>
-							<Specification-Vendor>Home Office UK</Specification-Vendor>
+							<Implementation-Vendor>Home Office UK</Implementation-Vendor>
 							<Build-Date>${maven.build.timestamp}</Build-Date>
 						</manifestEntries>
 					</archive>
