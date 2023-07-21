@@ -46,16 +46,9 @@ public class ReferenceData {
                 String referenceDescription = record.get(1);
 
                 if (StringUtils.isBlank(referenceCode))
-                    throw new RuntimeException(String.format("Reference data %s has blank code"));
+                    throw new RuntimeException(String.format("Reference data %s has blank code", referenceCode));
 
-                if (ignoreLeadingZeros) {
-                    referenceCode = StringUtils.stripStart(referenceCode, "0");
-                    if (StringUtils.isBlank(referenceCode)) referenceCode = "0";
-                }
-
-                if (ignoreCaseFlag) referenceCode = referenceCode.toLowerCase(Locale.US);
-
-
+                referenceCode = normalizeReferenceCode(referenceCode, ignoreLeadingZeros, ignoreCaseFlag);
 
                 referenceData.dictionary.put(referenceCode, referenceDescription);
             }
@@ -69,6 +62,13 @@ public class ReferenceData {
     public boolean containsCode(String referenceCode) {
         if (StringUtils.isBlank(referenceCode)) return false;
 
+        referenceCode = normalizeReferenceCode(referenceCode, ignoreLeadingZeros, ignoreCaseFlag);
+
+        return dictionary.containsKey(referenceCode);
+    }
+
+    private static String normalizeReferenceCode(String referenceCode, boolean ignoreLeadingZeros, boolean ignoreCaseFlag) {
+
         if (ignoreLeadingZeros) {
             referenceCode = StringUtils.stripStart(referenceCode, "0");
             if (StringUtils.isBlank(referenceCode)) referenceCode = "0";
@@ -76,9 +76,8 @@ public class ReferenceData {
 
         if (ignoreCaseFlag) referenceCode = referenceCode.toLowerCase(Locale.US);
 
-        return dictionary.containsKey(referenceCode);
+        return referenceCode;
     }
-
 
     private static int SAMPLE_VALUES_SIZE = 8;
     public String toSampleValuesString() {
