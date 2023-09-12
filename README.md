@@ -21,12 +21,13 @@ Arguments:
 -f,--file: case files to validate (space-separated)
 (multiple files can be validated)
 
--g,--gui: start GUI
-Java version 11 (or higher) is required
+-g,--gui: start GUI. (Java version 11 (or higher) is required)
 
 -h,--help: show help
 
 -p,--parser: parser version(s) to use (space-separated): v3 v4 (also supports wild-chars, e.g. 'v4*')
+
+-w,--web-port=8080: start web-server on a given port. (Java version 11 (or higher) is required)
 
 When validation (of every listed file) succeeds, exit code is 0.
 
