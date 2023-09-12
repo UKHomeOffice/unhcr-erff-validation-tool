@@ -1,17 +1,11 @@
 package uk.gov.homeoffice.unhcr.cases.tool.webserver;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.Resources;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.jetty.server.*;
-import uk.gov.homeoffice.unhcr.cases.reference.ReferenceData;
-
-import java.io.*;
-import java.net.URL;
 
 public class CaseFileValidatorWebServer {
+
+    //curl -X POST --data-binary @src/test/resources/uk/gov/homeoffice/unhcr/cases/test/V4-TEST-CrossReference.xml "http://0.0.0.0:8080/?json"
 
     static public void start(int webServerPort) throws Exception {
         String jvmVersion = StringUtils.defaultString(System.getProperty("java.version"), "N/A");
