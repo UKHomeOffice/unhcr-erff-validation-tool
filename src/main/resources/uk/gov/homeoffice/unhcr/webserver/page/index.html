@@ -5,10 +5,11 @@
     <p>Upload case file and press 'Validate':</p>
 
     <form action="?" method="post" enctype="multipart/form-data">
-        <input type="file" id="casefile" name="Case file">
+        <input type="file" name="casefile">
         <input type="submit" value="Validate">
     </form>
 
+    <p>Case file: @case_file_name@</p>
     <p>Result:</p>
     <ul>
         @errors_list@

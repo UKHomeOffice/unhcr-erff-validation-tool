@@ -67,6 +67,13 @@
 			<version>31.1-jre</version>
 		</dependency>
 
+		<!-- Google GSon -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>

@@ -167,8 +167,6 @@ public class CaseFileValidator extends BaseCaseFileValidator {
                 validators = BaseCaseFileValidator.getValidators();
             }
 
-            CaseFileValidator parentValidator = new CaseFileValidator();
-
             boolean startGuiFlag = (line.hasOption(startGuiOption));
             boolean startWebServerFlag = (line.hasOption(webPortOption));
 
@@ -178,7 +176,7 @@ public class CaseFileValidator extends BaseCaseFileValidator {
                     (!startGuiFlag)&&
                     (line.hasOption(fileOption))
             ) {
-
+                CaseFileValidator parentValidator = new CaseFileValidator();
                 String[] caseFileOptions = line.getOptionValues(fileOption);
 
                 //TODO check if filename is glob (i.e. has wild-chars) and search for all matching files via regex
