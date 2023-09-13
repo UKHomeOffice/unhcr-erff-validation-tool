@@ -26,6 +26,7 @@ public class CaseFileValidatorWebServer {
 
         //enable multi-part forms (for file upload)
         HttpConfiguration httpConfig = new HttpConfiguration();
+        httpConfig.setSendServerVersion(false);
         httpConfig.setMultiPartFormDataCompliance(MultiPartFormDataCompliance.RFC7578);
         ServerConnector connector = new ServerConnector(server, new HttpConnectionFactory(httpConfig));
         server.addConnector(connector);
