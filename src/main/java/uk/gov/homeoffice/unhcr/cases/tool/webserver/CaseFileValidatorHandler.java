@@ -1,9 +1,9 @@
 package uk.gov.homeoffice.unhcr.cases.tool.webserver;
 
 import com.google.common.io.ByteStreams;
-import com.google.common.io.CharStreams;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
@@ -20,6 +20,7 @@ import uk.gov.homeoffice.unhcr.cases.tool.ValidationResult;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,74 +61,16 @@ public class CaseFileValidatorHandler extends AbstractHandler {
     ) throws IOException {
 
         try {
-
-            final boolean jsonFlag = httpServletRequest.getParameter("json") != null;
-
-            final boolean postRequest = "POST".equals(jettyRequest.getMethod());
-            final boolean multipartRequest = (postRequest) && isMultipartRequest(jettyRequest);
-
-            String caseFileName = "(none)";
-            byte[] caseFileBytes = null;
-            if (multipartRequest) {
-                jettyRequest.setAttribute(Request.__MULTIPART_CONFIG_ELEMENT, MULTI_PART_CONFIG);
-
-                Part caseFilePart = jettyRequest.getPart("casefile");
-                if (caseFilePart!=null) {
-                    if (caseFilePart.getSize() > CASEFILE_SIZE_LIMIT)
-                        throw new RuntimeException(String.format("Case file is too large. Limit %s", FileUtils.byteCountToDisplaySize(CASEFILE_SIZE_LIMIT)));
-
-                    caseFileName = caseFilePart.getSubmittedFileName();
-                    caseFileBytes = ByteStreams.toByteArray(caseFilePart.getInputStream());
-                }
-            } else if (postRequest) {
-                if (jettyRequest.getContentLength() > CASEFILE_SIZE_LIMIT)
-                    throw new RuntimeException(String.format("Case file is too large. Limit %s", FileUtils.byteCountToDisplaySize(CASEFILE_SIZE_LIMIT)));
-
-                caseFileBytes = CharStreams.toString(jettyRequest.getReader()).getBytes();
-                if (caseFileBytes.length==0) caseFileBytes = null;
-            }
-
-            ValidationResult validationResult = null;
-            if (caseFileBytes!=null) {
-                validationResult = parentValidator.validate(caseFileBytes);
-            }
+            final boolean jsonFlag = target.endsWith("json");
 
             if (jsonFlag) {
-                String validationResultJson = "";
-                if (validationResult!=null) {
-                    List<String> validationErrors = validationResult.getErrors();
-                    validationResultJson = gson.toJson(validationErrors.toArray(new String[0]));
-                }
-
-                httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-                httpServletResponse.setContentType("application/json;charset=utf-8");
-                httpServletResponse.getWriter().println(validationResultJson);
+                handleJson(jettyRequest, httpServletRequest, httpServletResponse);
             } else {
-                String validationResultHtml = "";
-                if (validationResult!=null) {
-                    List<String> validationErrors = validationResult.getErrors();
-                    if (validationErrors.isEmpty()) {
-                        validationResultHtml = "<ui><li>OK</li></ui>";
-                    } else {
-                        validationResultHtml =
-                                String.format("<ui>%s</ui",
-                                        validationErrors.stream()
-                                                .map(error -> String.format("<li>%s</li>\n", error))
-                                                .collect(Collectors.joining())
-                                );
-                    }
-                }
-
-                String indexPageBody = indexPageTemplate
-                        .replace("@name_and_version@", CaseFileValidator.NAME_AND_VERSION)
-                        .replace("@case_file_name@", caseFileName)
-                        .replace("@results_list@", validationResultHtml);
-
-                httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-                httpServletResponse.setContentType("text/html;charset=utf-8");
-                httpServletResponse.getWriter().println(indexPageBody);
+                handleForm(jettyRequest, httpServletRequest, httpServletResponse);
             }
+
         } catch (Exception e) {
+            //TODO debug
             e.printStackTrace();
 
             String errorMessage = String.format("Error: %s", e.getMessage());
@@ -140,4 +83,78 @@ public class CaseFileValidatorHandler extends AbstractHandler {
             jettyRequest.setHandled(true);
         }
     }
+
+    private void handleForm(Request jettyRequest, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+
+        final boolean multipartRequest = ("POST".equals(jettyRequest.getMethod())) && isMultipartRequest(jettyRequest);
+
+        String caseFileName = "(none)";
+        byte[] caseFileBytes = null;
+        if (multipartRequest) {
+            if (jettyRequest.getContentLength() > CASEFILE_SIZE_LIMIT)
+                throw new RuntimeException(String.format("Case file is too large. Limit %s", FileUtils.byteCountToDisplaySize(CASEFILE_SIZE_LIMIT)));
+
+            jettyRequest.setAttribute(Request.__MULTIPART_CONFIG_ELEMENT, MULTI_PART_CONFIG);
+
+            Part caseFilePart = jettyRequest.getPart("casefile");
+            if (caseFilePart!=null) {
+                caseFileName = caseFilePart.getSubmittedFileName();
+                caseFileBytes = ByteStreams.toByteArray(caseFilePart.getInputStream());
+            }
+        }
+
+        ValidationResult validationResult = null;
+        if (caseFileBytes!=null) {
+            validationResult = parentValidator.validate(caseFileBytes);
+        }
+
+        String validationResultHtml = "";
+        if (validationResult!=null) {
+            List<String> validationErrors = validationResult.getErrors();
+            if (validationErrors.isEmpty()) {
+                validationResultHtml = "<ui><li>OK</li></ui>";
+            } else {
+                validationResultHtml =
+                        String.format("<ui>%s</ui",
+                                validationErrors.stream()
+                                        .map(error -> String.format("<li>%s</li>\n", error))
+                                        .collect(Collectors.joining())
+                        );
+            }
+        }
+
+        String indexPageBody = indexPageTemplate
+                .replace("@name_and_version@", CaseFileValidator.NAME_AND_VERSION)
+                .replace("@case_file_name@", caseFileName)
+                .replace("@results_list@", validationResultHtml);
+
+        httpServletResponse.setStatus(HttpServletResponse.SC_OK);
+        httpServletResponse.setContentType("text/html;charset=utf-8");
+        httpServletResponse.getWriter().println(indexPageBody);
+    }
+
+    private void handleJson(Request jettyRequest, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+        if (jettyRequest.getContentLength() > CASEFILE_SIZE_LIMIT)
+            throw new RuntimeException(String.format("Case file is too large. Limit %s", FileUtils.byteCountToDisplaySize(CASEFILE_SIZE_LIMIT)));
+
+        byte[] caseFileBytes = ByteStreams.toByteArray(httpServletRequest.getInputStream());
+
+        ValidationResult validationResult = null;
+        if (caseFileBytes.length>0) {
+            validationResult = parentValidator.validate(caseFileBytes);
+        }
+
+        String validationResultJson = "";
+        if (validationResult!=null) {
+            List<String> validationErrors = validationResult.getErrors();
+            validationResultJson = gson.toJson(validationErrors.toArray(new String[0]));
+        } else {
+            validationResultJson = gson.toJson(Collections.singletonList("No case file provided"));
+        }
+
+        httpServletResponse.setStatus(HttpServletResponse.SC_OK);
+        httpServletResponse.setContentType("application/json;charset=utf-8");
+        httpServletResponse.getWriter().println(validationResultJson);
+    }
+
 }

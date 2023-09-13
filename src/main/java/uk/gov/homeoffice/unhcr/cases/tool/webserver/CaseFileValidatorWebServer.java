@@ -5,7 +5,7 @@ import org.eclipse.jetty.server.*;
 
 public class CaseFileValidatorWebServer {
 
-    //curl -X POST --data-binary @src/test/resources/uk/gov/homeoffice/unhcr/cases/test/V4-TEST-CrossReference.xml "http://0.0.0.0:8080/?json"
+    //curl -X POST --data-binary @src/test/resources/uk/gov/homeoffice/unhcr/cases/test/V4-TEST-CrossReference.xml "http://0.0.0.0:8080/json"
 
     static public void start(int webServerPort) throws Exception {
         String jvmVersion = StringUtils.defaultString(System.getProperty("java.version"), "N/A");
