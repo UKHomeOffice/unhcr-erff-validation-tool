@@ -61,12 +61,17 @@ public class CaseFileValidatorHandler extends AbstractHandler {
     ) throws IOException {
 
         try {
-            final boolean jsonFlag = target.endsWith("json");
-
-            if (jsonFlag) {
-                handleJson(jettyRequest, httpServletRequest, httpServletResponse);
-            } else {
-                handleForm(jettyRequest, httpServletRequest, httpServletResponse);
+            if (
+                    (target.equals("/"))||
+                    (target.equals("/validate"))
+            ) {
+                handleValidateForm(jettyRequest, httpServletRequest, httpServletResponse);
+            } else
+            if (target.equals("/api/v1/validate")) {
+                handlerApiV1Validate(jettyRequest, httpServletRequest, httpServletResponse);
+            } else
+            {
+                throw new RuntimeException("unsupported");
             }
 
         } catch (Exception e) {
@@ -81,7 +86,7 @@ public class CaseFileValidatorHandler extends AbstractHandler {
         }
     }
 
-    private void handleForm(Request jettyRequest, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+    private void handleValidateForm(Request jettyRequest, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
 
         final boolean multipartRequest = ("POST".equals(jettyRequest.getMethod())) && isMultipartRequest(jettyRequest);
 
@@ -136,7 +141,7 @@ public class CaseFileValidatorHandler extends AbstractHandler {
         httpServletResponse.getWriter().println(indexPageBody);
     }
 
-    private void handleJson(Request jettyRequest, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+    private void handlerApiV1Validate(Request jettyRequest, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
         if (jettyRequest.getContentLength() > CASEFILE_SIZE_LIMIT)
             throw new RuntimeException(String.format("Case file is too large. Limit %s", FileUtils.byteCountToDisplaySize(CASEFILE_SIZE_LIMIT)));
 
