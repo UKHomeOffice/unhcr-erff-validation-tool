@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.gov.homeoffice.unhcr.cases.tool.CaseFileValidator;
 import uk.gov.homeoffice.unhcr.cases.tool.ValidationResult;
+import uk.gov.homeoffice.unhcr.cases.tool.webserver.response.ValidationResultResponseObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -108,8 +109,10 @@ public class CaseFileValidatorHandler extends AbstractHandler {
             validationResult = parentValidator.validate(caseFileBytes);
         }
 
+        String validatorId = "";
         String validationResultHtml = "";
         if (validationResult!=null) {
+            validatorId = validationResult.getValidatorId();
             List<String> validationErrors = validationResult.getErrors();
             if (validationErrors.isEmpty()) {
                 validationResultHtml = "<ui><li>OK</li></ui>";
@@ -126,6 +129,7 @@ public class CaseFileValidatorHandler extends AbstractHandler {
         String indexPageBody = indexPageTemplate
                 .replace("@name_and_version@", CaseFileValidator.NAME_AND_VERSION)
                 .replace("@case_file_name@", caseFileName)
+                .replace("@validator_id@", validatorId)
                 .replace("@results_list@", validationResultHtml);
 
         httpServletResponse.setStatus(HttpServletResponse.SC_OK);
@@ -144,17 +148,20 @@ public class CaseFileValidatorHandler extends AbstractHandler {
             validationResult = parentValidator.validate(caseFileBytes);
         }
 
-        String validationResultJson = "";
-        if (validationResult!=null) {
-            List<String> validationErrors = validationResult.getErrors();
-            validationResultJson = gson.toJson(validationErrors.toArray(new String[0]));
+        ValidationResultResponseObject validationResultResponseObject = new ValidationResultResponseObject();
+        if (validationResult==null) {
+            validationResultResponseObject.setSuccess(false);
+            validationResultResponseObject.setErrors(new String[] {"No case file provided"} );
         } else {
-            validationResultJson = gson.toJson(Collections.singletonList("No case file provided"));
+            validationResultResponseObject.setSuccess(validationResult.isSuccess());
+            validationResultResponseObject.setErrors(validationResult.getErrors().toArray(new String[0]));
+            validationResultResponseObject.setWarnings(validationResult.getWarnings().toArray(new String[0]));
+            validationResultResponseObject.setValidatorId(validationResult.getValidatorId());
         }
 
         httpServletResponse.setStatus(HttpServletResponse.SC_OK);
         httpServletResponse.setContentType("application/json;charset=utf-8");
-        httpServletResponse.getWriter().println(validationResultJson);
+        httpServletResponse.getWriter().println(gson.toJson(validationResultResponseObject));
     }
 
 }
