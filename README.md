@@ -43,14 +43,30 @@ GUI application supports drag-and-drop of case files (or folders) and re-validat
 
 # Usage as web server
 
-To start web-server mode, start a command line application with --web-port=8080 argument. Embedded server will display web interface with form and validate button. Request path is 'validate'. **Note: Java version 11 (or higher) is required to start web server mode.**
+To start web-server mode, start a command line application with --web-port=8080 argument. Embedded server will display web interface with form and validate button. **Note: Java version 11 (or higher) is required to start web server mode.**
+
+```http://0.0.0.0/validate```
+
+![Usage GUI 1](readme-usage-web-server-1.jpg?raw=true "Usage Web Server 1")
+
+# Usage as web server (REST)
 
 Additionally, web server mode supports REST api to retrieve validation data as json object. To use validation tool as REST, append json to request path:
 
 ```curl -X POST --data-binary @src/test/resources/uk/gov/homeoffice/unhcr/cases/test/V4-TEST-CrossReference.xml "http://0.0.0.0:8080/api/v1/validate"```
 
-![Usage GUI 1](readme-usage-web-server-1.jpg?raw=true "Usage Web Server 1")
+The response json:
 
+```
+{
+  "success": false,
+  "validatorId": "v4",
+  "errors": [
+    "Duplicated \u0027DataProcessGroupCrossReference\u0027(s): 100-16C00000-RST-01 to 100-16C00002-RST-01"
+  ],
+  "warnings": []
+}
+```
 
 # Usage from Java projects
 
