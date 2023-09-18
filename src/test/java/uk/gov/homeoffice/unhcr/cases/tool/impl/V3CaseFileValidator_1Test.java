@@ -26,6 +26,7 @@ public class V3CaseFileValidator_1Test {
 
         ValidationResult validationResult = validator.validate(bytes);
         assertThat(validationResult.getErrors()).isEmpty();
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isTrue();
     }
 
@@ -38,6 +39,7 @@ public class V3CaseFileValidator_1Test {
 
         ValidationResult validationResult = validator.validate(bytes);
         assertThat(validationResult.getErrors()).isEmpty();
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isTrue();
     }
 
@@ -61,6 +63,7 @@ public class V3CaseFileValidator_1Test {
                 "Invalid value 'AddressType' value for individual 199-00265997: COAS",
                 "No 'COA' addresses for Primary Applicant 199-00265997"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -76,6 +79,7 @@ public class V3CaseFileValidator_1Test {
                 "Empty (or missing) 'AddressType' value for individual 199-00265997",
                 "No 'COA' addresses for Primary Applicant 199-00265997"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -90,6 +94,7 @@ public class V3CaseFileValidator_1Test {
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Empty (or missing) 'DateofBirth' value for individual 199-00265997"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -104,6 +109,7 @@ public class V3CaseFileValidator_1Test {
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Name 'FamilyName' value for individual 199-00265997 contains digit(s): 1Abcd"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -118,6 +124,7 @@ public class V3CaseFileValidator_1Test {
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Empty (or missing) 'FamilyName' for individual 199-00265997"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -132,6 +139,7 @@ public class V3CaseFileValidator_1Test {
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Empty (or missing) 'GivenName' for individual 199-00265997"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -146,6 +154,7 @@ public class V3CaseFileValidator_1Test {
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Invalid value 'LanguageCode' value for individual 199-00265997: ABV1"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -167,6 +176,7 @@ public class V3CaseFileValidator_1Test {
                 "Invalid value 'OccupationCode' value for individual 199-00265997: 999999",
                 "Empty (or missing) 'OccupationCode' value for individual 199-00265997"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -181,6 +191,7 @@ public class V3CaseFileValidator_1Test {
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Empty (or missing) 'NationalityCode' value for individual 199-00265997"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -195,6 +206,7 @@ public class V3CaseFileValidator_1Test {
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Empty (or missing) 'OccupationCode' value for individual 199-00265997"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -209,6 +221,7 @@ public class V3CaseFileValidator_1Test {
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Photo for individual '199-00265997' is empty (zero-length file)"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -224,6 +237,7 @@ public class V3CaseFileValidator_1Test {
                 "Photo for individual '199-00265999' cannot be decoded (base64)",
                 "Photo for individual '199-00265997' cannot be decoded (base64)"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -261,6 +275,7 @@ public class V3CaseFileValidator_1Test {
                 "Empty (or missing) 'RelationshipToPrincipalRepresentative' value for individual 199-00265997",
                 "Missing Primary Applicant"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -275,6 +290,7 @@ public class V3CaseFileValidator_1Test {
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Missing Primary Applicant"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -289,6 +305,7 @@ public class V3CaseFileValidator_1Test {
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Name 'FamilyName' value for individual 199-00265997 contains digit(s): 1"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -303,6 +320,7 @@ public class V3CaseFileValidator_1Test {
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Empty (or missing) 'ProcessingGroupNumber' in DataProcessGroup section"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -317,6 +335,7 @@ public class V3CaseFileValidator_1Test {
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Number of individuals [2] is not equal to 'ProcessingGroupSize' value [11] in DataProcessGroup section"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 
@@ -331,6 +350,7 @@ public class V3CaseFileValidator_1Test {
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Duplicated 'DataProcessGroupCrossReference'(s): 100-16C00000-RST-01 to 100-16C00002-RST-01"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
 }

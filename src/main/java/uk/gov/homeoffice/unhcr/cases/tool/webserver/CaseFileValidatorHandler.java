@@ -70,9 +70,6 @@ public class CaseFileValidatorHandler extends AbstractHandler {
             }
 
         } catch (Exception e) {
-            //TODO debug
-            e.printStackTrace();
-
             String errorMessage = String.format("Error: %s", e.getMessage());
             logger.error(errorMessage, e);
             httpServletResponse.sendError(
@@ -101,6 +98,9 @@ public class CaseFileValidatorHandler extends AbstractHandler {
                 caseFileName = caseFilePart.getSubmittedFileName();
                 caseFileBytes = ByteStreams.toByteArray(caseFilePart.getInputStream());
             }
+
+            //clear any temporary file
+            for (Part part : jettyRequest.getParts()) part.delete();
         }
 
         ValidationResult validationResult = null;
