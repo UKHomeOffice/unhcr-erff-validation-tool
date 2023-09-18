@@ -16,12 +16,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.gov.homeoffice.unhcr.cases.tool.CaseFileValidator;
 import uk.gov.homeoffice.unhcr.cases.tool.ValidationResult;
-import uk.gov.homeoffice.unhcr.cases.tool.webserver.response.ValidationResultResponseObject;
+import uk.gov.homeoffice.unhcr.cases.tool.webserver.response.ValidationResultResponse;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -148,7 +147,7 @@ public class CaseFileValidatorHandler extends AbstractHandler {
             validationResult = parentValidator.validate(caseFileBytes);
         }
 
-        ValidationResultResponseObject validationResultResponseObject = new ValidationResultResponseObject();
+        ValidationResultResponse validationResultResponseObject = new ValidationResultResponse();
         if (validationResult==null) {
             validationResultResponseObject.setSuccess(false);
             validationResultResponseObject.setErrors(new String[] {"No case file provided"} );

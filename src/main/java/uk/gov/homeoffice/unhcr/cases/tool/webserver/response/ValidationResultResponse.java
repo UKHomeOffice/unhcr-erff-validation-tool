@@ -1,9 +1,6 @@
 package uk.gov.homeoffice.unhcr.cases.tool.webserver.response;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class ValidationResultResponseObject {
+public class ValidationResultResponse {
 
     private boolean success;
 
