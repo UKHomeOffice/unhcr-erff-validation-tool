@@ -62,7 +62,7 @@ public class CaseFileValidatorHandler extends AbstractHandler {
 
         try {
             if (
-                    (target.equals("/"))||
+                    (target.equals("/"))||  //index file
                     (target.equals("/validate"))
             ) {
                 handleValidateForm(jettyRequest, httpServletRequest, httpServletResponse);
@@ -155,7 +155,9 @@ public class CaseFileValidatorHandler extends AbstractHandler {
         ValidationResultResponse validationResultResponseObject = new ValidationResultResponse();
         if (validationResult==null) {
             validationResultResponseObject.setSuccess(false);
-            validationResultResponseObject.setErrors(new String[] {"No case file provided"} );
+            validationResultResponseObject.setErrors(new String[] {
+                    "No case file provided. Make POST request and send the case file's content in the body of the request."
+            } );
         } else {
             validationResultResponseObject.setSuccess(validationResult.isSuccess());
             validationResultResponseObject.setErrors(validationResult.getErrors().toArray(new String[0]));
