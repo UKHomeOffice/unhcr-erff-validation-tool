@@ -45,13 +45,13 @@ GUI application supports drag-and-drop of case files (or folders) and re-validat
 
 To start web-server mode, start a command line application with --web-port=8080 argument. Embedded server will start a web interface on a given port. **Note: Java version 11 (or higher) is required to start web server mode.**
 
-The validation  form can be reached at ```http://0.0.0.0/validate```. To secure the access and transportation layer, use the intermediate SSL termination layer like Ngnix.
+The validation  form can be reached at ```http://0.0.0.0/validate```. To secure the access and transportation layer, use the intermediate SSL termination layer (like ngnix).
 
 ![Usage GUI 1](readme-usage-web-server-1.jpg?raw=true "Usage Web Server 1")
 
 Additionally, web server mode supports REST Post api to retrieve validation data as a json object. To use the validation tool as REST, use the url ```http://0.0.0.0:8080/api/v1/validate``` and send the case file's content in the body of the request.
 
-Below is an example call with curl tool:
+Below is an example api call with curl tool:
 
 ```curl -X POST --data-binary @src/test/resources/uk/gov/homeoffice/unhcr/cases/test/V4-TEST-CrossReference.xml "http://0.0.0.0:8080/api/v1/validate"```
 
