@@ -4,7 +4,7 @@
 
 	<groupId>uk.gov.homeoffice</groupId>
 	<artifactId>unhcr-erff-validation-tool</artifactId>
-	<version>1.4.5-SNAPSHOT</version>
+	<version>1.4.5</version>
 	<packaging>jar</packaging>
 
 	<name>UNHCR eRFF Validation Tool</name>
