@@ -6,6 +6,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.StringUtils;
 import uk.gov.homeoffice.unhcr.cases.tool.gui.CaseFileValidatorApplication;
+import uk.gov.homeoffice.unhcr.cases.tool.webserver.CaseFileValidatorWebServer;
 import uk.gov.homeoffice.unhcr.config.ConfigProperties;
 import uk.gov.homeoffice.unhcr.cases.tool.impl.BaseCaseFileValidator;
 import uk.gov.homeoffice.unhcr.version.GitHubVersionChecker;
@@ -30,6 +31,10 @@ public class CaseFileValidator extends BaseCaseFileValidator {
             .desc("display version (current and latest)")
             .required(false).hasArg(false).build();
 
+    private static Option webPortOption = Option.builder("w").longOpt("web-port")
+            .desc("start embedded web-server on a given port\n(Java version 11 (or higher) is required)")
+            .required(false).hasArg(true).numberOfArgs(1).build();
+
     private static Option deleteConfigFileOption = Option.builder().longOpt("delete-config")
             .desc("delete local config file")
             .required(false).hasArg(false).build();
@@ -48,6 +53,7 @@ public class CaseFileValidator extends BaseCaseFileValidator {
                 .addOption(checkVersionOption)
                 .addOption(deleteConfigFileOption)
                 .addOption(startGuiOption)
+                .addOption(webPortOption)
                 .addOption(helpOption);
 
     static List<String> parseValidatorIds(String[] validatorGlobs) {
@@ -122,6 +128,10 @@ public class CaseFileValidator extends BaseCaseFileValidator {
         CaseFileValidatorApplication.main(args);
     }
 
+    private static void startWebServer(int webServerPort) throws Exception {
+        CaseFileValidatorWebServer.start(webServerPort);
+    }
+
     public static void main(String[] args) {
         CommandLineParser parser = new DefaultParser();
 
@@ -157,16 +167,16 @@ public class CaseFileValidator extends BaseCaseFileValidator {
                 validators = BaseCaseFileValidator.getValidators();
             }
 
-            CaseFileValidator parentValidator = new CaseFileValidator();
-
             boolean startGuiFlag = (line.hasOption(startGuiOption));
+            boolean startWebServerFlag = (line.hasOption(webPortOption));
 
             // load files
             if (
+                    (!startWebServerFlag)&&
                     (!startGuiFlag)&&
                     (line.hasOption(fileOption))
             ) {
-
+                CaseFileValidator parentValidator = new CaseFileValidator();
                 String[] caseFileOptions = line.getOptionValues(fileOption);
 
                 //TODO check if filename is glob (i.e. has wild-chars) and search for all matching files via regex
@@ -204,18 +214,24 @@ public class CaseFileValidator extends BaseCaseFileValidator {
                     System.exit(0);
                 }
 
+            } else if (startWebServerFlag) {
+                String portOption = line.getOptionValue(webPortOption);
+
+                int webServerPort    = -1;
+                try {
+                    webServerPort    = Integer.parseInt(portOption);
+                    if (webServerPort<1) throw new NumberFormatException();
+                } catch (NumberFormatException e) {
+                    System.out.println("port must be a number 1-65535");
+                    System.exit(1);
+                }
+
+                startWebServer(webServerPort);
             } else {
                 // no file option, start gui
-                startGuiFlag = true;
-            }
-
-
-            if (startGuiFlag) {
                 startGui(args);
-            } else {
-                showHelp();
             }
-        } catch (ParseException exception) {
+        } catch (Exception exception) {
             showHelp();
             System.out.println("Error: " + exception.getMessage());
             System.exit(1);

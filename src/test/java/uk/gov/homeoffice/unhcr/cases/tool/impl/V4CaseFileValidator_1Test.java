@@ -26,6 +26,7 @@ public class V4CaseFileValidator_1Test {
 
         ValidationResult validationResult = validator.validate(bytes);
         assertThat(validationResult.getErrors()).isEmpty();
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isTrue();
     }
 
@@ -46,6 +47,7 @@ public class V4CaseFileValidator_1Test {
 
         ValidationResult validationResult = validator.validate(bytes);
         assertThat(validationResult.getErrors()).isEmpty();
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isTrue();
     }
 
@@ -60,8 +62,7 @@ public class V4CaseFileValidator_1Test {
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Duplicated 'DataProcessGroupCrossReference'(s): 100-16C00000-RST-01 to 100-16C00002-RST-01"
         );
+        assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
-
-
 }

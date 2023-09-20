@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html><body>
+
+    <h1>@name_and_version@</h1>
+    <p>Upload case file and press 'Validate':</p>
+
+    <form action="?" method="post" enctype="multipart/form-data">
+        <input type="file" name="casefile">
+        <input type="submit" value="Validate">
+    </form>
+
+    <p>Case file: @case_file_name@</p>
+    <p>Validator: @validator_id@</p>
+    <p>Result:</p>
+    @results_list@
+
+    <br><br><br>
+    <small>(To use REST api, make POST request to <a href="/api/v1/validate">/api/v1/validate</a> and send the case file's content in the body of the request.)</small>
+</body></html>
