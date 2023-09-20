@@ -399,18 +399,20 @@ public abstract class BaseCaseFileValidator {
         }
 
         // check for printable characters, non-digits
-        for (Character character: Lists.charactersOf(name)) {
-            if (Character.isDigit(character)) {
-                validationResult.addError(String.format("Name '%s' value for individual %s contains digit(s): %s", objectName, individualIdPair, name));
-                break;
-            } else if (Character.isISOControl(character)) {
-                String nameEncoded = name.replace(String.valueOf(character), "[" + Integer.toUnsignedString(character) + "]");
-                validationResult.addError(String.format("Name '%s' value for individual %s contains iso-control characters(s): %s", objectName, individualIdPair, nameEncoded));
-                break;
-            } else if (!isPrintableChar(character)) {
-                String nameEncoded = name.replace(String.valueOf(character), "[" + Integer.toUnsignedString(character) + "]");
-                validationResult.addError(String.format("Name '%s' value for individual %s contains non-printable characters(s): %s", objectName, individualIdPair, nameEncoded));
-                break;
+        if (StringUtils.isNotBlank(name)) {
+            for (Character character : Lists.charactersOf(name)) {
+                if (Character.isDigit(character)) {
+                    validationResult.addError(String.format("Name '%s' value for individual %s contains digit(s): %s", objectName, individualIdPair, name));
+                    break;
+                } else if (Character.isISOControl(character)) {
+                    String nameEncoded = name.replace(String.valueOf(character), "[" + Integer.toUnsignedString(character) + "]");
+                    validationResult.addError(String.format("Name '%s' value for individual %s contains iso-control characters(s): %s", objectName, individualIdPair, nameEncoded));
+                    break;
+                } else if (!isPrintableChar(character)) {
+                    String nameEncoded = name.replace(String.valueOf(character), "[" + Integer.toUnsignedString(character) + "]");
+                    validationResult.addError(String.format("Name '%s' value for individual %s contains non-printable characters(s): %s", objectName, individualIdPair, nameEncoded));
+                    break;
+                }
             }
         }
     }
@@ -740,7 +742,7 @@ public abstract class BaseCaseFileValidator {
 
         if (individualIdPair.optionalIndividualGuid.isPresent()) {
             if (StringUtils.isBlank(individualIdPair.optionalIndividualGuid.get()))
-            throw new ParseCaseFileException(String.format("One or more %s objects have empty (or missing) 'IndividualGUID' field", objectName));
+                throw new ParseCaseFileException(String.format("One or more %s objects have empty (or missing) 'IndividualGUID' field", objectName));
         }
 
         if ((!individualIdPair.optionalIndividualId.isPresent())&&(!individualIdPair.optionalIndividualGuid.isPresent()))

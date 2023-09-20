@@ -10,6 +10,11 @@
 	<name>UNHCR eRFF Validation Tool</name>
 	<url>https://github.com/UKHomeOffice/unhcr-erff-validation-tool</url>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
 	<developers>
 		<developer>
 			<id>lsliwko</id>
