@@ -10,6 +10,8 @@ import jakarta.servlet.http.Part;
 import jakarta.servlet.MultipartConfigElement;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 import org.slf4j.Logger;
@@ -62,16 +64,20 @@ public class CaseFileValidatorHandler extends AbstractHandler {
 
         try {
             if (
-                    (target.equals("/"))||  //index file
-                    (target.equals("/validate"))
+                    (StringUtils.isBlank(target))||
+                    ("/".equals(target))||  //index file
+                    ("/validate".equals(target))
             ) {
                 handleValidateForm(jettyRequest, httpServletRequest, httpServletResponse);
             } else
-            if (target.equals("/api/v1/validate")) {
+            if ("/api/v1/validate".equals(target)) {
                 handlerApiV1Validate(jettyRequest, httpServletRequest, httpServletResponse);
             } else
+            if ("/favicon.ico".equals(target)) {
+                //ignore
+            } else
             {
-                throw new RuntimeException("unsupported");
+                throw new RuntimeException(String.format("unsupported path %s", StringEscapeUtils.escapeHtml3(target)));
             }
 
         } catch (Exception e) {
@@ -115,7 +121,9 @@ public class CaseFileValidatorHandler extends AbstractHandler {
 
         String validatorId = "";
         String validationResultHtml = "";
-        if (validationResult!=null) {
+        if (StringUtils.isBlank(caseFileName)) {
+            caseFileName = "(none)";
+        } else if (validationResult!=null) {
             validatorId = validationResult.getValidatorId();
             List<String> validationErrors = validationResult.getErrors();
             if (validationErrors.isEmpty()) {
@@ -132,9 +140,9 @@ public class CaseFileValidatorHandler extends AbstractHandler {
 
         String indexPageBody = indexPageTemplate
                 .replace("@name_and_version@", CaseFileValidator.NAME_AND_VERSION)
-                .replace("@case_file_name@", caseFileName)
-                .replace("@validator_id@", validatorId)
-                .replace("@results_list@", validationResultHtml);
+                .replace("@case_file_name@", StringUtils.defaultString(caseFileName, ""))
+                .replace("@validator_id@", StringUtils.defaultString(validatorId, ""))
+                .replace("@results_list@", StringUtils.defaultString(validationResultHtml, ""));
 
         httpServletResponse.setStatus(HttpServletResponse.SC_OK);
         httpServletResponse.setContentType("text/html;charset=utf-8");

@@ -83,5 +83,22 @@ Note: when building from repository for the first time, generate jaxb bindings f
 mvn clean compile
 ```
 
+# Building Docker image
+
+The source code package contains a sample Dockerfile which produces a simple image with a working service on a port 8080.
+
+In order to build an image, execute the following commands (a working docker service is required):
+
+```
+mvn clean package
+docker build . -t docker.digital.homeoffice.gov.uk/srrs/unhcr-validation-tool:v1.4.5
+```
+
+The image can then be run as follows:
+
+```
+docker container run -dp 8080:8080 -t docker.digital.homeoffice.gov.uk/srrs/unhcr-validation-tool:v1.4.5
+```
+
 # Contact
 Email: leszek.sliwko1@digital.homeoffice.gov.uk or lsliwko@gmail.com
