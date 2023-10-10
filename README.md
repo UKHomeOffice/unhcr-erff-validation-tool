@@ -96,7 +96,7 @@ buildDockerImage.sh
 The image can then be run as follows:
 
 ```
-docker container run -dp 8080:8080 -t docker.digital.homeoffice.gov.uk/srrs/unhcr-validation-tool:v1.4.5
+docker container run -dp 8080:8080 -t docker.digital.homeoffice.gov.uk/srrs/unhcr-validation-tool:1.4.5
 ```
 
 # Contact
