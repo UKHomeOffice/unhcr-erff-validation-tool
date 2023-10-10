@@ -87,11 +87,10 @@ mvn clean compile
 
 The source code package contains a sample Dockerfile which produces a simple image with a working service on a port 8080.
 
-In order to build an image, execute the following commands (a working docker service is required):
+In order to build an image, execute the below script file (a working docker service is required).
 
 ```
-mvn clean package
-docker build . -t docker.digital.homeoffice.gov.uk/srrs/unhcr-validation-tool:v1.4.5
+buildDockerImage.sh
 ```
 
 The image can then be run as follows:
