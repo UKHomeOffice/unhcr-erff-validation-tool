@@ -185,6 +185,8 @@ public abstract class BaseCaseFileValidator {
 
             SAXParserFactory sax = SAXParserFactory.newInstance();
 
+            sax.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+
             sax.setValidating(true);
             sax.setSchema(schema);
 
