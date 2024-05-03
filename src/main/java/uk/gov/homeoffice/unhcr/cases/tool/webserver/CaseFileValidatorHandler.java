@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import uk.gov.homeoffice.unhcr.cases.tool.CaseFileValidator;
 import uk.gov.homeoffice.unhcr.cases.tool.ValidationResult;
 import uk.gov.homeoffice.unhcr.cases.tool.webserver.response.ValidationResultResponse;
+import uk.gov.homeoffice.unhcr.version.GitHubVersionChecker;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -139,6 +140,9 @@ public class CaseFileValidatorHandler extends AbstractHandler {
         }
 
         String indexPageBody = indexPageTemplate
+                .replace("@name_and_version@", CaseFileValidator.NAME_AND_VERSION)
+                .replace("@github_url@", GitHubVersionChecker.GITHUB_PAGE_URL)
+                .replace("@github_releases_url@", GitHubVersionChecker.GITHUB_RELEASES_PAGE_URL)
                 .replace("@name_and_version@", CaseFileValidator.NAME_AND_VERSION)
                 .replace("@case_file_name@", StringUtils.defaultString(caseFileName, ""))
                 .replace("@validator_id@", StringUtils.defaultString(validatorId, ""))

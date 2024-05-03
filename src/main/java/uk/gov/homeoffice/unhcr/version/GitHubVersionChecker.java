@@ -20,7 +20,9 @@ public class GitHubVersionChecker {
 
     static final private String GET_LATEST_VERSION_API_URL = "https://api.github.com/repos/UKHomeOffice/unhcr-erff-validation-tool/releases/latest";
 
-    static final public String GET_LATEST_VERSION_URL = "https://github.com/UKHomeOffice/unhcr-erff-validation-tool/releases";
+    static final public String GITHUB_PAGE_URL = "https://github.com/UKHomeOffice/unhcr-erff-validation-tool";
+
+    static final public String GITHUB_RELEASES_PAGE_URL = "https://github.com/UKHomeOffice/unhcr-erff-validation-tool/releases";
     static final public String VERSION_REGEX = "^(\\d+)\\.(\\d+)\\.(\\d+)$";
 
     //keep latest version for one day

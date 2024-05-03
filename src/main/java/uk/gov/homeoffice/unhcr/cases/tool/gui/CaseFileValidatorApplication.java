@@ -28,7 +28,6 @@ import uk.gov.homeoffice.unhcr.version.GitHubVersionChecker;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
-import java.lang.management.ManagementFactory;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Objects;
@@ -172,6 +171,7 @@ public class CaseFileValidatorApplication extends Application {
         });
 
         validationResultText.setMinHeight(200);
+        validationResultText.setWrapText(true);
         showValidationResult(null);
 
         Button addFilesButton = new Button();
@@ -267,11 +267,11 @@ public class CaseFileValidatorApplication extends Application {
                     System.out.println(String.format("Newer remote version found: %s (local version %s)", newerVersion, currentVersion));
                     Alert alert = new Alert(
                             Alert.AlertType.CONFIRMATION,
-                            String.format("Newer version (%s) found at:\n%s\n\nDo you want to open page?", newerVersion, GitHubVersionChecker.GET_LATEST_VERSION_URL),
+                            String.format("Newer version (%s) found at:\n%s\n\nDo you want to open page?", newerVersion, GitHubVersionChecker.GITHUB_RELEASES_PAGE_URL),
                             ButtonType.NO, ButtonType.YES);
                     alert.initModality(Modality.APPLICATION_MODAL);
                     if (alert.showAndWait().orElse(ButtonType.NO) == ButtonType.YES) {
-                        openUrl(GitHubVersionChecker.GET_LATEST_VERSION_URL);
+                        openUrl(GitHubVersionChecker.GITHUB_RELEASES_PAGE_URL);
                     }
                 } else {
                     System.out.println(String.format("Remote version found: %s (local version %s)", newerVersion, currentVersion));

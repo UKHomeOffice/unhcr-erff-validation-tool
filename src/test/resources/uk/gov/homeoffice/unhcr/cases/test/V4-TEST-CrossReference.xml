@@ -471,6 +471,33 @@
       <LanguageSpeakCode>E</LanguageSpeakCode>
       <LanguageUnderstandCode>E</LanguageUnderstandCode>
     </dataLanguage>
+    <dataLanguage>
+      <LanguageGUID>ba50f7aa-7db4-ea11-8122-00155d78e372</LanguageGUID>
+      <IndividualGUID>c382cd66-e764-4ec9-a8a2-40cc82a19872</IndividualGUID>
+      <LanguageCode>AME</LanguageCode>
+      <LanguageReadCode>N</LanguageReadCode>
+      <LanguageWriteCode>N</LanguageWriteCode>
+      <LanguageSpeakCode>E</LanguageSpeakCode>
+      <LanguageUnderstandCode>E</LanguageUnderstandCode>
+    </dataLanguage>
+    <dataLanguage>
+      <LanguageGUID>ba50f7aa-7db4-ea11-8122-00155d78e31f</LanguageGUID>
+      <IndividualGUID>036b3201-82ba-e911-8109-00155d78e31f</IndividualGUID>
+      <LanguageCode>AME</LanguageCode>
+      <LanguageReadCode>N</LanguageReadCode>
+      <LanguageWriteCode>N</LanguageWriteCode>
+      <LanguageSpeakCode>E</LanguageSpeakCode>
+      <LanguageUnderstandCode>E</LanguageUnderstandCode>
+    </dataLanguage>
+    <dataLanguage>
+      <LanguageGUID>ba50f7aa-7db4-ea11-8122-00155d78f31f</LanguageGUID>
+      <IndividualGUID>45ed4b03-7fba-e911-8109-00155d78e31f</IndividualGUID>
+      <LanguageCode>AME</LanguageCode>
+      <LanguageReadCode>N</LanguageReadCode>
+      <LanguageWriteCode>N</LanguageWriteCode>
+      <LanguageSpeakCode>E</LanguageSpeakCode>
+      <LanguageUnderstandCode>E</LanguageUnderstandCode>
+    </dataLanguage>
     <dataPhotograph>
       <PhotoGUID>bc2e6f62-7db4-ea11-8122-00155d78e3a3</PhotoGUID>
       <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>

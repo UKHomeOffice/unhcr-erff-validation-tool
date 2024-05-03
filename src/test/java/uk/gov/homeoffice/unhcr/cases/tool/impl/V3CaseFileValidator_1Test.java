@@ -167,7 +167,7 @@ public class V3CaseFileValidator_1Test {
 
         ValidationResult validationResult = validator.validate(bytes);
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
-                "None of DataLanguage objects maps to individual(s) 199-00265999"
+                "None of DataLanguage objects maps to individual(s): 199-00265999"
         );
         assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();

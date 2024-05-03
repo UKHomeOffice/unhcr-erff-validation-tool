@@ -4,7 +4,7 @@ echo "Getting version..."
 APP_VERSION=`mvn help:evaluate -Dexpression=project.version -q -DforceStdout`
 echo "Building version ${APP_VERSION}"
 
-DOCKER_IMAGE=docker.digital.homeoffice.gov.uk/scala/play-scala-shopping-cart:${APP_VERSION}
+DOCKER_IMAGE=docker.digital.homeoffice.gov.uk/rrs-unhcr-erff-validation-tool:${APP_VERSION}
 
 echo "Building package..."
 mvn clean package

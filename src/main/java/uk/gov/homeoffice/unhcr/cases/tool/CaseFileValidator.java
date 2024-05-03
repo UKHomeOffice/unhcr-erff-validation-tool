@@ -111,7 +111,7 @@ public class CaseFileValidator extends BaseCaseFileValidator {
             latestVersionTag = GitHubVersionChecker.getLatestReleaseVersionCached().toString();
 
             if (GitHubVersionChecker.checkReleaseVersionNewer())
-                comment = String.format("Please download newer version from %s", GitHubVersionChecker.GET_LATEST_VERSION_URL);
+                comment = String.format("Please download newer version from %s", GitHubVersionChecker.GITHUB_RELEASES_PAGE_URL);
 
         } catch (Exception e) {
             latestVersionTag = String.format("Cannot be retrieved: %s", e.getMessage());

@@ -886,7 +886,7 @@ public abstract class BaseCaseFileValidator {
         if (mustMapAllIndividualsFlag) {
             Sets.SetView<IndividualIdPair> difference = Sets.difference(Sets.newHashSet(allowedIndividualIdPairs), map.keySet());
             if (!difference.isEmpty()) {
-                validationResult.addError(String.format("None of %s objects maps to individual(s) %s", objectName, difference.stream().map(individualIdPair -> Objects.toString(individualIdPair, "")).collect(Collectors.joining(","))));
+                validationResult.addError(String.format("None of %s objects maps to individual(s): %s", objectName, difference.stream().map(individualIdPair -> Objects.toString(individualIdPair, "")).collect(Collectors.joining(", "))));
             }
         }
 
