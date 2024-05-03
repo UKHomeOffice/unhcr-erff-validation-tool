@@ -4,7 +4,7 @@
     <GroupIndividualIndicator>Single Submission</GroupIndividualIndicator>
   </RRFBATCHTYPE>
   <CASE>
- <dataIndividual>
+    <dataIndividual>
       <IndividualID>199-00265997</IndividualID>
       <ConcatenatedName>Abcd, Derty Qerty</ConcatenatedName>
       <FamilyName>Abcd</FamilyName>
@@ -177,6 +177,14 @@
     <dataLanguage>
       <IndividualID>199-00265997</IndividualID>
       <LanguageCode>ABV1</LanguageCode>
+      <LanguageReadCode>E</LanguageReadCode>
+      <LanguageWriteCode>E</LanguageWriteCode>
+      <LanguageSpeakCode>E</LanguageSpeakCode>
+      <LanguageUnderstandCode>E</LanguageUnderstandCode>
+    </dataLanguage>
+    <dataLanguage>
+      <IndividualID>199-00265999</IndividualID>
+      <LanguageCode>ABV</LanguageCode>
       <LanguageReadCode>E</LanguageReadCode>
       <LanguageWriteCode>E</LanguageWriteCode>
       <LanguageSpeakCode>E</LanguageSpeakCode>

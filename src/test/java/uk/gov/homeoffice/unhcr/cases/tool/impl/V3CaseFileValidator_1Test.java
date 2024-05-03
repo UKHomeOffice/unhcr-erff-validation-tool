@@ -144,8 +144,8 @@ public class V3CaseFileValidator_1Test {
     }
 
     @Test
-    void validateLanguageTest() throws IOException {
-        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-Language.xml", getClass().getClassLoader());
+    void validateLanguage1Test() throws IOException {
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-Language1.xml", getClass().getClassLoader());
 
         BaseCaseFileValidator validator = new V3CaseFileValidator_1();
         assertThat(validator.isApplicable(bytes)).isTrue();
@@ -153,6 +153,21 @@ public class V3CaseFileValidator_1Test {
         ValidationResult validationResult = validator.validate(bytes);
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Invalid value 'LanguageCode' value for individual 199-00265997: ABV1"
+        );
+        assertThat(validationResult.getWarnings()).isEmpty();
+        assertThat(validationResult.isSuccess()).isFalse();
+    }
+
+    @Test
+    void validateLanguage2Test() throws IOException {
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-Language2.xml", getClass().getClassLoader());
+
+        BaseCaseFileValidator validator = new V3CaseFileValidator_1();
+        assertThat(validator.isApplicable(bytes)).isTrue();
+
+        ValidationResult validationResult = validator.validate(bytes);
+        assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
+                "None of DataLanguage objects maps to individual(s) 199-00265999"
         );
         assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();

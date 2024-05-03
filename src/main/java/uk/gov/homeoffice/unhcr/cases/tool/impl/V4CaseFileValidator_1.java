@@ -441,7 +441,7 @@ public class V4CaseFileValidator_1 extends BaseCaseFileValidator {
                             unhcrCaseIndividualIdPairs,
                             unhcrCase.getDataLanguage(),
                             obj -> IndividualIdPair.ofIndividualGuid(obj.getIndividualGUID()),
-                            false,
+                            true,   //every individual should have language section
                             false,
                             validationResult
                     );

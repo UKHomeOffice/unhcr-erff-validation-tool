@@ -349,7 +349,7 @@ public class V3CaseFileValidator_1 extends BaseCaseFileValidator {
                             unhcrCaseIndividualIdPairs,
                             unhcrCase.getDataLanguage(),
                             obj -> IndividualIdPair.ofIndividualId(obj.getIndividualID()),
-                            false,
+                            true,   //every individual should have language section
                             false,
                             validationResult
                     );
