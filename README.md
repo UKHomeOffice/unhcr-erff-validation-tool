@@ -78,7 +78,7 @@ if (!validationResult.isSuccess()) validationResult.getErrors()
 ...
 ```
 
-Note: when building from repository for the first time, generate jaxb bindings for xml schema definitions by running the below maven command:
+When building from repository for the first time, generate jaxb bindings for xml schema definitions by running the below maven command:
 ```
 mvn clean compile
 ```
@@ -87,9 +87,9 @@ mvn clean compile
 # Release
 
 To release the tool, remove ```-SNAPSHOT``` from the version and commit the changes to GitHub. Afterward, GitHub Actions will release it at the following link:
-https://github.com/UKHomeOffice/unhcr-erff-validation-tool/releases
+https://github.com/UKHomeOffice/unhcr-erff-validation-tool/releases For any new development, increase the version and append ```-SNAPSHOT```.
 
-Additionally, current GUI users will be notified about the new version.
+**Note: GUI users will be notified once the new version is available on GitHub.**
 
 
 # Building Docker image
