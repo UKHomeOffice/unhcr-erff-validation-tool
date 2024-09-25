@@ -261,7 +261,7 @@ public abstract class BaseCaseFileValidator {
                 validationResult.addError(String.format("Photo for individual '%s' is empty (zero-length file)", individualIdPair));
                 return;
             } else if (bytesImage.length >= 150 * 1024) {
-                validationResult.addError(String.format("Photo for individual '%' is too large (%d bytes, limit 150 KB)", individualIdPair, bytesImage.length));
+                validationResult.addError(String.format("Photo for individual '%s' is too large (%d bytes, limit 150 KB)", individualIdPair, bytesImage.length));
                 return;
             }
         } catch (IllegalArgumentException iae) {
