@@ -83,12 +83,14 @@ Note: when building from repository for the first time, generate jaxb bindings f
 mvn clean compile
 ```
 
+
 # Release
 
-To release the tool, remove -SNAPSHOT from the version and commit the changes to GitHub. Afterward, GitHub Actions will release it at the following link:
+To release the tool, remove ```-SNAPSHOT``` from the version and commit the changes to GitHub. Afterward, GitHub Actions will release it at the following link:
 https://github.com/UKHomeOffice/unhcr-erff-validation-tool/releases
 
 Additionally, current GUI users will be notified about the new version.
+
 
 # Building Docker image
 
