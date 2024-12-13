@@ -25,7 +25,7 @@
       <MarriageStatusCode>SN</MarriageStatusCode>
       <ReligionCode>MUS</ReligionCode>
       <EthnicityCode>114</EthnicityCode>
-      <EducationLevelCode>-</EducationLevelCode>
+       <EducationLevelCode>PG</EducationLevelCode>
       <MotherName>WWW, N</MotherName>
       <FatherName>KKK, M</FatherName>
     </dataIndividual>
@@ -51,7 +51,7 @@
       <MarriageStatusCode>SN</MarriageStatusCode>
       <ReligionCode>MUS</ReligionCode>
       <EthnicityCode>102</EthnicityCode>
-      <EducationLevelCode>-</EducationLevelCode>
+       <EducationLevelCode>PG</EducationLevelCode>
       <MotherName>ALEK, WWWW</MotherName>
       <FatherName>BUNNY, Bugs</FatherName>
     </dataIndividual>
@@ -77,7 +77,7 @@
       <MarriageStatusCode>PT</MarriageStatusCode>
       <ReligionCode>MUS</ReligionCode>
       <EthnicityCode>219</EthnicityCode>
-      <EducationLevelCode>-</EducationLevelCode>
+       <EducationLevelCode>PG</EducationLevelCode>
       <MotherName>ALI AAA</MotherName>
       <FatherName>BUNNY, Bugs</FatherName>
     </dataIndividual>
@@ -103,7 +103,7 @@
       <MarriageStatusCode>SN</MarriageStatusCode>
       <ReligionCode>MUS</ReligionCode>
       <EthnicityCode>322</EthnicityCode>
-      <EducationLevelCode>-</EducationLevelCode>
+       <EducationLevelCode>PG</EducationLevelCode>
       <MotherName>ALI WWW</MotherName>
       <FatherName>BUNNY, Bugs</FatherName>
     </dataIndividual>
@@ -129,7 +129,7 @@
       <MarriageStatusCode>SN</MarriageStatusCode>
       <ReligionCode>MUS</ReligionCode>
       <EthnicityCode>402</EthnicityCode>
-      <EducationLevelCode>-</EducationLevelCode>
+       <EducationLevelCode>PG</EducationLevelCode>
       <MotherName>ALI WWW</MotherName>
       <FatherName>BUNNY, Bugs</FatherName>
     </dataIndividual>
@@ -398,6 +398,7 @@
       <MiddleName></MiddleName>
       <MaidenName></MaidenName>
       <RelationshipCode>PRF</RelationshipCode>
+      <DateofBirth>1980-08-01T00:00:00+02:00</DateofBirth>
       <DateofBirthEstimateFlag>0</DateofBirthEstimateFlag>
       <BirthCountryCode>NZL</BirthCountryCode>
       <BirthCityTownVillage>Wellington</BirthCityTownVillage>
@@ -416,6 +417,7 @@
       <MiddleName></MiddleName>
       <MaidenName></MaidenName>
       <RelationshipCode>PRM</RelationshipCode>
+      <DateofBirth>1980-08-01T00:00:00+02:00</DateofBirth>
       <DateofBirthEstimateFlag>0</DateofBirthEstimateFlag>
       <BirthCountryCode>MLI</BirthCountryCode>
       <BirthCityTownVillage>Unknown</BirthCityTownVillage>

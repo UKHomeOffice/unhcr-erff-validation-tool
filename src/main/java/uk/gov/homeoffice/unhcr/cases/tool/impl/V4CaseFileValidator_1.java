@@ -120,13 +120,14 @@ public class V4CaseFileValidator_1 extends BaseCaseFileValidator {
                 validateDataIndividual(
                         entry.getKey(),
                         Optional.empty(),
+                        Optional.empty(),
                         ParsedString.ofMandatory(entry.getValue().getFamilyName()),
                         ParsedString.ofOptional(entry.getValue().getSecondFamilyName()),
-                        ParsedString.ofOptional(entry.getValue().getGivenName()),
+                        ParsedString.ofMandatory(entry.getValue().getGivenName()),
                         ParsedString.ofOptional(entry.getValue().getMiddleName()),
                         ParsedString.ofOptional(entry.getValue().getMaidenName()),
                         ParsedDate.ofMandatory(entry.getValue().getRegistrationDate()),
-                        ParsedDate.ofOptional(entry.getValue().getDateofBirth()),
+                        ParsedDate.ofMandatory(entry.getValue().getDateofBirth()),
                         Optional.of(entry.getValue().isDateofBirthEstimate()),
                         ParsedString.ofMandatory(entry.getValue().getBirthCountryCode()),
                         ParsedString.ofOptional(entry.getValue().getBirthCityTownVillage()),
@@ -146,6 +147,7 @@ public class V4CaseFileValidator_1 extends BaseCaseFileValidator {
                         Optional.empty(),
                         Optional.empty(),
                         Optional.empty(),
+                        false,
                         Optional.empty(),
                         validationResult
                 );
@@ -351,6 +353,11 @@ public class V4CaseFileValidator_1 extends BaseCaseFileValidator {
                         individualIdPairWithAddressTypePairs,
                         validationResult
                 );
+                validateTELAddressTypeForPrimaryApplicant(
+                        optionalPrimaryApplicantIdPair.get(),
+                        individualIdPairWithAddressTypePairs,
+                        validationResult
+                );
             }
         }
 
@@ -369,16 +376,17 @@ public class V4CaseFileValidator_1 extends BaseCaseFileValidator {
             for (Map.Entry<IndividualIdPair, UNHCRRRF.CASE.DataIndividualRelatives> entry : unhcrCaseDataIndividualRelativesMap.entries()) {
                 validateDataIndividual(
                         entry.getKey(),
+                        ParsedString.ofOptional(" for relative"),
                         Optional.empty(),
                         ParsedString.ofMandatory(entry.getValue().getFamilyName()),
                         ParsedString.ofOptional(entry.getValue().getSecondFamilyName()),
-                        ParsedString.ofOptional(entry.getValue().getGivenName()),
+                        ParsedString.ofMandatory(entry.getValue().getGivenName()),
                         ParsedString.ofOptional(entry.getValue().getMiddleName()),
                         ParsedString.ofOptional(entry.getValue().getMaidenName()),
                         Optional.empty(),
-                        Optional.empty(),
-                        Optional.empty(),
-                        Optional.empty(),
+                        ParsedDate.ofMandatory(entry.getValue().getDateofBirth()),
+                        Optional.of(entry.getValue().isDateofBirthEstimateFlag()),
+                        ParsedString.ofMandatory((entry.getValue().getBirthCountryCode())),
                         Optional.empty(),
                         Optional.empty(),
                         Optional.empty(),
@@ -394,8 +402,9 @@ public class V4CaseFileValidator_1 extends BaseCaseFileValidator {
                         Optional.empty(),
                         Optional.empty(),
                         ParsedString.ofMandatory(entry.getValue().getRelationshipCode()),
-                        Optional.of(entry.getValue().isDeceased()),
+                        ParsedString.ofMandatory(entry.getValue().getDeceased()),
                         ParsedDate.ofOptional(entry.getValue().getDeceasedDate()),
+                        true,
                         Optional.empty(),
                         validationResult
                 );
