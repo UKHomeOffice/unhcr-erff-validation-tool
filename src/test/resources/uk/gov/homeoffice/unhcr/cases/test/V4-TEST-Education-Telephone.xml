@@ -109,7 +109,7 @@
     <dataResettlement>
       <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>
       <ResettlementCriteriaCode>LAS</ResettlementCriteriaCode>
-<!--	  <ResettlementCriteria2Code>SVT</ResettlementCriteria2Code>  -->
+      <ResettlementCriteria2Code></ResettlementCriteria2Code>
       <ResettlementPriorityCode>NR</ResettlementPriorityCode>
     </dataResettlement>
     <dataVulnerability>

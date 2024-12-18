@@ -488,7 +488,7 @@ public class V4CaseFileValidator_1 extends BaseCaseFileValidator {
                 validateDataResettlement(
                         entry.getKey(),
                         ParsedString.ofMandatory(entry.getValue().getResettlementCriteriaCode()),
-                        ParsedString.ofOptional(entry.getValue().getResettlementCriteria2Code()),
+                        ParsedString.ofMandatory(entry.getValue().getResettlementCriteria2Code()),
                         ParsedString.ofMandatory(entry.getValue().getResettlementPriorityCode()),
                         validationResult
                 );

@@ -14,7 +14,7 @@
 <!--      <MaidenName>YYYY</MaidenName>-->
       <RegistrationDate>2020-05-01T00:00:00+02:00</RegistrationDate>
       <DateofBirth>1980-08-01T00:00:00+02:00</DateofBirth>
-      <DateofBirthEstimate>0</DateofBirthEstimate>
+      <DateofBirthEstimate>2</DateofBirthEstimate>
       <BirthCountryCode>AUL</BirthCountryCode>
 <!--      <BirthCityTownVillage>Bolec</BirthCityTownVillage>-->
       <OriginCountryCode>AUL</OriginCountryCode>
@@ -64,7 +64,7 @@
       <!--	  <LocationLevel3Description> 3</LocationLevel3Description>-->
       <!--	  <LocationLevel4Description> 4</LocationLevel4Description>-->
       <!--	  <LocationLevel5Description> 5</LocationLevel5Description>-->
-      <LocationLevel6>1234567890</LocationLevel6>-->
+      <LocationLevel6>1234567890</LocationLevel6>
     </dataAddress>
     <dataAlias>
       <AliasGUID>5a2c771f-90b4-ea11-8122-00155d78e3a3</AliasGUID>
@@ -122,7 +122,7 @@
     <dataResettlement>
       <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>
       <ResettlementCriteriaCode>LAS</ResettlementCriteriaCode>
-<!--	  <ResettlementCriteria2Code>SVT</ResettlementCriteria2Code>  -->
+	  <ResettlementCriteria2Code>SVT</ResettlementCriteria2Code>  
       <ResettlementPriorityCode>NR</ResettlementPriorityCode>
     </dataResettlement>
     <dataVulnerability>

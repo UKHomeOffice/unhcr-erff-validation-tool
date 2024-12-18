@@ -64,7 +64,8 @@ public class V4CaseFileValidator_1Test {
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Empty (or missing) 'DateOfBirth' value for individual cc4e69b8-7cb4-ea11-8122-00155d78e3a3",
                 "Invalid 'EducationLevelCode' value for individual cc4e69b8-7cb4-ea11-8122-00155d78e3a3: -",
-                "No 'TEL' addresses/telephone for Primary Applicant cc4e69b8-7cb4-ea11-8122-00155d78e3a3");
+                "No 'TEL' addresses/telephone for Primary Applicant cc4e69b8-7cb4-ea11-8122-00155d78e3a3",
+                "Empty (or missing) 'ResettlementCriteriaCode2' value for individual cc4e69b8-7cb4-ea11-8122-00155d78e3a3");      ;
         assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
     }
