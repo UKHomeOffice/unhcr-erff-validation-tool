@@ -567,7 +567,7 @@ public abstract class BaseCaseFileValidator {
             Optional<String> optionalPhoto,
             ValidationResult validationResult
     ) throws ParseCaseFileException {
-        final String OBJECT_NAME = objectName.isPresent()?objectName.get().toString():"";
+        final String OBJECT_NAME = objectName.isPresent()?objectName.get():"";
 
         validateName(individualIdPair, "ConcatenatedName".concat(OBJECT_NAME), optionalConcatenatedName, false, validationResult);
 
@@ -616,8 +616,13 @@ public abstract class BaseCaseFileValidator {
         validateReferenceData(individualIdPair, "RelationshipCode".concat(OBJECT_NAME), optionalRelationshipCode, relationshipCodeReferenceData, validationResult);
 
         validateDate(individualIdPair, "DeceasedDate", optionalDeceasedDate, validationResult);
-        if (isRequiredDataIndividualRelative &&  optionalDeceased.get().toString().isEmpty()) {
-            validationResult.addError(String.format("Empty (or missing) 'Deceased%s' for individual %s ", OBJECT_NAME, individualIdPair));
+        if (isRequiredDataIndividualRelative) {
+            List<String> deceasedValues = Arrays.asList("true","false","0","1");
+            if (optionalDeceased.get().isEmpty()) {
+                validationResult.addError(String.format("Empty (or missing) 'Deceased%s' for individual %s ", OBJECT_NAME, individualIdPair));
+            } else if(!deceasedValues.contains(optionalDeceased.get())) {
+                validationResult.addError(String.format("true/false/0/1 are only acceptable values for 'Deceased%s' for individual %s ", OBJECT_NAME, individualIdPair));
+            }
         }
         optionalPhoto.ifPresent(photo -> validateDataPhotography(individualIdPair, photo, Optional.empty(), Optional.empty(), validationResult));
     }

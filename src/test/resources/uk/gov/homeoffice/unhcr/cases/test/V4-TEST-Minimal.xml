@@ -101,7 +101,7 @@
       <ResidenceCountryCode>AUL</ResidenceCountryCode>
       <SexCode>M</SexCode>
       <NationalityCode>AUL</NationalityCode>
-      <Deceased>0</Deceased>
+      <Deceased>false</Deceased>
       <MarriageStatusCode>MA</MarriageStatusCode>
     </dataIndividualRelatives>
     <dataLanguage>

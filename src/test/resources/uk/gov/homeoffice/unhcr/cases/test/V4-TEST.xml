@@ -410,7 +410,7 @@
       <ResidenceCountryCode>U</ResidenceCountryCode>
       <SexCode>M</SexCode>
       <NationalityCode>MLI</NationalityCode>
-      <Deceased>0</Deceased>
+      <Deceased>true</Deceased>
       <MarriageStatusCode>U</MarriageStatusCode>
     </dataIndividualRelatives>
     <dataIndividualRelatives>
