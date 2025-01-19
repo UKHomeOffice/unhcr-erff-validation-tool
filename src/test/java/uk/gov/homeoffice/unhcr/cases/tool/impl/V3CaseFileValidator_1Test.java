@@ -60,7 +60,7 @@ public class V3CaseFileValidator_1Test {
 
         ValidationResult validationResult = validator.validate(bytes);
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
-                "Invalid value 'AddressType' value for individual 199-00265997: COAS",
+                "Invalid 'AddressType' value for individual 199-00265997: COAS",
                 "No 'COA' addresses for Primary Applicant 199-00265997"
         );
         assertThat(validationResult.getWarnings()).isEmpty();
@@ -92,7 +92,7 @@ public class V3CaseFileValidator_1Test {
 
         ValidationResult validationResult = validator.validate(bytes);
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
-                "Empty (or missing) 'DateofBirth' value for individual 199-00265997"
+                "Empty (or missing) 'DateOfBirth' value for individual 199-00265997"
         );
         assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
@@ -152,7 +152,7 @@ public class V3CaseFileValidator_1Test {
 
         ValidationResult validationResult = validator.validate(bytes);
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
-                "Invalid value 'LanguageCode' value for individual 199-00265997: ABV1"
+                "Invalid 'LanguageCode' value for individual 199-00265997: ABV1"
         );
         assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
@@ -183,12 +183,12 @@ public class V3CaseFileValidator_1Test {
         ValidationResult validationResult = validator.validate(bytes);
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
                 "Name 'GivenName' value for individual 199-00265997 contains digit(s): Leszek123",
-                "Invalid value 'OriginCountryCode' value for individual 199-00265997: SYRIA",
-                "Invalid value 'NationalityCode' value for individual 199-00265997: BGD1",
-                "Invalid value 'ReligionCode' value for individual 199-00265997: SA",
-                "Invalid value 'EthnicityCode' value for individual 199-00265997: 08312",
+                "Invalid 'OriginCountryCode' value for individual 199-00265997: SYRIA",
+                "Invalid 'NationalityCode' value for individual 199-00265997: BGD1",
+                "Invalid 'ReligionCode' value for individual 199-00265997: SA",
+                "Invalid 'EthnicityCode' value for individual 199-00265997: 08312",
                 "Empty (or missing) 'RegistrationDate' value for Primary Applicant 199-00265997",
-                "Invalid value 'OccupationCode' value for individual 199-00265997: 999999",
+                "Invalid 'OccupationCode' value for individual 199-00265997: 999999",
                 "Empty (or missing) 'OccupationCode' value for individual 199-00265997"
         );
         assertThat(validationResult.getWarnings()).isEmpty();

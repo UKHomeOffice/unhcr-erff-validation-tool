@@ -108,6 +108,7 @@ public class V3CaseFileValidator_1 extends BaseCaseFileValidator {
             for (Map.Entry<IndividualIdPair, UNHCRRRF.CASE.DataIndividual> entry : unhcrCaseIndividualsMap.entries()) {
                 validateDataIndividual(
                         entry.getKey(),
+                        Optional.empty(),
                         ParsedString.ofMandatory(entry.getValue().getConcatenatedName()),
                         ParsedString.ofMandatory(entry.getValue().getFamilyName()),
                         Optional.empty(),
@@ -135,6 +136,7 @@ public class V3CaseFileValidator_1 extends BaseCaseFileValidator {
                         Optional.empty(),
                         Optional.empty(),
                         Optional.empty(),
+                        false,
                         ParsedString.ofMandatory(entry.getValue().getPhoto()),
                         validationResult
                 );
@@ -288,6 +290,7 @@ public class V3CaseFileValidator_1 extends BaseCaseFileValidator {
                 validateDataIndividual(
                         entry.getKey(),
                         Optional.empty(),
+                        Optional.empty(),
                         ParsedString.ofMandatory(entry.getValue().getFamilyName()),
                         ParsedString.ofMandatory(entry.getValue().getGivenName()),
                         Optional.empty(),
@@ -314,6 +317,7 @@ public class V3CaseFileValidator_1 extends BaseCaseFileValidator {
                         ParsedString.ofMandatory(entry.getValue().getRelationshipCode()),
                         Optional.empty(),
                         Optional.empty(),
+                        false,
                         Optional.empty(),
                         validationResult
                 );

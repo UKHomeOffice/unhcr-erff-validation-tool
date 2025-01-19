@@ -176,7 +176,7 @@
                     <xs:element name="ResidenceCountryCode" type="xs:string"/>
                     <xs:element name="SexCode" type="xs:string"/>
                     <xs:element name="NationalityCode" type="xs:string"/>
-                    <xs:element name="Deceased" type="xs:boolean"/>
+                    <xs:element name="Deceased" type="xs:string" />
                     <xs:element name="DeceasedDate" type="xs:dateTime" minOccurs="0"/>
                     <xs:element name="MarriageStatusCode" type="xs:string"/>
                   </xs:sequence>

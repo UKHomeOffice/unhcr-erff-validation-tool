@@ -19,6 +19,7 @@ import uk.gov.homeoffice.unhcr.cases.tool.ValidationResult;
 import uk.gov.homeoffice.unhcr.exception.ParseCaseFileException;
 
 import javax.imageio.ImageIO;
+import javax.management.ObjectName;
 import javax.xml.XMLConstants;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.parsers.SAXParserFactory;
@@ -534,6 +535,7 @@ public abstract class BaseCaseFileValidator {
 
     protected void validateDataIndividual(
             IndividualIdPair individualIdPair,
+            Optional<String> objectName,
             Optional<String> optionalConcatenatedName,
             Optional<String> optionalFamilyName,
             Optional<String> optionalSecondFamilyName,
@@ -559,60 +561,69 @@ public abstract class BaseCaseFileValidator {
             Optional<String> optionalFatherName,
             Optional<String> optionalRelationshipToPrincipalRepresentative,
             Optional<String> optionalRelationshipCode,
-            Optional<Boolean> optionalDeceased,
+            Optional<String> optionalDeceased,
             Optional<ParsedDate> optionalDeceasedDate,
+            boolean isRequiredDataIndividualRelative,
             Optional<String> optionalPhoto,
             ValidationResult validationResult
     ) throws ParseCaseFileException {
+        final String OBJECT_NAME = objectName.isPresent()?objectName.get():"";
 
-        validateName(individualIdPair, "ConcatenatedName", optionalConcatenatedName, false, validationResult);
+        validateName(individualIdPair, "ConcatenatedName".concat(OBJECT_NAME), optionalConcatenatedName, false, validationResult);
 
-        validateName(individualIdPair, "FamilyName", optionalFamilyName, false, validationResult);
+        validateName(individualIdPair, "FamilyName".concat(OBJECT_NAME), optionalFamilyName, false, validationResult);
 
-        validateName(individualIdPair, "SecondFamilyName", optionalSecondFamilyName, false, validationResult);
+        validateName(individualIdPair, "SecondFamilyName".concat(OBJECT_NAME), optionalSecondFamilyName, false, validationResult);
 
-        validateName(individualIdPair, "GivenName", optionalGivenName, false, validationResult);
+        validateName(individualIdPair, "GivenName".concat(OBJECT_NAME), optionalGivenName, false, validationResult);
 
-        validateName(individualIdPair, "MiddleName", optionalMiddleName, false, validationResult);
+        validateName(individualIdPair, "MiddleName".concat(OBJECT_NAME), optionalMiddleName, false, validationResult);
 
-        validateName(individualIdPair, "MaidenName", optionalMaidenName, false, validationResult);
+        validateName(individualIdPair, "MaidenName".concat(OBJECT_NAME), optionalMaidenName, false, validationResult);
 
-        validateDate(individualIdPair, "RegistrationDate", optionalRegistrationDate, validationResult);
+        validateDate(individualIdPair, "RegistrationDate".concat(OBJECT_NAME), optionalRegistrationDate, validationResult);
 
-        validateDate(individualIdPair, "DateofBirth", optionalDateOfBirth, validationResult);
+        validateDate(individualIdPair, "DateOfBirth".concat(OBJECT_NAME), optionalDateOfBirth, validationResult);
 
-        validateReferenceData(individualIdPair, "BirthCountryCode", optionalBirthCountryCode, ReferenceDataContainer.countryCodeReferenceData, validationResult);
+        validateReferenceData(individualIdPair, "BirthCountryCode".concat(OBJECT_NAME), optionalBirthCountryCode, ReferenceDataContainer.countryCodeReferenceData, validationResult);
 
-        validateReferenceData(individualIdPair, "OriginCountryCode", optionalOriginCountryCode, ReferenceDataContainer.countryCodeReferenceData, validationResult);
+        validateReferenceData(individualIdPair, "OriginCountryCode".concat(OBJECT_NAME), optionalOriginCountryCode, ReferenceDataContainer.countryCodeReferenceData, validationResult);
 
-        validateReferenceData(individualIdPair, "AsylumCountryCode", optionalAsylumCountryCode, ReferenceDataContainer.countryCodeReferenceData, validationResult);
+        validateReferenceData(individualIdPair, "AsylumCountryCode".concat(OBJECT_NAME), optionalAsylumCountryCode, ReferenceDataContainer.countryCodeReferenceData, validationResult);
 
-        validateDate(individualIdPair, "ArrivalDate", optionalArrivalDate, validationResult);
+        validateDate(individualIdPair, "ArrivalDate".concat(OBJECT_NAME), optionalArrivalDate, validationResult);
 
-        validateReferenceData(individualIdPair, "SexCode", optionalSexCode, ReferenceDataContainer.sexCodeReferenceData, validationResult);
+        validateReferenceData(individualIdPair, "SexCode".concat(OBJECT_NAME), optionalSexCode, ReferenceDataContainer.sexCodeReferenceData, validationResult);
 
-        validateReferenceData(individualIdPair, "NationalityCode", optionalNationalityCode, ReferenceDataContainer.countryCodeReferenceData, validationResult);
+        validateReferenceData(individualIdPair, "NationalityCode".concat(OBJECT_NAME), optionalNationalityCode, ReferenceDataContainer.countryCodeReferenceData, validationResult);
 
-        validateReferenceData(individualIdPair, "ResidenceCountryCode", optionalResidenceCountryCode, ReferenceDataContainer.countryCodeReferenceData, validationResult);
+        validateReferenceData(individualIdPair, "ResidenceCountryCode".concat(OBJECT_NAME), optionalResidenceCountryCode, ReferenceDataContainer.countryCodeReferenceData, validationResult);
 
-        validateReferenceData(individualIdPair, "MarriageStatusCode", optionalMarriageStatusCode, ReferenceDataContainer.maritalStatusCodeReferenceData, validationResult);
+        validateReferenceData(individualIdPair, "MarriageStatusCode".concat(OBJECT_NAME), optionalMarriageStatusCode, ReferenceDataContainer.maritalStatusCodeReferenceData, validationResult);
 
-        validateReferenceData(individualIdPair, "ReligionCode", optionalReligionCode, ReferenceDataContainer.religionCodeReferenceData, validationResult);
+        validateReferenceData(individualIdPair, "ReligionCode".concat(OBJECT_NAME), optionalReligionCode, ReferenceDataContainer.religionCodeReferenceData, validationResult);
 
-        validateReferenceData(individualIdPair, "EthnicityCode", optionalEthnicityCode, ReferenceDataContainer.ethnicityCodeReferenceData, validationResult);
+        validateReferenceData(individualIdPair, "EthnicityCode".concat(OBJECT_NAME), optionalEthnicityCode, ReferenceDataContainer.ethnicityCodeReferenceData, validationResult);
 
-        validateReferenceData(individualIdPair, "EducationLevelCode", optionalEducationLevelCode, ReferenceDataContainer.educationLevelTypeReferenceData, validationResult);
+        validateReferenceData(individualIdPair, "EducationLevelCode".concat(OBJECT_NAME), optionalEducationLevelCode, ReferenceDataContainer.educationLevelTypeReferenceData, validationResult);
 
-        validateName(individualIdPair, "MotherName", optionalMotherName, false, validationResult);
+        validateName(individualIdPair, "MotherName".concat(OBJECT_NAME), optionalMotherName, false, validationResult);
 
-        validateName(individualIdPair, "FatherName", optionalFatherName, false, validationResult);
+        validateName(individualIdPair, "FatherName".concat(OBJECT_NAME), optionalFatherName, false, validationResult);
 
         validateReferenceData(individualIdPair, "RelationshipToPrincipalRepresentative", optionalRelationshipToPrincipalRepresentative, ReferenceDataContainer.relationshipCodeReferenceData, validationResult);
 
-        validateReferenceData(individualIdPair, "RelationshipCodeReferenceData", optionalRelationshipCode, relationshipCodeReferenceData, validationResult);
+        validateReferenceData(individualIdPair, "RelationshipCode".concat(OBJECT_NAME), optionalRelationshipCode, relationshipCodeReferenceData, validationResult);
 
         validateDate(individualIdPair, "DeceasedDate", optionalDeceasedDate, validationResult);
-
+        if (isRequiredDataIndividualRelative) {
+            List<String> deceasedValues = Arrays.asList("true","false","0","1");
+            if (optionalDeceased.get().isEmpty()) {
+                validationResult.addError(String.format("Empty (or missing) 'Deceased%s' for individual %s ", OBJECT_NAME, individualIdPair));
+            } else if(!deceasedValues.contains(optionalDeceased.get())) {
+                validationResult.addError(String.format("true/false/0/1 are only acceptable values for 'Deceased%s' for individual %s ", OBJECT_NAME, individualIdPair));
+            }
+        }
         optionalPhoto.ifPresent(photo -> validateDataPhotography(individualIdPair, photo, Optional.empty(), Optional.empty(), validationResult));
     }
 
@@ -647,6 +658,21 @@ public abstract class BaseCaseFileValidator {
             }
         });
 
+    }
+
+    //validate that primary applicant has TEL as address type
+    protected void validateTELAddressTypeForPrimaryApplicant(
+            IndividualIdPair primaryApplicantIdPair,
+            List<Pair<IndividualIdPair, String>> individualIdPairWithAddressTypePairs,
+            ValidationResult validationResult
+    ) {
+        long telphoneAddressesCount = individualIdPairWithAddressTypePairs.stream()
+                .filter(entry -> primaryApplicantIdPair.equals(entry.getKey()) && ADDRESS_TYPE_CODE_TELEPHONE.equalsIgnoreCase(entry.getValue()))
+                .count();
+
+        if (telphoneAddressesCount==0) {
+            validationResult.addError(String.format("No 'TEL' addresses/telephone for Primary Applicant %s", primaryApplicantIdPair));
+        }
     }
 
     //validate that primary applicant has COA address type
@@ -688,7 +714,7 @@ public abstract class BaseCaseFileValidator {
             validationResult.addError(String.format("Empty (or missing) '%s' value for individual %s", objectName, individualIdPair));
 
         } else if (!referenceData.containsCode(referenceCode)) {
-            String error = String.format("Invalid value '%s' value for individual %s: %s", objectName, individualIdPair, referenceCode);
+            String error = String.format("Invalid '%s' value for individual %s: %s", objectName, individualIdPair, referenceCode);
 
             //TODO make into command argument
             if (ReferenceData.showSuggestedValuesFlag) {

@@ -13,8 +13,8 @@
 <!--      <MiddleName>DDDD</MiddleName>-->
 <!--      <MaidenName>YYYY</MaidenName>-->
       <RegistrationDate>2020-05-01T00:00:00+02:00</RegistrationDate>
-      <DateofBirth>1980-08-01T00:00:00+02:00</DateofBirth>
-      <DateofBirthEstimate>2</DateofBirthEstimate>
+<!--      <DateofBirth>1980-08-01T00:00:00+02:00</DateofBirth>-->
+      <DateofBirthEstimate>0</DateofBirthEstimate>
       <BirthCountryCode>AUL</BirthCountryCode>
 <!--      <BirthCityTownVillage>Bolec</BirthCityTownVillage>-->
       <OriginCountryCode>AUL</OriginCountryCode>
@@ -25,7 +25,7 @@
       <MarriageStatusCode>SN</MarriageStatusCode>
       <ReligionCode>MUS</ReligionCode>
       <EthnicityCode>114</EthnicityCode>
-      <EducationLevelCode>PG</EducationLevelCode>
+      <EducationLevelCode>-</EducationLevelCode>
 <!--      <MotherName>WWW, N</MotherName>-->
 <!--      <FatherName>KKK, M</FatherName>-->
     </dataIndividual>
@@ -52,19 +52,6 @@
 <!--	  <LocationLevel4Description> 4</LocationLevel4Description>-->
 <!--	  <LocationLevel5Description> 5</LocationLevel5Description>-->
 <!--	  <LocationLevel6>1234567890</LocationLevel6>-->
-    </dataAddress>
-    <dataAddress>
-      <AddressGUID>ebb00a4d-94b4-ea11-8122-00155d78e3a7</AddressGUID>
-      <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>
-      <AddressType>TEL</AddressType>
-      <AddressCountry>AFG</AddressCountry>
-      <!--      <AddressPostal></AddressPostal>-->
-      <!--      <LocationLevel1Description> 1</LocationLevel1Description>-->
-      <!--	  <LocationLevel2Description> 2</LocationLevel2Description>-->
-      <!--	  <LocationLevel3Description> 3</LocationLevel3Description>-->
-      <!--	  <LocationLevel4Description> 4</LocationLevel4Description>-->
-      <!--	  <LocationLevel5Description> 5</LocationLevel5Description>-->
-      <LocationLevel6>1234567890</LocationLevel6>
     </dataAddress>
     <dataAlias>
       <AliasGUID>5a2c771f-90b4-ea11-8122-00155d78e3a3</AliasGUID>
@@ -101,7 +88,7 @@
       <ResidenceCountryCode>AUL</ResidenceCountryCode>
       <SexCode>M</SexCode>
       <NationalityCode>AUL</NationalityCode>
-      <Deceased>false</Deceased>
+      <Deceased>0</Deceased>
       <MarriageStatusCode>MA</MarriageStatusCode>
     </dataIndividualRelatives>
     <dataLanguage>
@@ -122,7 +109,7 @@
     <dataResettlement>
       <IndividualGUID>cc4e69b8-7cb4-ea11-8122-00155d78e3a3</IndividualGUID>
       <ResettlementCriteriaCode>LAS</ResettlementCriteriaCode>
-	  <ResettlementCriteria2Code>SVT</ResettlementCriteria2Code>  
+      <ResettlementCriteria2Code></ResettlementCriteria2Code>
       <ResettlementPriorityCode>NR</ResettlementPriorityCode>
     </dataResettlement>
     <dataVulnerability>

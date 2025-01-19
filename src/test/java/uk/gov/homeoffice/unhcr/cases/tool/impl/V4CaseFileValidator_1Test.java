@@ -46,9 +46,28 @@ public class V4CaseFileValidator_1Test {
         assertThat(validator.isApplicable(bytes)).isTrue();
 
         ValidationResult validationResult = validator.validate(bytes);
+        System.out.println(validationResult.getErrors());
         assertThat(validationResult.getErrors()).isEmpty();
         assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isTrue();
+    }
+
+    @Test
+    void validateEducationTelephoneTest() throws IOException {
+        byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V4-TEST-Education-Telephone.xml", getClass().getClassLoader());
+
+        BaseCaseFileValidator validator = new V4CaseFileValidator_1();
+        assertThat(validator.isApplicable(bytes)).isTrue();
+
+        ValidationResult validationResult = validator.validate(bytes);
+        System.out.println(validationResult.getErrors());
+        assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
+                "Empty (or missing) 'DateOfBirth' value for individual cc4e69b8-7cb4-ea11-8122-00155d78e3a3",
+                "Invalid 'EducationLevelCode' value for individual cc4e69b8-7cb4-ea11-8122-00155d78e3a3: -",
+                "No 'TEL' addresses/telephone for Primary Applicant cc4e69b8-7cb4-ea11-8122-00155d78e3a3",
+                "Empty (or missing) 'ResettlementCriteriaCode2' value for individual cc4e69b8-7cb4-ea11-8122-00155d78e3a3");      ;
+        assertThat(validationResult.getWarnings()).isEmpty();
+        assertThat(validationResult.isSuccess()).isFalse();
     }
 
     @Test
