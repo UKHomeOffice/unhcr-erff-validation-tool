@@ -6,7 +6,7 @@
 	<!-- Afterward, GitHub Actions will release it at the following link: -->
 	<!-- https://github.com/UKHomeOffice/unhcr-erff-validation-tool/releases -->
 	<!-- Additionally, current GUI users will be notified about the new version. -->
-	<version>1.4.8</version>
+	<version>1.4.9-SNAPSHOT</version>
 	<groupId>uk.gov.homeoffice</groupId>
 	<artifactId>unhcr-erff-validation-tool</artifactId>
 	<packaging>jar</packaging>
