@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<V4UNHCR_RRF xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="/uk/gov/homeoffice/unhcr/xsd/v4_2_7/V4UNHCR_RRF_v2_7.xsd">
+    <InvalidElement>This element is not allowed by the schema</InvalidElement>
+</V4UNHCR_RRF>
+

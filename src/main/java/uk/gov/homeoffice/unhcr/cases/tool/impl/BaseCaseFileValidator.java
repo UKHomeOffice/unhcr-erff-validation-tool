@@ -16,6 +16,7 @@ import org.xml.sax.XMLReader;
 import uk.gov.homeoffice.unhcr.cases.reference.ReferenceData;
 import uk.gov.homeoffice.unhcr.cases.reference.ReferenceDataContainer;
 import uk.gov.homeoffice.unhcr.cases.tool.ValidationResult;
+import uk.gov.homeoffice.unhcr.config.ConfigProperties;
 import uk.gov.homeoffice.unhcr.exception.ParseCaseFileException;
 
 import javax.imageio.ImageIO;
@@ -44,9 +45,16 @@ public abstract class BaseCaseFileValidator {
 
         //TODO use ClassGraph to dynamically load validators from class path
         //order of registration is important - validators will be tried in that order
-
-        register(new V4CaseFileValidator_1());
-        register(new V3CaseFileValidator_1());
+        // Load config.properties from resources
+        if (ConfigProperties.isVersion4_2_7Enabled()) {
+            System.out.println("Version 4.2.7 validator is ENABLED");
+            register(new V4CaseFileValidator2_7());
+        }
+        else {
+            System.out.println("Version 4.2.7 validator is NOT ENABLED");
+            register(new V4CaseFileValidator_1());
+            register(new V3CaseFileValidator_1());
+        }
     }
 
     public static class IndividualIdPair {

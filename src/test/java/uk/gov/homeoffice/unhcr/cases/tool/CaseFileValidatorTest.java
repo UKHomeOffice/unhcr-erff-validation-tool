@@ -12,6 +12,7 @@ import uk.gov.homeoffice.unhcr.cases.reference.ReferenceData;
 import uk.gov.homeoffice.unhcr.cases.tool.impl.BaseCaseFileValidator;
 import uk.gov.homeoffice.unhcr.cases.tool.impl.V3CaseFileValidator_1;
 import uk.gov.homeoffice.unhcr.cases.tool.impl.V4CaseFileValidator_1;
+import uk.gov.homeoffice.unhcr.config.ConfigProperties;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,8 +24,9 @@ import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 public class CaseFileValidatorTest {
 
     @BeforeAll
-    static void setup() {
+    static void setup() throws IOException {
         ReferenceData.showSuggestedValuesFlag = false;
+        ConfigProperties.setConfigProperty(ConfigProperties.ENABLE_VERSION_4_2_7, false);
     }
 
     @Test

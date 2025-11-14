@@ -1,0 +1,9 @@
+<jxb:bindings version="3.0"
+    xmlns:jxb="https://jakarta.ee/xml/ns/jaxb"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <jxb:bindings schemaLocation="../xsd/v4_2_7/V4UNHCR_RRF_v2_7.xsd" node="/xs:schema">
+        <jxb:bindings node="xs:element[@name='UNHCR_RRF']">
+            <jxb:class name="UNHCRRRF"/>
+        </jxb:bindings>
+    </jxb:bindings>
+</jxb:bindings>

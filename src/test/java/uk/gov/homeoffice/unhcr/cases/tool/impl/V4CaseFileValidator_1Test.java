@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import uk.gov.homeoffice.unhcr.cases.reference.ReferenceData;
 import uk.gov.homeoffice.unhcr.cases.tool.ValidationResult;
+import uk.gov.homeoffice.unhcr.config.ConfigProperties;
 
 import java.io.IOException;
 
@@ -13,8 +14,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class V4CaseFileValidator_1Test {
 
     @BeforeAll
-    static void setup() {
+    static void setup() throws IOException {
         ReferenceData.showSuggestedValuesFlag = false;
+        ConfigProperties.setConfigProperty(ConfigProperties.ENABLE_VERSION_4_2_7, false);
     }
 
     @Test

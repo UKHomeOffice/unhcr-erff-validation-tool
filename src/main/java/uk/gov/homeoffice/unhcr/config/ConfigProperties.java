@@ -12,6 +12,7 @@ import java.util.Properties;
 public class ConfigProperties {
 
     public static final String AUTOCHECK_NEWER_VERSION = "version.auto.check";
+    public static final String ENABLE_VERSION_4_2_7 = "Enable_Version4_2_7";
 
     final static private int SYSTEM_UNKNOWN		= 0;
     final static private int SYSTEM_WINDOWS		= 1;
@@ -166,5 +167,9 @@ public class ConfigProperties {
         } else {
             return new Properties();
         }
+    }
+
+    public static boolean isVersion4_2_7Enabled() {
+        return getConfigPropertyAsBoolean(ENABLE_VERSION_4_2_7, true);
     }
 }

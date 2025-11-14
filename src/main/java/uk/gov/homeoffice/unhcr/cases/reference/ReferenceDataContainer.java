@@ -44,4 +44,6 @@ public class ReferenceDataContainer {
 
     static public ReferenceData vulnerabilityCodeReferenceData  = ReferenceData.loadReferenceData("/uk/gov/homeoffice/unhcr/reference/VulnerabilityCode-Table 1.csv", false, false);
 
+    static public ReferenceData phoneTypeReferenceData  = ReferenceData.loadReferenceData("/uk/gov/homeoffice/unhcr/reference/PhoneTypeCode-Table 1.csv", true, false);
+
 }
