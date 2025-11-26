@@ -57,6 +57,7 @@ public class CaseFileValidator extends BaseCaseFileValidator {
                 .addOption(helpOption);
 
     static List<String> parseValidatorIds(String[] validatorGlobs) {
+
         // find matching validators (via Regex)
         List<String> validatorIds   =
                 Arrays.asList(validatorGlobs).stream()
@@ -161,7 +162,6 @@ public class CaseFileValidator extends BaseCaseFileValidator {
             if (line.hasOption(parserOption)) {
                 String[] validatorGlobOptions = line.getOptionValues(parserOption);
                 List<String> validatorIds = parseValidatorIds(validatorGlobOptions);
-
                 validators = BaseCaseFileValidator.getValidators(validatorIds);
             } else {
                 validators = BaseCaseFileValidator.getValidators();
