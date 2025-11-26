@@ -648,9 +648,9 @@ public abstract class BaseCaseFileValidator {
             ValidationResult validationResult
     ) {
 
-        validateReferenceData(individualIdPair, "AddressCountry", optionalAddressCountry, ReferenceDataContainer.countryCodeReferenceData, validationResult);
+        validateReferenceData(individualIdPair, "DataAddress.AddressCountry", optionalAddressCountry, ReferenceDataContainer.countryCodeReferenceData, validationResult);
 
-        validateReferenceData(individualIdPair, "AddressType", optionalAddressType, ReferenceDataContainer.addressTypeReferenceData, validationResult);
+        validateReferenceData(individualIdPair, "DataAddress.AddressType", optionalAddressType, ReferenceDataContainer.addressTypeReferenceData, validationResult);
 
         optionalAddressType.ifPresent(addressType -> {
             if (ADDRESS_TYPE_CODE_TELEPHONE.equals(addressType)) {

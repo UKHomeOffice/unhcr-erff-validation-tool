@@ -60,7 +60,7 @@ public class V3CaseFileValidator_1Test {
 
         ValidationResult validationResult = validator.validate(bytes);
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
-                "Invalid 'AddressType' value for individual 199-00265997: COAS",
+                "Invalid 'DataAddress.AddressType' value for individual 199-00265997: COAS",
                 "No 'COA' addresses for Primary Applicant 199-00265997"
         );
         assertThat(validationResult.getWarnings()).isEmpty();
@@ -76,7 +76,7 @@ public class V3CaseFileValidator_1Test {
 
         ValidationResult validationResult = validator.validate(bytes);
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
-                "Empty (or missing) 'AddressType' value for individual 199-00265997",
+                "Empty (or missing) 'DataAddress.AddressType' value for individual 199-00265997",
                 "No 'COA' addresses for Primary Applicant 199-00265997"
         );
         assertThat(validationResult.getWarnings()).isEmpty();

@@ -375,7 +375,7 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
         }
 
         //validate DataContact
-        {
+        /*{
             Multimap<IndividualIdPair, UNHCRRRF.CASE.DataContact> unhcrCaseDataContactMap =
                     multimapIndividualIdPairsToObjects(
                             "DataContact",
@@ -404,7 +404,7 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
 
         }
 
-        //validate DataIndividualRelatives
+        //No validation for  DataIndividualRelatives
         {
             Multimap<IndividualIdPair, UNHCRRRF.CASE.DataIndividualRelatives> unhcrCaseDataIndividualRelativesMap =
                     multimapIndividualIdPairsToObjects(
@@ -465,7 +465,7 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
                     unhcrCaseDataIndividualRelativesMap.values().stream().map(dataIndividualRelative -> dataIndividualRelative.getIndividualRelativesGUID()).collect(Collectors.toList()),
                     validationResult
             );
-        }
+        }*/
 
         //validate DataEducation
         {
@@ -602,7 +602,7 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
 
         return validationResult;
     }
-
+    /*
     protected void validateDataContact(
             IndividualIdPair individualIdPair,
             Optional<String> optionalPhoneCountry,
@@ -619,6 +619,6 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
 
         validateDate(individualIdPair, "optionalEndDate", optionalEndDate, validationResult);
 
-    }
+    }*/
 }
 
