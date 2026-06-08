@@ -13,7 +13,8 @@ import java.nio.file.Files;
 public class ConfigProperties {
 
     public static final String AUTOCHECK_NEWER_VERSION = "version.auto.check";
-    public static final String ENABLE_VERSION_4_2_7 = "Enable_Version4_2_7";
+    public static final  String ENABLE_VERSION_4_2_8 = "true";
+    public static final  String ENABLE_VERSION_4_2_7 = "false";
 
     final static private int SYSTEM_UNKNOWN		= 0;
     final static private int SYSTEM_WINDOWS		= 1;
@@ -170,20 +171,24 @@ public class ConfigProperties {
     }
     private static Properties loadConfigPropertiesFile(File configPropertiesFile) throws IOException {
         Properties properties = new Properties();
-        if (configPropertiesFile.exists()) {
+        /*if (configPropertiesFile.exists()) {
             try (InputStream input = Files.newInputStream(configPropertiesFile.toPath())) {
                 properties.load(input);
             }
-        } else {
+        } else {*/
             // Create config file with default values if missing
-            properties.setProperty(ENABLE_VERSION_4_2_7, "true");
+            properties.setProperty(ENABLE_VERSION_4_2_8, "true");
             saveConfigPropertiesFile(configPropertiesFile);
             System.out.printf("Config file %s not found, created with default values.\n", configPropertiesFile.getAbsolutePath());
-        }
+        //}
         return properties;
     }
 
+    public static boolean isVersion4_2_8Enabled() {
+        return getConfigPropertyAsBoolean(ENABLE_VERSION_4_2_8, true);
+    }
+
     public static boolean isVersion4_2_7Enabled() {
-        return getConfigPropertyAsBoolean(ENABLE_VERSION_4_2_7, true);
+        return getConfigPropertyAsBoolean(ENABLE_VERSION_4_2_7, false);
     }
 }

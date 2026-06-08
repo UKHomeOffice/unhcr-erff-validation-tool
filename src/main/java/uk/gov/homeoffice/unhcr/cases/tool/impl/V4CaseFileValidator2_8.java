@@ -4,7 +4,6 @@ import com.google.common.collect.Multimap;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.Unmarshaller;
-import javax.xml.transform.stream.StreamSource;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import uk.gov.homeoffice.unhcr.cases.model.v4_2_7.UNHCRRRF;
@@ -12,13 +11,20 @@ import uk.gov.homeoffice.unhcr.cases.reference.ReferenceDataContainer;
 import uk.gov.homeoffice.unhcr.cases.tool.ValidationResult;
 import uk.gov.homeoffice.unhcr.exception.ParseCaseFileException;
 
+import javax.imageio.ImageIO;
+import javax.xml.transform.stream.StreamSource;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
-    final static public String ID  = "v4_2_7";
+public class V4CaseFileValidator2_8 extends BaseCaseFileValidator {
+    final static public String ID  = "v4_2_8";
 
-    final static public String RESOURCE_PATH_XSD  = "/uk/gov/homeoffice/unhcr/xsd/v4_2_7/V4UNHCR_RRF_v2_7.xsd";
+    final static public String RESOURCE_PATH_XSD  =
+            "/uk/gov/homeoffice/unhcr/xsd/v4_2_8/V4UNHCR_RRF_v2.8.xsd";
+
     @Override
     public String getValidatorId() {
         return ID;
@@ -31,7 +37,7 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
 
     @Override
     public boolean isApplicable(byte[] bytes) {
-        // Simple check: look for the root element or namespace for v4.2.7
+        // Simple check: look for the root element or namespace for v4.2.8
         String xml = new String(bytes);
         return StringUtils.contains(xml, "<UNHCR_RRF") && StringUtils.contains(xml, "<IndividualGUID");
     }
@@ -53,12 +59,6 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
             UNHCRRRF.RRFBATCHTYPE unhcrRrfBatchType = unhcrrrf.getRRFBATCHTYPE();
             List<UNHCRRRF.CASE> unhcrCases = unhcrrrf.getCASE();
 
-            validateRrfBatchType(
-                    unhcrRrfBatchType.getGroupIndividualIndicator(),
-                    unhcrCases.size(),
-                    validationResult
-            );
-
             validateNoDuplicates(
                     "CASE.dataProcessGroup.ProcessingGroupNumber",
                     unhcrCases.stream().map(UNHCRRRF.CASE::getDataProcessGroup).filter(Objects::nonNull).map(UNHCRRRF.CASE.DataProcessGroup::getProcessingGroupNumber).collect(Collectors.toList()),
@@ -66,7 +66,7 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
             );
 
             for (UNHCRRRF.CASE unhcrCase : unhcrCases) {
-                validateCase(unhcrCase, validationResult);
+                validateCase(unhcrRrfBatchType,unhcrCase, validationResult);
             }
 
         } catch (ParseCaseFileException exception) {
@@ -78,8 +78,13 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
         return validationResult;
     }
 
-    private ValidationResult validateCase(UNHCRRRF.CASE unhcrCase, ValidationResult validationResult) throws ParseCaseFileException {
+    private ValidationResult validateCase(UNHCRRRF.RRFBATCHTYPE unhcrRrfBatchType,UNHCRRRF.CASE unhcrCase, ValidationResult validationResult) throws ParseCaseFileException {
 
+        validateRrfBatchType(
+                unhcrRrfBatchType.getGroupIndividualIndicator(),
+                unhcrCase.getDataProcessGroup().getProcessingGroupSize(),
+                validationResult
+        );
         List<IndividualIdPair> unhcrCaseIndividualIdPairs = unhcrCase.getDataIndividual().stream()
                 .map(unhcrCaseIndividual -> IndividualIdPair.ofIndividualGuid(unhcrCaseIndividual.getIndividualGUID()))
                 .collect(Collectors.toList());
@@ -127,25 +132,25 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
                         entry.getKey(),
                         Optional.empty(),
                         Optional.empty(),
-                        ParsedString.ofMandatory(entry.getValue().getFamilyName()),
+                        ParsedString.ofMandatory(entry.getValue().getFamilyName(), validationResult, "DataIndividual.FamilyName", entry.getKey()),
                         ParsedString.ofOptional(entry.getValue().getSecondFamilyName()),
-                        ParsedString.ofMandatory(entry.getValue().getGivenName()),
+                        ParsedString.ofMandatory(entry.getValue().getGivenName(),validationResult, "DataIndividual.GivenName", entry.getKey()),
                         ParsedString.ofOptional(entry.getValue().getMiddleName()),
                         ParsedString.ofOptional(entry.getValue().getMaidenName()),
-                        ParsedDate.ofMandatory(entry.getValue().getRegistrationDate()),
-                        ParsedDate.ofMandatory(entry.getValue().getDateofBirth()),
+                        ParsedDate.ofMandatory(entry.getValue().getRegistrationDate(), validationResult, "DataIndividual.RegistrationDate", entry.getKey()),
+                        ParsedDate.ofMandatory(entry.getValue().getDateofBirth(), validationResult, "DataIndividual.DateOfBirth", entry.getKey()),
                         Optional.of(entry.getValue().isDateofBirthEstimate()),
-                        ParsedString.ofMandatory(entry.getValue().getBirthCountryCode()),
+                        ParsedString.ofMandatory(entry.getValue().getBirthCountryCode(), validationResult, "DataIndividual.BirthCountryCode", entry.getKey()),
                         ParsedString.ofOptional(entry.getValue().getBirthCityTownVillage()),
-                        ParsedString.ofMandatory(entry.getValue().getOriginCountryCode()),
-                        ParsedString.ofMandatory(entry.getValue().getAsylumCountryCode()),
+                        ParsedString.ofMandatory(entry.getValue().getOriginCountryCode(), validationResult, "DataIndividual.OriginCountryCode", entry.getKey()),
+                        ParsedString.ofMandatory(entry.getValue().getAsylumCountryCode(), validationResult, "DataIndividual.AsylumCountryCode", entry.getKey()),
                         ParsedDate.ofOptional(entry.getValue().getArrivalDate()),
-                        ParsedString.ofMandatory(entry.getValue().getSexCode()),
-                        ParsedString.ofMandatory(entry.getValue().getNationalityCode()),
+                        ParsedString.ofMandatory(entry.getValue().getSexCode(), validationResult, "DataIndividual.SexCode", entry.getKey()),
+                        ParsedString.ofMandatory(entry.getValue().getNationalityCode(), validationResult, "DataIndividual.NationalityCode", entry.getKey()),
                         Optional.empty(),
                         ParsedString.ofOptional(entry.getValue().getMarriageStatusCode()),
-                        ParsedString.ofMandatory(entry.getValue().getReligionCode()),
-                        ParsedString.ofMandatory(entry.getValue().getEthnicityCode()),
+                        ParsedString.ofMandatory(entry.getValue().getReligionCode(), validationResult, "DataIndividual.ReligionCode", entry.getKey()),
+                        ParsedString.ofMandatory(entry.getValue().getEthnicityCode(), validationResult, "DataIndividual.EthnicityCode", entry.getKey()),
                         ParsedString.ofOptional(entry.getValue().getEducationLevelCode()),
                         ParsedString.ofOptional(entry.getValue().getMotherName()),
                         ParsedString.ofOptional(entry.getValue().getFatherName()),
@@ -175,29 +180,22 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
         //validate DataPhotograph
         {
             Multimap<IndividualIdPair, UNHCRRRF.CASE.DataPhotograph> unhcrCasePhotographsMap =
-                    multimapIndividualIdPairsToObjects(
-                            "DataDocument",
+                    multimapIndividualIdPairsToObjects("DataPhotograph",
                             unhcrCaseIndividualIdPairs,
                             unhcrCase.getDataPhotograph(),
                             obj -> IndividualIdPair.ofIndividualGuid(obj.getIndividualGUID()),
-                            false,
-                            false,
-                            validationResult
-                    );
+                            true, false,
+                            validationResult);
+
+
+
             for (Map.Entry<IndividualIdPair, UNHCRRRF.CASE.DataPhotograph> entry : unhcrCasePhotographsMap.entries()) {
-                Optional<String> optionalPhoto = parsePhotoFromNodeObject(
-                        entry.getKey(),
-                        "DataPhotograph.Photo",
-                        entry.getValue().getPhoto(),
-                        validationResult
-                );
-                validateDataPhotography(
-                        entry.getKey(),
-                        optionalPhoto,
-                        ParsedString.ofMandatory(entry.getValue().getPhotoGUID()),
-                        Optional.of(entry.getValue().getPhotoTypeCode()).map(photoTypeCode -> Integer.toString(photoTypeCode)),
-                        validationResult
-                );
+                Optional<String> optionalPhoto = parsePhotoFromNodeObject(entry.getKey(), "DataPhotograph.Photo", entry.getValue().getPhoto(), validationResult);
+                if (optionalPhoto.isPresent()) {
+                    validateDataPhotography(entry.getKey(), optionalPhoto.get(), ParsedString.ofMandatory(entry.getValue().getPhotoGUID()), Optional.of(entry.getValue().getPhotoTypeCode()).map(photoTypeCode -> Integer.toString(photoTypeCode)), validationResult);
+                } else {
+                      validationResult.addError(String.format("Empty (or missing) 'DataPhotograph.Photo' for individual %s", entry.getKey()));
+                }
             }
             validateNoDuplicates(
                     "DataPhotograph.PhotoGUID",
@@ -305,9 +303,9 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
             for (Map.Entry<IndividualIdPair, UNHCRRRF.CASE.DataEmployment> entry : unhcrCaseDataEmploymentsMap.entries()) {
                 validateDataEmployment(
                         entry.getKey(),
-                        ParsedString.ofMandatory(entry.getValue().getEmploymentTypeCode()),
-                        ParsedString.ofMandatory(entry.getValue().getOccupationCode()),
-                        ParsedString.ofMandatory(entry.getValue().getOccupationText()),
+                        ParsedString.ofOptional(entry.getValue().getEmploymentTypeCode()),
+                        ParsedString.ofOptional(entry.getValue().getOccupationCode()),
+                        ParsedString.ofOptional(entry.getValue().getOccupationText()),
                         validationResult
                 );
             }
@@ -331,17 +329,12 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
                             validationResult
                     );
             for (Map.Entry<IndividualIdPair, UNHCRRRF.CASE.DataAddress> entry : unhcrCaseDataAddressesMap.entries()) {
-                String locationLevel1Description = entry.getValue().getLocationLevel1Description();
-                String individualIdPair = String.valueOf(entry.getKey());
-                if ((!Objects.nonNull(locationLevel1Description) || StringUtils.isBlank(locationLevel1Description)))
-                {
-                    validationResult.addError(String.format("Empty (or missing) 'DataAddress.LocationLevel1Description' for individual %s", individualIdPair));
-                }
+
                 validateDataAddress(
                         entry.getKey(),
-                        ParsedString.ofMandatory(entry.getValue().getAddressCountry()),
-                        ParsedString.ofMandatory(entry.getValue().getAddressType()),
-                        ParsedString.ofMandatory(locationLevel1Description),//validationResult, "DataAddress.LocationLevel1Description", entry.getKey()),
+                        ParsedString.ofMandatory(entry.getValue().getAddressCountry(), validationResult,    "DataAddress.AddressCountry", entry.getKey()),
+                        ParsedString.ofMandatory(entry.getValue().getAddressType(), validationResult,    "DataAddress.AddressType", entry.getKey()),
+                        ParsedString.ofMandatory(entry.getValue().getLocationLevel1Description(), validationResult, "DataAddress.LocationLevel1Description", entry.getKey()),
                         ParsedString.ofOptional(entry.getValue().getLocationLevel2Description()),
                         ParsedString.ofOptional(entry.getValue().getLocationLevel3Description()),
                         ParsedString.ofOptional(entry.getValue().getLocationLevel4Description()),
@@ -366,16 +359,11 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
                         individualIdPairWithAddressTypePairs,
                         validationResult
                 );
-                validateTELAddressTypeForPrimaryApplicant(
-                        optionalPrimaryApplicantIdPair.get(),
-                        individualIdPairWithAddressTypePairs,
-                        validationResult
-                );
             }
         }
 
         //validate DataContact
-        /*{
+        {
             Multimap<IndividualIdPair, UNHCRRRF.CASE.DataContact> unhcrCaseDataContactMap =
                     multimapIndividualIdPairsToObjects(
                             "DataContact",
@@ -465,7 +453,7 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
                     unhcrCaseDataIndividualRelativesMap.values().stream().map(dataIndividualRelative -> dataIndividualRelative.getIndividualRelativesGUID()).collect(Collectors.toList()),
                     validationResult
             );
-        }*/
+        }
 
         //validate DataEducation
         {
@@ -482,7 +470,8 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
             for (Map.Entry<IndividualIdPair, UNHCRRRF.CASE.DataEducation> entry : unhcrCaseDataEducationsMap.entries()) {
                 validateDataEducation(
                         entry.getKey(),
-                        ParsedString.ofMandatory(entry.getValue().getEducationLevelCode()),
+                        ParsedString.ofOptional(entry.getValue().getEducationLevelCode()),
+                        ParsedString.ofMandatory(entry.getValue().getDegreeTypeCode(), validationResult, "DataEducation.DegreeTypeCode", entry.getKey()),
                         validationResult
                 );
             }
@@ -508,11 +497,11 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
             for (Map.Entry<IndividualIdPair, UNHCRRRF.CASE.DataLanguage> entry : unhcrCaseDataLanguagesMap.entries()) {
                 validateDataLanguage(
                         entry.getKey(),
-                        ParsedString.ofMandatory(entry.getValue().getLanguageCode()),
-                        ParsedString.ofMandatory(entry.getValue().getLanguageReadCode()),
-                        ParsedString.ofMandatory(entry.getValue().getLanguageSpeakCode()),
-                        ParsedString.ofMandatory(entry.getValue().getLanguageUnderstandCode()),
-                        ParsedString.ofMandatory(entry.getValue().getLanguageWriteCode()),
+                        ParsedString.ofMandatory(entry.getValue().getLanguageCode(), validationResult, "DataLanguage.LanguageCode", entry.getKey()),
+                        ParsedString.ofMandatory(entry.getValue().getLanguageReadCode(), validationResult, "DataLanguage.LanguageReadCode", entry.getKey()),
+                        ParsedString.ofMandatory(entry.getValue().getLanguageSpeakCode(),  validationResult, "DataLanguage.LanguageSpeakCode", entry.getKey()),
+                        ParsedString.ofMandatory(entry.getValue().getLanguageUnderstandCode(), validationResult, "DataLanguage.LanguageUnderstandCode", entry.getKey()),
+                        ParsedString.ofMandatory(entry.getValue().getLanguageWriteCode(),  validationResult, "DataLanguage.LanguageWriteCode", entry.getKey()),
                         validationResult
                 );
             }
@@ -529,7 +518,7 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
                     multimapIndividualIdPairsToObjects(
                             "DataResettlement",
                             unhcrCaseIndividualIdPairs,
-                            Arrays.asList(unhcrCase.getDataResettlement()),
+                            Collections.singletonList(unhcrCase.getDataResettlement()),
                             obj -> IndividualIdPair.ofIndividualGuid(obj.getIndividualGUID()),
                             false,
                             true,
@@ -602,7 +591,7 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
 
         return validationResult;
     }
-    /*
+
     protected void validateDataContact(
             IndividualIdPair individualIdPair,
             Optional<String> optionalPhoneCountry,
@@ -619,6 +608,18 @@ public class V4CaseFileValidator2_7 extends BaseCaseFileValidator {
 
         validateDate(individualIdPair, "optionalEndDate", optionalEndDate, validationResult);
 
-    }*/
+    }
+
+    protected void validateDataEducation(
+            IndividualIdPair individualIdPair,
+            Optional<String> optionalEducationLevelCode,
+            Optional<String> optionalDegreeTypeCode,
+            ValidationResult validationResult
+    ) {
+
+        validateReferenceData(individualIdPair, "EducationLevelCode", optionalEducationLevelCode, ReferenceDataContainer.educationLevelTypeReferenceData, validationResult);
+        validateReferenceData(individualIdPair, "DegreeTypeCode", optionalDegreeTypeCode, ReferenceDataContainer.educationDegreeTypeReferenceData, validationResult);
+
+    }
 }
 

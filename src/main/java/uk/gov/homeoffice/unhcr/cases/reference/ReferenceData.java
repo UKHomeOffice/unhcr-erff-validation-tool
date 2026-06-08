@@ -27,7 +27,7 @@ public class ReferenceData {
         ReferenceData referenceData = new ReferenceData();
         referenceData.ignoreCaseFlag = ignoreCaseFlag;
         referenceData.ignoreLeadingZeros = ignoreLeadingZeros;
-
+        System.out.println(String.format("Loading reference data from %s (ignoreCase=%s, ignoreLeadingZeros=%s)", resourcePath, ignoreCaseFlag, ignoreLeadingZeros));
         try (InputStream inputStream = ReferenceData.class.getResourceAsStream(resourcePath);) {
             if (inputStream==null) throw new RuntimeException(String.format("Reference data not found %s", resourcePath));
 

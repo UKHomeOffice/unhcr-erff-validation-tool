@@ -26,7 +26,7 @@ public class CaseFileValidatorTest {
     @BeforeAll
     static void setup() throws IOException {
         ReferenceData.showSuggestedValuesFlag = false;
-        ConfigProperties.setConfigProperty(ConfigProperties.ENABLE_VERSION_4_2_7, false);
+        ConfigProperties.setConfigProperty(ConfigProperties.ENABLE_VERSION_4_2_8, false);
     }
 
     @Test

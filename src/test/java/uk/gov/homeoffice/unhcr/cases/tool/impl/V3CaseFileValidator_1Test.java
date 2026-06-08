@@ -16,7 +16,7 @@ public class V3CaseFileValidator_1Test {
     @BeforeAll
     static void setup() throws IOException {
         ReferenceData.showSuggestedValuesFlag = false;
-        ConfigProperties.setConfigProperty(ConfigProperties.ENABLE_VERSION_4_2_7, false);
+        ConfigProperties.setConfigProperty(ConfigProperties.ENABLE_VERSION_4_2_8, false);
     }
 
     void validateSuccessTest() throws IOException {
@@ -167,7 +167,7 @@ public class V3CaseFileValidator_1Test {
 
         ValidationResult validationResult = validator.validate(bytes);
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
-                "None of DataLanguage objects maps to individual(s): 199-00265999"
+                "DataLanguage objects do not map to individual(s): 199-00265999"
         );
         assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();
