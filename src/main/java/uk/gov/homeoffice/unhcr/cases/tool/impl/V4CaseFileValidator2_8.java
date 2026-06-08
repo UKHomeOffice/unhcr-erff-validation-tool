@@ -6,16 +6,12 @@ import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.Unmarshaller;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
-import uk.gov.homeoffice.unhcr.cases.model.v4_2_7.UNHCRRRF;
+import uk.gov.homeoffice.unhcr.cases.model.v4_2_8.UNHCRRRF;
 import uk.gov.homeoffice.unhcr.cases.reference.ReferenceDataContainer;
 import uk.gov.homeoffice.unhcr.cases.tool.ValidationResult;
 import uk.gov.homeoffice.unhcr.exception.ParseCaseFileException;
 
-import javax.imageio.ImageIO;
 import javax.xml.transform.stream.StreamSource;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -23,7 +19,7 @@ public class V4CaseFileValidator2_8 extends BaseCaseFileValidator {
     final static public String ID  = "v4_2_8";
 
     final static public String RESOURCE_PATH_XSD  =
-            "/uk/gov/homeoffice/unhcr/xsd/v4_2_8/V4UNHCR_RRF_v2.8.xsd";
+            "/uk/gov/homeoffice/unhcr/xsd/v4_2_8/V4UNHCR_RRF_v2_8.xsd";
 
     @Override
     public String getValidatorId() {

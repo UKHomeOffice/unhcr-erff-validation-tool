@@ -278,19 +278,19 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>xjc-schema-v4-2-7</id>
+						<id>xjc-schema-v4-2-8</id>
 						<goals>
 							<goal>xjc</goal>
 						</goals>
 						<configuration>
 							<xjbSources>
 								<xjbSource>src/main/resources/uk/gov/homeoffice/unhcr/xjb/binding.xjb</xjbSource>
-								<xjbSource>src/main/resources/uk/gov/homeoffice/unhcr/xjb/v4_2_7-binding.xjb</xjbSource>
+								<xjbSource>src/main/resources/uk/gov/homeoffice/unhcr/xjb/v4_2_8-binding.xjb</xjbSource>
 							</xjbSources>
 							<sources>
-								<source>src/main/resources/uk/gov/homeoffice/unhcr/xsd/v4_2_7</source>
+								<source>src/main/resources/uk/gov/homeoffice/unhcr/xsd/v4_2_8</source>
 							</sources>
-							<packageName>uk.gov.homeoffice.unhcr.cases.model.v4_2_7</packageName>
+							<packageName>uk.gov.homeoffice.unhcr.cases.model.v4_2_8</packageName>
 							<clearOutputDir>false</clearOutputDir>
 						</configuration>
 					</execution>
