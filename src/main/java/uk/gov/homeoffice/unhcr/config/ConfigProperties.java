@@ -122,13 +122,7 @@ public class ConfigProperties {
     }
 
     final static public boolean getConfigPropertyAsBoolean(String propertyName, boolean defaultValue) {
-        Properties props = loadConfigPropertiesFileCached();
-        String value = props.getProperty(propertyName);
-        if (value == null) {
-            System.out.printf("Config property '%s' not found in %s, using default: %s\n", propertyName, getConfigPropertiesFile().getAbsolutePath(), defaultValue);
-            return defaultValue;
-        }
-        System.out.printf("Config property '%s' loaded from %s: %s\n", propertyName, getConfigPropertiesFile().getAbsolutePath(), value);
+        String value = loadConfigPropertiesFileCached().getProperty(propertyName, Boolean.toString(defaultValue));
         return Boolean.parseBoolean(value);
     }
 
