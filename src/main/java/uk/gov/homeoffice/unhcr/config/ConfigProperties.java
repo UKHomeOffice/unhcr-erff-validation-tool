@@ -99,7 +99,7 @@ public class ConfigProperties {
             try {
 
                 @SuppressWarnings("rawtypes") final Class clazz = Class.forName("android.os.Environment");
-                @SuppressWarnings("unchecked") final Method method = clazz.getMethod("getExternalStorageDirectory");
+                @SuppressWarnings("unchecked") final Method method = clazz.getMethod("getExternalStorageDirectory", new Class[]{});
                 final File file = (File) method.invoke(null);
 
                 String externalStorageDirectoryPath = file.getAbsolutePath();
@@ -141,12 +141,12 @@ public class ConfigProperties {
         FileUtils.deleteQuietly(getConfigPropertiesFile());
     }
 
-    private static void saveConfigPropertiesFile(File configPropertiesFile) throws IOException {
+    final static private void saveConfigPropertiesFile(File configPropertiesFile) throws IOException {
         if (configProperties==null) return;
 
         //create parent folders (if they don't exist)
         FileUtils.createParentDirectories(configPropertiesFile);
-        try (OutputStream output = new FileOutputStream(configPropertiesFile)){//configPropertiesFile.toPath())) {
+        try (OutputStream output = new FileOutputStream(configPropertiesFile)) {
             configProperties.store(output, CaseFileValidator.NAME_AND_VERSION);
         }
     }
@@ -168,15 +168,9 @@ public class ConfigProperties {
         if (configPropertiesFile.exists()) {
             try (InputStream input = new FileInputStream(configPropertiesFile)) {
                 properties.load(input);
-
             }
-        } else {
-            // Create config file with default values if missing
-            properties.setProperty(ENABLE_VERSION_4_2_8, "true");
-            saveConfigPropertiesFile(configPropertiesFile);
-            System.out.printf("Config file %s not found, created with default values.\n", configPropertiesFile.getAbsolutePath());
-
         }
+        properties.setProperty(ENABLE_VERSION_4_2_8, "true");
         return properties;
     }
 
