@@ -285,7 +285,6 @@
 						<configuration>
 							<xjbSources>
 								<xjbSource>src/main/resources/uk/gov/homeoffice/unhcr/xjb/binding.xjb</xjbSource>
-								<xjbSource>src/main/resources/uk/gov/homeoffice/unhcr/xjb/v4_2_8-binding.xjb</xjbSource>
 							</xjbSources>
 							<sources>
 								<source>src/main/resources/uk/gov/homeoffice/unhcr/xsd/v4_2_8</source>

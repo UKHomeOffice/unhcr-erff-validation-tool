@@ -8,13 +8,11 @@ import java.io.*;
 import java.lang.reflect.Method;
 import java.util.Locale;
 import java.util.Properties;
-import java.nio.file.Files;
 
 public class ConfigProperties {
 
     public static final String AUTOCHECK_NEWER_VERSION = "version.auto.check";
     public static final  String ENABLE_VERSION_4_2_8 = "true";
-    public static final  String ENABLE_VERSION_4_2_7 = "false";
 
     final static private int SYSTEM_UNKNOWN		= 0;
     final static private int SYSTEM_WINDOWS		= 1;
@@ -32,16 +30,16 @@ public class ConfigProperties {
         if (os == null) {
             System.out.println("There is no os.name defined.");
             systemId = SYSTEM_UNKNOWN;
-        } else if (os.contains("win")) {
+        } else if (os.indexOf("win") >= 0) {
             systemId = SYSTEM_WINDOWS;
-        } else if (os.contains("linux")) {
+        } else if (os.indexOf("linux") >= 0) {
             final String runtime = System.getProperty("java.runtime.name");
-            if ((runtime != null) && (runtime.toLowerCase(Locale.US).contains("android"))) {
+            if ((runtime != null) && (runtime.toLowerCase(Locale.US).indexOf("android") >= 0)) {
                 systemId = SYSTEM_ANDROID;
             } else {
                 systemId = SYSTEM_LINUX;
             }
-        } else if (os.contains("mac os")) {
+        } else if (os.indexOf("mac os") >= 0) {
             // note: should Mac OS X, but we check just for Mac OS (in case PowerPC runs it?)
             systemId = SYSTEM_MACOS;
         } else {
@@ -50,27 +48,23 @@ public class ConfigProperties {
         }
     }
 
-    public static boolean isWindows() {
-        String os = System.getProperty("os.name").toLowerCase(Locale.US);
-        return os.contains("win");
+    final static public boolean isWindows() {
+        return systemId==SYSTEM_WINDOWS;
     }
 
-    public static boolean isLinux() {
-        String os = System.getProperty("os.name").toLowerCase(Locale.US);
-        return os.contains("linux");
+    final static public boolean isLinux() {
+        return systemId==SYSTEM_LINUX;
     }
 
-    public static boolean isMacOSX() {
-        String os = System.getProperty("os.name").toLowerCase(Locale.US);
-        return os.contains("mac os");
+    final static public boolean isMacOSX() {
+        return systemId==SYSTEM_MACOS;
     }
 
-    public static boolean isAndroid() {
-        String runtime = System.getProperty("java.runtime.name");
-        return runtime != null && runtime.toLowerCase(Locale.US).contains("android");
+    final static public boolean isAndroid() {
+        return systemId==SYSTEM_ANDROID;
     }
 
-    static String getConfigFilePath() {
+    final static String getConfigFilePath() {
         if (isWindows()) {
             // Note: there are problems in Windows 7 and 8, as it returns
             // %USERPROFILE% in user.home
@@ -105,7 +99,7 @@ public class ConfigProperties {
             try {
 
                 @SuppressWarnings("rawtypes") final Class clazz = Class.forName("android.os.Environment");
-                @SuppressWarnings("unchecked") Method method = clazz.getMethod("getExternalStorageDirectory");
+                @SuppressWarnings("unchecked") final Method method = clazz.getMethod("getExternalStorageDirectory");
                 final File file = (File) method.invoke(null);
 
                 String externalStorageDirectoryPath = file.getAbsolutePath();
@@ -123,11 +117,11 @@ public class ConfigProperties {
         }
     }
 
-    private static File getConfigPropertiesFile() {
+    final static private File getConfigPropertiesFile() {
         return new File(getConfigFilePath());
     }
 
-    public static boolean getConfigPropertyAsBoolean(String propertyName, boolean defaultValue) {
+    final static public boolean getConfigPropertyAsBoolean(String propertyName, boolean defaultValue) {
         Properties props = loadConfigPropertiesFileCached();
         String value = props.getProperty(propertyName);
         if (value == null) {
@@ -138,12 +132,12 @@ public class ConfigProperties {
         return Boolean.parseBoolean(value);
     }
 
-    public static void setConfigProperty(String propertyName, boolean propertyValue) throws IOException {
+    final static public void setConfigProperty(String propertyName, boolean propertyValue) throws IOException {
         loadConfigPropertiesFileCached().setProperty(propertyName, Boolean.toString(propertyValue));
         saveConfigPropertiesFile(getConfigPropertiesFile());
     }
 
-    public static void deleteConfigFile() {
+    final static public void deleteConfigFile() {
         FileUtils.deleteQuietly(getConfigPropertiesFile());
     }
 
@@ -152,12 +146,12 @@ public class ConfigProperties {
 
         //create parent folders (if they don't exist)
         FileUtils.createParentDirectories(configPropertiesFile);
-        try (OutputStream output = Files.newOutputStream(configPropertiesFile.toPath())) {
+        try (OutputStream output = new FileOutputStream(configPropertiesFile)){//configPropertiesFile.toPath())) {
             configProperties.store(output, CaseFileValidator.NAME_AND_VERSION);
         }
     }
 
-    private static Properties loadConfigPropertiesFileCached() {
+    final static private Properties loadConfigPropertiesFileCached() {
         if (configProperties == null) {
             final File configPropertiesFile = getConfigPropertiesFile();
             try {
@@ -169,26 +163,24 @@ public class ConfigProperties {
 
         return configProperties;
     }
-    private static Properties loadConfigPropertiesFile(File configPropertiesFile) throws IOException {
+    final static private Properties loadConfigPropertiesFile(File configPropertiesFile) throws IOException {
         Properties properties = new Properties();
-        /*if (configPropertiesFile.exists()) {
-            try (InputStream input = Files.newInputStream(configPropertiesFile.toPath())) {
+        if (configPropertiesFile.exists()) {
+            try (InputStream input = new FileInputStream(configPropertiesFile)) {
                 properties.load(input);
+
             }
-        } else {*/
+        } else {
             // Create config file with default values if missing
             properties.setProperty(ENABLE_VERSION_4_2_8, "true");
             saveConfigPropertiesFile(configPropertiesFile);
             System.out.printf("Config file %s not found, created with default values.\n", configPropertiesFile.getAbsolutePath());
-        //}
+
+        }
         return properties;
     }
 
     public static boolean isVersion4_2_8Enabled() {
         return getConfigPropertyAsBoolean(ENABLE_VERSION_4_2_8, true);
-    }
-
-    public static boolean isVersion4_2_7Enabled() {
-        return getConfigPropertyAsBoolean(ENABLE_VERSION_4_2_7, false);
     }
 }
