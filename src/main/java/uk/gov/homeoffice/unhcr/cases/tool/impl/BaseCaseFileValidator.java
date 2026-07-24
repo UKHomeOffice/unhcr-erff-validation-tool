@@ -16,6 +16,7 @@ import org.xml.sax.XMLReader;
 import uk.gov.homeoffice.unhcr.cases.reference.ReferenceData;
 import uk.gov.homeoffice.unhcr.cases.reference.ReferenceDataContainer;
 import uk.gov.homeoffice.unhcr.cases.tool.ValidationResult;
+import uk.gov.homeoffice.unhcr.config.ConfigProperties;
 import uk.gov.homeoffice.unhcr.exception.ParseCaseFileException;
 
 import javax.imageio.ImageIO;
@@ -44,9 +45,16 @@ public abstract class BaseCaseFileValidator {
 
         //TODO use ClassGraph to dynamically load validators from class path
         //order of registration is important - validators will be tried in that order
-
-        register(new V4CaseFileValidator_1());
-        register(new V3CaseFileValidator_1());
+        // Load config.properties from resources
+        if (ConfigProperties.isVersion4_2_8Enabled()) {
+            System.out.println("Registering Version 4.2.8 validator");
+            register(new V4CaseFileValidator2_8());
+        }
+        else {
+            System.out.println("Version 4.2.8 validator is NOT ENABLED");
+            register(new V4CaseFileValidator_1());
+            register(new V3CaseFileValidator_1());
+        }
     }
 
     public static class IndividualIdPair {
@@ -103,6 +111,19 @@ public abstract class BaseCaseFileValidator {
             return Optional.of(new ParsedDate(datetimeOrNull));
         }
 
+        public static Optional<ParsedDate> ofMandatory(XMLGregorianCalendar datetimeOrNull, ValidationResult validationResult, String objectName, IndividualIdPair individualIdPair) {
+            if (datetimeOrNull == null) {
+                validationResult.addError(
+                        String.format(
+                                "Empty (or missing) value for '%s' for individual %s",
+                                objectName,
+                                individualIdPair));
+                return Optional.empty();
+            }
+
+            return Optional.of(new ParsedDate(datetimeOrNull));
+        }
+
         public static Optional<ParsedDate> ofOptional(XMLGregorianCalendar datetimeOrNull) {
             return Optional.ofNullable(datetimeOrNull).map(datetime -> new ParsedDate(datetime));
         }
@@ -120,6 +141,17 @@ public abstract class BaseCaseFileValidator {
     public static class ParsedString {
 
         public static Optional<String> ofMandatory(String string) {
+            return Optional.of(string);
+        }
+        public static Optional<String> ofMandatory(String string, ValidationResult validationResult, String objectName, IndividualIdPair individualIdPair) {
+            if (StringUtils.isBlank(string)) {
+                validationResult.addError(
+                        String.format(
+                                "Empty (or missing) value for '%s' for individual %s",
+                                objectName,
+                                individualIdPair));
+                return Optional.empty();
+            }
             return Optional.of(string);
         }
 
@@ -640,9 +672,9 @@ public abstract class BaseCaseFileValidator {
             ValidationResult validationResult
     ) {
 
-        validateReferenceData(individualIdPair, "AddressCountry", optionalAddressCountry, ReferenceDataContainer.countryCodeReferenceData, validationResult);
+        validateReferenceData(individualIdPair, "DataAddress.AddressCountry", optionalAddressCountry, ReferenceDataContainer.countryCodeReferenceData, validationResult);
 
-        validateReferenceData(individualIdPair, "AddressType", optionalAddressType, ReferenceDataContainer.addressTypeReferenceData, validationResult);
+        validateReferenceData(individualIdPair, "DataAddress.AddressType", optionalAddressType, ReferenceDataContainer.addressTypeReferenceData, validationResult);
 
         optionalAddressType.ifPresent(addressType -> {
             if (ADDRESS_TYPE_CODE_TELEPHONE.equals(addressType)) {
@@ -912,7 +944,7 @@ public abstract class BaseCaseFileValidator {
         if (mustMapAllIndividualsFlag) {
             Sets.SetView<IndividualIdPair> difference = Sets.difference(Sets.newHashSet(allowedIndividualIdPairs), map.keySet());
             if (!difference.isEmpty()) {
-                validationResult.addError(String.format("None of %s objects maps to individual(s): %s", objectName, difference.stream().map(individualIdPair -> Objects.toString(individualIdPair, "")).collect(Collectors.joining(", "))));
+                validationResult.addError(String.format("%s objects do not map to individual(s): %s", objectName, difference.stream().map(individualIdPair -> Objects.toString(individualIdPair, "")).collect(Collectors.joining(", "))));
             }
         }
 

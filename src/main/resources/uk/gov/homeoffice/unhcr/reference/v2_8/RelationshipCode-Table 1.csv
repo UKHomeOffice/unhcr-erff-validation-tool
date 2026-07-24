@@ -1,0 +1,54 @@
+RelationshipCode,RelationshipText
+ANT,Aunt
+BIL,In Law - Brother
+CLF,Daughter-in-law
+CLH,Common Law Husband
+CLM,Son-in-law
+CLW,Common Law Wife
+COF,Cousin (female)
+COM,Cousin (male)
+DAU,Daughter
+EXF,Ex-wife
+EXM,Ex-husband
+FCF,Foster daughter
+FCM,Foster son
+FP,Focal Point
+FPF,Foster mother
+FPM,Foster father
+GCF,Granddaughter
+GCM,Grandson
+GPF,Grandmother
+GPM,Grandfather
+HAB,Half-brother
+HAS,Half-sister
+HR1,Household Representative 1
+HUS,Husband
+ILF,In-law (female)
+ILM,In-law (male)
+NCE,Niece
+NEP,Nephew
+NRF,No blood relation (female)
+NRM,No blood relation (male)
+ORF,Other blood relation (female)
+ORM,Other blood relation (male)
+PA,Principal applicant
+PLF,Mother-in-law
+PLM,Father-in-law
+PRF,Mother
+PRM,Father
+PTF,Partner (Female)
+PTM,Partner (Male)
+SBF,Sister
+SBM,Brother
+SCF,Step-daughter
+SCM,Step-son
+SIL,In Law - Sister
+SON,Son
+SPB,Step-brother
+SPF,Step-mother
+SPM,Step-father
+SPS,Step-sister
+UKF,Not specified/unknown (female)
+UKM,Not specified/unknown (male)
+UNC,Uncle
+WIF,Wife

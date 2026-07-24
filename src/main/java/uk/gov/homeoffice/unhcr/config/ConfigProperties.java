@@ -12,6 +12,7 @@ import java.util.Properties;
 public class ConfigProperties {
 
     public static final String AUTOCHECK_NEWER_VERSION = "version.auto.check";
+    public static final  String ENABLE_VERSION_4_2_8 = "true";
 
     final static private int SYSTEM_UNKNOWN		= 0;
     final static private int SYSTEM_WINDOWS		= 1;
@@ -157,14 +158,17 @@ public class ConfigProperties {
         return configProperties;
     }
     final static private Properties loadConfigPropertiesFile(File configPropertiesFile) throws IOException {
+        Properties properties = new Properties();
         if (configPropertiesFile.exists()) {
             try (InputStream input = new FileInputStream(configPropertiesFile)) {
-                Properties properties = new Properties();
                 properties.load(input);
-                return properties;
             }
-        } else {
-            return new Properties();
         }
+        properties.setProperty(ENABLE_VERSION_4_2_8, "true");
+        return properties;
+    }
+
+    public static boolean isVersion4_2_8Enabled() {
+        return getConfigPropertyAsBoolean(ENABLE_VERSION_4_2_8, true);
     }
 }

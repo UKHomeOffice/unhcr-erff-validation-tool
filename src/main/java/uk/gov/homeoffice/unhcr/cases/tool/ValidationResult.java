@@ -48,6 +48,8 @@ public class ValidationResult {
         }
 
         if (errors.isEmpty()) {
+            if (StringUtils.isNotBlank(validatorId))
+                result.append("\nVALIDATOR: " + validatorId + "\n");
             result.append("PASS");
         } else {
             result.append("VALIDATION FAILED\n");

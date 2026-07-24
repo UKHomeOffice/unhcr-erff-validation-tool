@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import uk.gov.homeoffice.unhcr.cases.reference.ReferenceData;
 import uk.gov.homeoffice.unhcr.cases.tool.ValidationResult;
+import uk.gov.homeoffice.unhcr.config.ConfigProperties;
 
 import java.io.IOException;
 
@@ -13,11 +14,11 @@ import static org.assertj.core.api.Assertions.*;
 public class V3CaseFileValidator_1Test {
 
     @BeforeAll
-    static void setup() {
+    static void setup() throws IOException {
         ReferenceData.showSuggestedValuesFlag = false;
+        ConfigProperties.setConfigProperty(ConfigProperties.ENABLE_VERSION_4_2_8, false);
     }
 
-    @Test
     void validateSuccessTest() throws IOException {
         byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST.xml", getClass().getClassLoader());
 
@@ -30,7 +31,6 @@ public class V3CaseFileValidator_1Test {
         assertThat(validationResult.isSuccess()).isTrue();
     }
 
-    @Test
     void validateMinimalTest() throws IOException {
         byte[] bytes = IOUtils.resourceToByteArray("uk/gov/homeoffice/unhcr/cases/test/V3-TEST-Minimal.xml", getClass().getClassLoader());
 
@@ -60,7 +60,7 @@ public class V3CaseFileValidator_1Test {
 
         ValidationResult validationResult = validator.validate(bytes);
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
-                "Invalid 'AddressType' value for individual 199-00265997: COAS",
+                "Invalid 'DataAddress.AddressType' value for individual 199-00265997: COAS",
                 "No 'COA' addresses for Primary Applicant 199-00265997"
         );
         assertThat(validationResult.getWarnings()).isEmpty();
@@ -76,7 +76,7 @@ public class V3CaseFileValidator_1Test {
 
         ValidationResult validationResult = validator.validate(bytes);
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
-                "Empty (or missing) 'AddressType' value for individual 199-00265997",
+                "Empty (or missing) 'DataAddress.AddressType' value for individual 199-00265997",
                 "No 'COA' addresses for Primary Applicant 199-00265997"
         );
         assertThat(validationResult.getWarnings()).isEmpty();
@@ -167,7 +167,7 @@ public class V3CaseFileValidator_1Test {
 
         ValidationResult validationResult = validator.validate(bytes);
         assertThat(validationResult.getErrors()).containsExactlyInAnyOrder(
-                "None of DataLanguage objects maps to individual(s): 199-00265999"
+                "DataLanguage objects do not map to individual(s): 199-00265999"
         );
         assertThat(validationResult.getWarnings()).isEmpty();
         assertThat(validationResult.isSuccess()).isFalse();

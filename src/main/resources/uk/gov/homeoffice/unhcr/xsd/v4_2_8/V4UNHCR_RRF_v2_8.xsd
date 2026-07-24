@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/ElectronicRRF.xsd"
+           xmlns:mstns="http://tempuri.org/ElectronicRRF.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"
+           xmlns:dt="urn:schemas-microsoft-com:datatypes"
+           targetNamespace="http://tempuri.org/ElectronicRRF.xsd"
+           elementFormDefault="qualified" id="ElectronicRRF">
+  <xs:element name="UNHCR_RRF">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="RRFBATCHTYPE" minOccurs="1" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="GroupIndividualIndicator">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="Single Submission"/>
+                                        <xs:enumeration value="Group Submission"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="CASE" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="dataIndividual" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="IndividualGUID" type="xs:string"/>
+                                        <xs:element name="IndividualID" type="xs:string"/>
+                                        <xs:element name="FamilyName" type="xs:string"/>
+                                        <xs:element name="SecondFamilyName" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="GivenName" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="MiddleName" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="MaidenName" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="RegistrationDate" type="xs:dateTime"/>
+                                        <xs:element name="DateofBirth" type="xs:dateTime"/>
+                                        <xs:element name="DateofBirthEstimate" type="xs:boolean"/>
+                                        <xs:element name="BirthCountryCode" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="BirthCityTownVillage" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="OriginCountryCode" type="xs:string"/>
+                                        <xs:element name="AsylumCountryCode" type="xs:string"/>
+                                        <xs:element name="ArrivalDate" type="xs:dateTime" minOccurs="0"/>
+                                        <xs:element name="SexCode" type="xs:string"/>
+                                        <xs:element name="NationalityCode" type="xs:string"/>
+                                        <xs:element name="MarriageStatusCode" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="ReligionCode" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="EthnicityCode" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="EducationLevelCode" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="MotherName" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="FatherName" type="xs:string" minOccurs="0"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataIndividualProcessGroup" maxOccurs="unbounded">
+                                    <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="IndividualProcessingGroupGUID" type="xs:string"/>
+                                        <xs:element name="IndividualGUID" type="xs:string"/>
+                                        <xs:element name="ProcessingGroupGUID" type="xs:string"/>
+                                        <xs:element name="RelationshipToPrincipalRepresentative" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataProcessGroup" minOccurs="1" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="ProcessingGroupGUID" type="xs:string"/>
+                                        <xs:element name="ProcessingGroupNumber" type="xs:string"/>
+                                        <xs:element name="ProcessingGroupSize" type="xs:short"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataProcessGroupCrossReference" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="ProcessingGroupCrossReferenceGUID" type="xs:string"/>
+                                        <xs:element name="ProcessingGroupGUIDFrom" type="xs:string"/>
+                                        <xs:element name="ProcessingGroupNumberFrom" type="xs:string"/>
+                                        <xs:element name="ProcessingGroupGUIDTo" type="xs:string"/>
+                                        <xs:element name="ProcessingGroupNumberTo" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataAddress" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="AddressGUID" type="xs:string"/>
+                                        <xs:element name="IndividualGUID" type="xs:string"/>
+                                        <xs:element name="AddressType" type="xs:string"/>
+                                        <xs:element name="AddressCountry" type="xs:string"/>
+                                        <xs:element name="AddressPostal" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="LocationLevel1Description" type="xs:string" />
+                                        <xs:element name="LocationLevel2Description" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="LocationLevel3Description" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="LocationLevel4Description" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="LocationLevel5Description" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="LocationLevel6" type="xs:string" minOccurs="0"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataAlias" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="AliasGUID" type="xs:string"/>
+                                        <xs:element name="IndividualGUID" type="xs:string"/>
+                                        <xs:element name="IndividualAliasLastName" type="xs:string"/>
+                                        <xs:element name="IndividualAliasFirstName" type="xs:string" minOccurs="0"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataEducation" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="EducationGUID" type="xs:string"/>
+                                        <xs:element name="IndividualGUID" type="xs:string"/>
+                                        <xs:element name="EducationLevelCode" type="xs:string"/>
+                                        <xs:element name="DegreeTypeCode" type="xs:string" minOccurs="0"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataEmployment" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element name="EmploymentGUID" type="xs:string"/>
+                                    <xs:element name="IndividualGUID" type="xs:string"/>
+                                    <xs:element name="EmploymentTypeCode" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="OccupationCode" type="xs:string" minOccurs="0" />
+                                    <xs:element name="OccupationText" type="xs:string"  minOccurs="0" />
+                                    <xs:element name="NoOccupationCategory" type="xs:string" minOccurs="0"/>
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                            <xs:element name="dataContact" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                    <xs:element name="ContactDetailsGUID" type="xs:string"/>
+                                    <xs:element name="IndividualGUID" type="xs:string"/>
+                                    <xs:element name="PhoneNumber" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="PhoneNumberCountry" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="PhoneType" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="Email" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="StillInUse" type="xs:boolean"/>
+                                    <xs:element name="StartDate" type="xs:dateTime"/>
+                                    <xs:element name="EndDate" type="xs:dateTime" minOccurs="0"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataIndividualRelatives" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="IndividualRelativesGUID" type="xs:string"/>
+                                        <xs:element name="IndividualGUID" type="xs:string"/>
+                                        <xs:element name="FamilyName" type="xs:string"/>
+                                        <xs:element name="SecondFamilyName" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="GivenName" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="MiddleName" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="MaidenName" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="RelationshipCode" type="xs:string"/>
+                                        <xs:element name="DateofBirth" type="xs:dateTime" minOccurs="0"/>
+                                        <xs:element name="DateofBirthEstimateFlag" minOccurs="0" type="xs:boolean"/>
+                                        <xs:element name="BirthCountryCode" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="BirthCityTownVillage" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="ResidenceCountryCode" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="SexCode" type="xs:string"/>
+                                        <xs:element name="NationalityCode" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="Deceased" type="xs:boolean"/>
+                                        <xs:element name="DeceasedDate" type="xs:dateTime" minOccurs="0"/>
+                                        <xs:element name="MarriageStatusCode" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="LegalStatus" type="xs:string" minOccurs="0"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataLanguage" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="LanguageGUID" type="xs:string"/>
+                                        <xs:element name="IndividualGUID" type="xs:string"/>
+                                        <xs:element name="LanguageCode" type="xs:string"/>
+                                        <xs:element name="LanguageReadCode" type="xs:string"/>
+                                        <xs:element name="LanguageWriteCode" type="xs:string"/>
+                                        <xs:element name="LanguageSpeakCode" type="xs:string"/>
+                                        <xs:element name="LanguageUnderstandCode" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataPhotograph" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="PhotoGUID" type="xs:string"/>
+                                        <xs:element name="IndividualGUID" type="xs:string"/>
+                                        <xs:element name="PhotoTypeCode" type="xs:short"/>
+                                        <xs:element name="Photo" dt:dt="bin.base64"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataResettlement" minOccurs="1" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="IndividualGUID" type="xs:string"/>
+                                        <xs:element name="ResettlementCriteriaCode" type="xs:string"/>
+                                        <xs:element name="ResettlementCriteria2Code" type="xs:string"/>
+                                        <xs:element name="ResettlementPriorityCode" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dataVulnerability" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="VulnerabilityGUID" type="xs:string"/>
+                                        <xs:element name="IndividualGUID" type="xs:string"/>
+                                        <xs:element name="VulnerabilityCode" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
